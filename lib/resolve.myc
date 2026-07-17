@@ -1,0 +1,43 @@
+// nodule: proj.resolve
+// **Top-down inheritance resolution** (M-359; spec §4) with per-field provenance and an `EXPLAIN`.
+//
+// The *effective* header of a file is resolved most-specific-first — `in-file @key` > the
+// `mycelium-proj.toml` `[project]` table — and is **always inspectable** (no black box, G2): every
+// resolved field carries its [`Origin`], so "where did this license come from?" is answerable by
+// [`explain`]. Inherited fields (`version`/`license`/`authors`/`since`/`repository`/`keywords`) fall
+// back to the manifest; per-file fields (`updated`/`summary`/`deprecated`) never inherit. A local
+// value **overrides** the manifest (local wins) — that is an allowed override, not a conflict
+// (spec §4). Resolution produces *associated metadata* only — the content hash is unaffected
+// (ADR-003).
+//
+// Note (honest scope): the spec's middle tier — a nearest-ancestor *nodule-root* header — is a
+// multi-file concern; v0 resolves the single-file (`in-file > manifest`) case and names the
+// ancestor tier as deferred. Disallowed cross-tier conflicts (e.g. license-incompatible overrides)
+// are likewise a later compliance check (M-361), not fabricated here.
+// @summary: best-effort transpilation via mycelium-transpile (M-873). Declared,
+// unvalidated — no Mycelium parser/typechecker confirms this output; see the
+// accompanying .gap.json for every construct this pass could not express.
+nodule proj.resolve;
+
+// EXPLAIN (L2-B/DN-124): Declared co-include of batch-sibling type surface (homes: proj.cert_scope) so single-file oracle is self-contained — not a language `use` identity, not a short-form path collapse (M-1084 full path retained as provenance). Transitive type deps in the same batch are co-included. G2/VR-5.
+type CertScope = Global | Phylum | Nodule;
+// EXPLAIN (G-α L2-B/DN-124): Declared co-include of batch-sibling free-fn surface (homes: proj.cert_scope) so single-file oracle is self-contained — not a language `use` identity, not a short-form path collapse (M-1084 full path retained as provenance). Type deps on the fn line are co-included above when present in-batch. Body free-fn/method callees may still residual-poison oracle (FLAG, not silent). G2/VR-5.
+fn cert_mode_word(mode: CertMode) => Bytes = match mode { Fast => "fast", Balanced => "balanced", Certified => "certified" };
+
+// EXPLAIN (L2-B/DN-124): Declared co-include of batch-sibling type surface (homes: proj.header) so single-file oracle is self-contained — not a language `use` identity, not a short-form path collapse (M-1084 full path retained as provenance). Transitive type deps in the same batch are co-included. G2/VR-5.
+type Deprecated = Flag(Bool) | Reason(Bytes);
+
+// Where a resolved field's value came from.
+pub type Origin = Local | ProjectManifest;
+
+impl Show[Origin] for Origin {
+  fn render(x: Origin) => Bytes =
+    match x { Local => "Local", ProjectManifest => "ProjectManifest" };
+};
+
+fn eq_Origin(a: Origin, b: Origin) => Binary{1} =
+  match a { Local => match b { Local => 0b1, _ => 0b0 }, ProjectManifest => match b { ProjectManifest => 0b1, _ => 0b0 } };
+
+impl Origin {
+  fn label(self: Origin) => Bytes = match self { Local => "local", ProjectManifest => "mycelium-proj.toml" };
+};

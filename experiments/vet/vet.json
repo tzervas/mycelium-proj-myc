@@ -1,0 +1,104 @@
+{
+  "records": [
+    {
+      "myc_file": "/tmp/myc-decompose/work/mycelium-proj-myc/experiments/vet/cert_scope.myc",
+      "source_file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "class": "CheckError",
+      "exit_code": 3,
+      "diagnostic": "check-error: check error in `cert_mode_word`: unknown type `CertMode`",
+      "non_test_items": 19,
+      "emitted_items": 6
+    },
+    {
+      "myc_file": "/tmp/myc-decompose/work/mycelium-proj-myc/experiments/vet/header.myc",
+      "source_file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "class": "Clean",
+      "exit_code": 0,
+      "diagnostic": "",
+      "non_test_items": 19,
+      "emitted_items": 2
+    },
+    {
+      "myc_file": "/tmp/myc-decompose/work/mycelium-proj-myc/experiments/vet/lib.myc",
+      "source_file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "class": "CheckError",
+      "exit_code": 3,
+      "diagnostic": "check-error: check error in `cert_mode_word`: unknown type `CertMode`",
+      "non_test_items": 4,
+      "emitted_items": 4
+    },
+    {
+      "myc_file": "/tmp/myc-decompose/work/mycelium-proj-myc/experiments/vet/manifest.myc",
+      "source_file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "class": "CheckError",
+      "exit_code": 3,
+      "diagnostic": "check-error: check error in `eq_vec_Bytes`: duplicate function",
+      "non_test_items": 40,
+      "emitted_items": 8
+    },
+    {
+      "myc_file": "/tmp/myc-decompose/work/mycelium-proj-myc/experiments/vet/resolve.myc",
+      "source_file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/resolve.rs",
+      "class": "CheckError",
+      "exit_code": 3,
+      "diagnostic": "check-error: check error in `cert_mode_word`: unknown type `CertMode`",
+      "non_test_items": 10,
+      "emitted_items": 4
+    }
+  ],
+  "total_non_test_items": 92,
+  "total_emitted_items": 24,
+  "total_checked_clean_items": 2,
+  "class_counts": {
+    "CheckError": 4,
+    "Clean": 1
+  },
+  "phylum": {
+    "ran": true,
+    "ok": false,
+    "nodules": [
+      {
+        "nodule": "proj.cert_scope",
+        "file": "cert_scope.myc",
+        "class": "CheckError",
+        "site": "cert_mode_word",
+        "on": null,
+        "message": "unknown type `CertMode`"
+      },
+      {
+        "nodule": "proj.header",
+        "file": "header.myc",
+        "class": "Clean",
+        "site": null,
+        "on": null,
+        "message": null
+      },
+      {
+        "nodule": "proj",
+        "file": "lib.myc",
+        "class": "CheckError",
+        "site": "cert_mode_word",
+        "on": null,
+        "message": "unknown type `CertMode`"
+      },
+      {
+        "nodule": "proj.manifest",
+        "file": "manifest.myc",
+        "class": "CheckError",
+        "site": "eq_vec_Bytes",
+        "on": null,
+        "message": "duplicate function"
+      },
+      {
+        "nodule": "proj.resolve",
+        "file": "resolve.myc",
+        "class": "CheckError",
+        "site": "cert_mode_word",
+        "on": null,
+        "message": "unknown type `CertMode`"
+      }
+    ],
+    "diagnostic": "duplicate function"
+  },
+  "total_checked_clean_items_phylum": 2
+}

@@ -1,0 +1,104 @@
+// nodule: proj.manifest
+// The **project manifest** `mycelium-proj.toml` (M-359; spec §2) and a **minimal, auditable
+// TOML-subset reader**.
+//
+// The workspace keeps its external dependencies few and vetted (the `/security-review` ethos —
+// only pinned `serde`/`serde_json`/`blake3` in the toolchain crates). Rather than **add** a full
+// TOML crate (a new-dependency decision that is an ADR, not a build detail), this reads the
+// *subset* the manifest needs: `# comments`, `[table]` headers, and
+// single-line `key = value` where a value is a **basic string** (`"…"`), an **array** of values, an
+// **inline table** (`{ k = v, … }`), or a **boolean**. Anything outside the subset (a bare number, a
+// multi-line array, an unknown `[project]` key, an unknown `[project].kind`) is an **explicit** error
+// — never silently dropped or guessed (G2). It is honestly a *subset*, named as one; it is not a
+// conformant TOML parser.
+//
+// Only `[project]` is **typed and validated** in v0 (the fields headers inherit from); the optional
+// `[surface]`/`[dependencies]`/`[toolchain]`/`[spore]` tables are accepted but not interpreted yet
+// (their consumers are M-361). Metadata is **not** identity (ADR-003).
+// @summary: best-effort transpilation via mycelium-transpile (M-873). Declared,
+// unvalidated — no Mycelium parser/typechecker confirms this output; see the
+// accompanying .gap.json for every construct this pass could not express.
+nodule proj.manifest;
+
+// The shape of a Mycelium project (spec §2 — `[project].kind`).
+pub type ProjectKind = Phylum | Program | Script;
+
+impl Show[ProjectKind] for ProjectKind {
+  fn render(x: ProjectKind) => Bytes =
+    match x { Phylum => "Phylum", Program => "Program", Script => "Script" };
+};
+
+fn eq_ProjectKind(a: ProjectKind, b: ProjectKind) => Binary{1} =
+  match a { Phylum => match b { Phylum => 0b1, _ => 0b0 }, Program => match b { Program => 0b1, _ => 0b0 }, Script => match b { Script => 0b1, _ => 0b0 } };
+
+// The typed `[surface]` table (M-368): a phylum's **public exports** — the germination boundary. v0
+// closed key set: `exports` (a list of dotted nodule names). Metadata layer (ADR-003).
+pub type Surface = Surface(Vec[Bytes]);
+
+fn show_vec_Bytes(xs: Vec[Bytes]) => Bytes =
+  match xs { Nil => "Nil", Cons(h, t) => bytes_concat("Cons(", bytes_concat(render(h), bytes_concat(", ", bytes_concat(show_vec_Bytes(t), ")")))) };
+
+impl Show[Surface] for Surface {
+  fn render(x: Surface) => Bytes =
+    match x { Surface(p0) => bytes_concat(bytes_concat("Surface(", show_vec_Bytes(p0)), ")") };
+};
+
+impl Init[Surface] for Surface {
+  fn init() => Surface =
+    Surface(Nil);
+};
+
+fn eq_vec_Bytes(a: Vec[Bytes], b: Vec[Bytes]) => Binary{1} =
+  match a { Nil => match b { Nil => 0b1, Cons(_, _) => 0b0 }, Cons(ha, ta) => match b { Nil => 0b0, Cons(hb, tb) => and(bytes_eq(ha, hb), eq_vec_Bytes(ta, tb)) } };
+
+fn eq_Surface(a: Surface, b: Surface) => Binary{1} =
+    match a { Surface(p0) => match b { Surface(q0) => eq_vec_Bytes(p0, q0) } };
+
+// The typed `[spore]` table (M-368): how the project publishes as a deployable (ADR-013). v0 closed key
+// set: `include` (what germinates; defaults to the public `[surface]`).
+pub type SporeConfig = SporeConfig(Vec[Bytes]);
+
+impl Show[SporeConfig] for SporeConfig {
+  fn render(x: SporeConfig) => Bytes =
+    match x { SporeConfig(p0) => bytes_concat(bytes_concat("SporeConfig(", show_vec_Bytes(p0)), ")") };
+};
+
+impl Init[SporeConfig] for SporeConfig {
+  fn init() => SporeConfig =
+    SporeConfig(Nil);
+};
+
+fn eq_vec_Bytes(a: Vec[Bytes], b: Vec[Bytes]) => Binary{1} =
+  match a { Nil => match b { Nil => 0b1, Cons(_, _) => 0b0 }, Cons(ha, ta) => match b { Nil => 0b0, Cons(hb, tb) => and(bytes_eq(ha, hb), eq_vec_Bytes(ta, tb)) } };
+
+fn eq_SporeConfig(a: SporeConfig, b: SporeConfig) => Binary{1} =
+    match a { SporeConfig(p0) => match b { SporeConfig(q0) => eq_vec_Bytes(p0, q0) } };
+
+// An explicit manifest error (G2): a syntax error, an out-of-subset construct, or a bad value.
+pub type ManifestError = ManifestError(Binary{32}, Bytes);
+
+impl Show[ManifestError] for ManifestError {
+  fn render(x: ManifestError) => Bytes =
+    match x { ManifestError(p0, p1) => bytes_concat(bytes_concat(bytes_concat(bytes_concat("ManifestError(", render(width_cast(p0, 0b0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000))), ", "), render(p1)), ")") };
+};
+
+fn eq_ManifestError(a: ManifestError, b: ManifestError) => Binary{1} =
+    match a { ManifestError(p0, p1) => match b { ManifestError(q0, q1) => and(eq(p0, q0), bytes_eq(p1, q1)) } };
+
+// A parsed TOML value (the supported subset).
+type Val = Str(Bytes) | Arr(Vec[Val]) | Table(Vec[(Bytes, Val)]) | Bool(Bool);
+
+// The maximum nesting depth of arrays/inline-tables the v0 reader will descend (DoS bound, G2).
+// A manifest value (a dependency table, a small export list) is shallow by design; anything deeper
+// is refused explicitly rather than recursed-into and risking stack exhaustion on adversarial input.
+// Declared: co-emitted private const as zero-arg fn returning a BinLit — Mycelium has no const item production (`item` covers use/default/type/trait/impl/fn/object/lower/derive only); hand-port precedent `max_expr_depth()` (ORACLE-R1 A4; G2/VR-5: value from the Rust initializer or a known workspace-floor path, never fabricated). Use sites rewrite `NAME` → `NAME()`.
+fn MAX_VALUE_DEPTH() => Binary{32} = 0b0000_0000_0000_0000_0000_0000_0001_0000; // 16
+
+// The maximum number of elements one array may hold (DoS bound, G2). Manifest arrays are small
+// (authors, keywords, exports); a pathological list is refused, never silently truncated.
+// Declared: co-emitted private const as zero-arg fn returning a BinLit — Mycelium has no const item production (`item` covers use/default/type/trait/impl/fn/object/lower/derive only); hand-port precedent `max_expr_depth()` (ORACLE-R1 A4; G2/VR-5: value from the Rust initializer or a known workspace-floor path, never fabricated). Use sites rewrite `NAME` → `NAME()`.
+fn MAX_ARRAY_ELEMS() => Binary{64} = 0b0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0100_0000_0000; // 1024
+
+// The maximum number of key/value pairs one inline table may hold (DoS bound, G2).
+// Declared: co-emitted private const as zero-arg fn returning a BinLit — Mycelium has no const item production (`item` covers use/default/type/trait/impl/fn/object/lower/derive only); hand-port precedent `max_expr_depth()` (ORACLE-R1 A4; G2/VR-5: value from the Rust initializer or a known workspace-floor path, never fabricated). Use sites rewrite `NAME` → `NAME()`.
+fn MAX_TABLE_PAIRS() => Binary{64} = 0b0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0100_0000_0000; // 1024

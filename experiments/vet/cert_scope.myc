@@ -1,0 +1,108 @@
+// nodule: proj.cert_scope
+// **`@certification` mode resolution & scoping** (M-790; RFC-0034 §6) — the declaration-site half
+// of tunable certification.
+//
+// RFC-0034 §6 says the active [`CertMode`] is **data in the
+// source** — declared by a `@certification` attribute on the `mycelium-proj.toml` manifest and/or a
+// nodule header — **not** a hidden build flag. It is resolved **most-specific-wins** over the scope
+// lattice `global ⊐ phylum ⊐ nodule`, *reusing the RFC-0012 ambient-representation + scoped-override
+// mechanism* (innermost-enclosing-wins, reified + EXPLAIN-able provenance — RFC-0012 §4.1) rather
+// than building new scoping machinery. This is the exact shape the [`mod@crate::resolve`]
+// module already gives the metadata fields (`local > manifest`, per-field
+// [`Origin`](crate::resolve::Origin)); the
+// certification mode is one more such scoped field, with one extra (most-specific) tier.
+//
+// **What is reused vs. added.** RFC-0012's mechanism is: *a declared default, scoped, with
+// innermost-wins resolution, that is reified and renderable and changes nothing about content
+// identity.* That is precisely [`resolve_mode`] below — a stack of `(scope, mode)` declarations
+// resolved most-specific-first, every result annotated with the [`CertScope`] it came from, and the
+// mode deliberately **excluded from the content hash** (it rides `Meta`, RFC-0001 §4.6 / ADR-003 —
+// exactly as RFC-0012's ambient is pure surface elaboration that never perturbs L0). No new scoping
+// algorithm is introduced; this composes the same innermost-wins fold.
+//
+// **Deferred (honest scope, VR-5).** RFC-0034 §6 also lists per-op `thaw`-style granularity and
+// per-knob overrides as **deferred** (YAGNI). They are not implemented here, and are named as
+// deferred rather than silently absent.
+//
+// ## FLAGs for maintainer ratification (M-790)
+// Two surface/semantic choices were under-specified by RFC-0034 §6 ("the exact `@certification`
+// surface syntax is sketched … its grammar lands with the surface-syntax work"). The smallest
+// defensible choice was made and is flagged here, not silently baked:
+//
+// - **FLAG-A (surface spelling).** The attribute value is the **lowercase** mode word
+//   `fast | balanced | certified` — matching the manifest's existing lowercase enum values
+//   (`kind = "phylum"`), *not* the `serde` capitalized form (`"Fast"`). Parsing is the closed,
+//   never-silent set (an unknown word is an explicit error, G2). If ratification prefers the
+//   capitalized serde spelling, [`parse_cert_mode`] is the single point to change.
+// - **FLAG-B (manifest tier = `global`/`phylum`).** The v0 single-manifest model carries **one**
+//   `@certification` declaration in `[project]`; RFC-0034 §6's distinct `global` vs `phylum` tiers
+//   are not yet separable in one manifest. This module models the manifest declaration as the
+//   [`CertScope::Phylum`] tier (a phylum *is* what a `mycelium-proj.toml` describes — `kind =
+//   "phylum"`), reserves [`CertScope::Global`] for a future workspace/global default, and resolves
+//   the full three-tier lattice so the precedence law is testable today. The separate global tier
+//   lands with the multi-manifest/workspace work (the same honest-scope deferral the
+//   [`mod@crate::resolve`] module already makes for the ancestor-nodule tier).
+// @summary: best-effort transpilation via mycelium-transpile (M-873). Declared,
+// unvalidated — no Mycelium parser/typechecker confirms this output; see the
+// accompanying .gap.json for every construct this pass could not express.
+nodule proj.cert_scope;
+
+// Declared: co-emitted guarantee-lattice type — referenced in this file but not declared here and not available via a resolved batch `use` (ORACLE-R1 A2; never silent unknown-type file poison — G2/VR-5). Variants use DN-140 `*_kw` renames for the reserved lattice keywords (Exact/Proven/Empirical/Declared).
+// Declared: renamed Exact -> Exact_kw (reserved-word collision, DN-140)
+// Declared: renamed Proven -> Proven_kw (reserved-word collision, DN-140)
+// Declared: renamed Empirical -> Empirical_kw (reserved-word collision, DN-140)
+// Declared: renamed Declared -> Declared_kw (reserved-word collision, DN-140)
+type GuaranteeStrength = Exact_kw | Proven_kw | Empirical_kw | Declared_kw;
+
+// The scope a certification-mode declaration was made at — the RFC-0034 §6 lattice
+// `global ⊐ phylum ⊐ nodule`, ordered **least-specific → most-specific**. Resolution is
+// most-specific-wins, so a `Nodule` declaration overrides a `Phylum` one, which overrides `Global`.
+//
+// This mirrors RFC-0012's innermost-enclosing-wins scope stack: `Global` is the outermost ambient,
+// `Nodule` the innermost. (See FLAG-B: in v0 the manifest declaration is the `Phylum` tier and
+// `Global` is reserved for a future workspace default.)
+pub type CertScope = Global | Phylum | Nodule;
+
+impl Show[CertScope] for CertScope {
+  fn render(x: CertScope) => Bytes =
+    match x { Global => "Global", Phylum => "Phylum", Nodule => "Nodule" };
+};
+
+fn eq_CertScope(a: CertScope, b: CertScope) => Binary{1} =
+  match a { Global => match b { Global => 0b1, _ => 0b0 }, Phylum => match b { Phylum => 0b1, _ => 0b0 }, Nodule => match b { Nodule => 0b1, _ => 0b0 } };
+
+impl CertScope {
+  // Specificity rank, `0` = [`Global`](CertScope::Global) (least) … `2` =
+  // [`Nodule`](CertScope::Nodule) (most). Higher wins in [`resolve_mode`]. This *is* the derived
+  // [`Ord`] (the variants are declared least→most specific); the method names the contract.
+  fn specificity(self: CertScope) => Binary{8} = match self { Global => 0, Phylum => 1, Nodule => 2 };
+  // A stable, lower-case label for `EXPLAIN` output (RFC-0012 renderability; G2 — never ambient).
+  fn label(self: CertScope) => Bytes = match self { Global => "global", Phylum => "phylum", Nodule => "nodule" };
+};
+
+// The surface spelling of a mode (the inverse of [`parse_cert_mode`]) — for `EXPLAIN`/round-trip.
+pub fn cert_mode_word(mode: CertMode) => Bytes = match mode { Fast => "fast", Balanced => "balanced", Certified => "certified" };
+
+// The **DX consumption tier** — how much of the already-generated inspectability signal is
+// rendered by the tooling / DX layer (RFC-0034 §7).
+//
+// This is **orthogonal to the certification mode** — in particular, `fast` sessions default to
+// [`Lean`](ConsumptionTier::Lean) consumption, but a developer can call
+// [`render_mode_signal`] with `Full` at any time: the [`ModeSignal`] was already generated (no
+// re-run required). The split makes `fast` cheap-by-default *and* non-cornering (the history is
+// there when you need it).
+pub type ConsumptionTier = Lean | Medium | Full;
+
+impl Show[ConsumptionTier] for ConsumptionTier {
+  fn render(x: ConsumptionTier) => Bytes =
+    match x { Lean => "Lean", Medium => "Medium", Full => "Full" };
+};
+
+fn eq_ConsumptionTier(a: ConsumptionTier, b: ConsumptionTier) => Binary{1} =
+  match a { Lean => match b { Lean => 0b1, _ => 0b0 }, Medium => match b { Medium => 0b1, _ => 0b0 }, Full => match b { Full => 0b1, _ => 0b0 } };
+
+impl ConsumptionTier {
+  // Whether this tier is at least as verbose as another — for asserting that dialing consumption
+  // up reveals at least as much information.
+  fn is_at_least(self: ConsumptionTier, other: ConsumptionTier) => Bool = gte(self, other);
+};

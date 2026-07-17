@@ -1,0 +1,292 @@
+{
+  "source": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+  "emitted_items": [
+    "co-include:cert_mode_word,CertScope,ConsumptionTier",
+    "co-include:Deprecated,HeaderError",
+    "co-include:ManifestError,ProjectKind,SporeConfig,Surface",
+    "co-include:Origin"
+  ],
+  "gaps": [
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 25,
+      "col": 1,
+      "category": "ModuleDecl",
+      "rust_construct": "ModuleDecl",
+      "snippet": "pub mod cert_scope ;",
+      "reason": "external `mod foo;` declaration — file-linkage, not translatable library surface (Mycelium's nodule-per-file model makes the module tree implicit in the file layout; the sibling file transpiles as its own nodule). Excluded from the expressible-fraction denominator, recorded not dropped",
+      "item_name": "cert_scope"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 26,
+      "col": 1,
+      "category": "ModuleDecl",
+      "rust_construct": "ModuleDecl",
+      "snippet": "pub mod header ;",
+      "reason": "external `mod foo;` declaration — file-linkage, not translatable library surface (Mycelium's nodule-per-file model makes the module tree implicit in the file layout; the sibling file transpiles as its own nodule). Excluded from the expressible-fraction denominator, recorded not dropped",
+      "item_name": "header"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 27,
+      "col": 1,
+      "category": "ModuleDecl",
+      "rust_construct": "ModuleDecl",
+      "snippet": "pub mod manifest ;",
+      "reason": "external `mod foo;` declaration — file-linkage, not translatable library surface (Mycelium's nodule-per-file model makes the module tree implicit in the file layout; the sibling file transpiles as its own nodule). Excluded from the expressible-fraction denominator, recorded not dropped",
+      "item_name": "manifest"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 28,
+      "col": 1,
+      "category": "ModuleDecl",
+      "rust_construct": "ModuleDecl",
+      "snippet": "pub mod resolve ;",
+      "reason": "external `mod foo;` declaration — file-linkage, not translatable library surface (Mycelium's nodule-per-file model makes the module tree implicit in the file layout; the sibling file transpiles as its own nodule). Excluded from the expressible-fraction denominator, recorded not dropped",
+      "item_name": "resolve"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 30,
+      "col": 1,
+      "category": "TestItem",
+      "rust_construct": "TestItem",
+      "snippet": "# [cfg (test)] mod tests ;",
+      "reason": "#[cfg(test)] item — out of scope for this PoC's transpilation surface (excluded from the expressible-fraction denominator, but recorded, never silently skipped)",
+      "item_name": "tests"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 33,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use cert_scope :: { cert_mode_word , compose , explain_mode , generate_mode_signal , parse_cert_mode , render_mode_signal , resolve_mode , CertDecl , CertScope , ConsumptionTier , CrossModeEvent , ModeSignal , ResolvedMode , } ;",
+      "reason": "`use cert_scope::compose` — `compose` is not among sibling `cert_scope`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:cert_mode_word,CertScope,ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 33,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use cert_scope :: { cert_mode_word , compose , explain_mode , generate_mode_signal , parse_cert_mode , render_mode_signal , resolve_mode , CertDecl , CertScope , ConsumptionTier , CrossModeEvent , ModeSignal , ResolvedMode , } ;",
+      "reason": "`use cert_scope::explain_mode` — `explain_mode` is not among sibling `cert_scope`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:cert_mode_word,CertScope,ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 33,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use cert_scope :: { cert_mode_word , compose , explain_mode , generate_mode_signal , parse_cert_mode , render_mode_signal , resolve_mode , CertDecl , CertScope , ConsumptionTier , CrossModeEvent , ModeSignal , ResolvedMode , } ;",
+      "reason": "`use cert_scope::generate_mode_signal` — `generate_mode_signal` is not among sibling `cert_scope`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:cert_mode_word,CertScope,ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 33,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use cert_scope :: { cert_mode_word , compose , explain_mode , generate_mode_signal , parse_cert_mode , render_mode_signal , resolve_mode , CertDecl , CertScope , ConsumptionTier , CrossModeEvent , ModeSignal , ResolvedMode , } ;",
+      "reason": "`use cert_scope::parse_cert_mode` — `parse_cert_mode` is not among sibling `cert_scope`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:cert_mode_word,CertScope,ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 33,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use cert_scope :: { cert_mode_word , compose , explain_mode , generate_mode_signal , parse_cert_mode , render_mode_signal , resolve_mode , CertDecl , CertScope , ConsumptionTier , CrossModeEvent , ModeSignal , ResolvedMode , } ;",
+      "reason": "`use cert_scope::render_mode_signal` — `render_mode_signal` is not among sibling `cert_scope`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:cert_mode_word,CertScope,ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 33,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use cert_scope :: { cert_mode_word , compose , explain_mode , generate_mode_signal , parse_cert_mode , render_mode_signal , resolve_mode , CertDecl , CertScope , ConsumptionTier , CrossModeEvent , ModeSignal , ResolvedMode , } ;",
+      "reason": "`use cert_scope::resolve_mode` — `resolve_mode` is not among sibling `cert_scope`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:cert_mode_word,CertScope,ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 33,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use cert_scope :: { cert_mode_word , compose , explain_mode , generate_mode_signal , parse_cert_mode , render_mode_signal , resolve_mode , CertDecl , CertScope , ConsumptionTier , CrossModeEvent , ModeSignal , ResolvedMode , } ;",
+      "reason": "`use cert_scope::CertDecl` — `CertDecl` is not among sibling `cert_scope`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:cert_mode_word,CertScope,ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 33,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use cert_scope :: { cert_mode_word , compose , explain_mode , generate_mode_signal , parse_cert_mode , render_mode_signal , resolve_mode , CertDecl , CertScope , ConsumptionTier , CrossModeEvent , ModeSignal , ResolvedMode , } ;",
+      "reason": "`use cert_scope::CrossModeEvent` — `CrossModeEvent` is not among sibling `cert_scope`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:cert_mode_word,CertScope,ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 33,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use cert_scope :: { cert_mode_word , compose , explain_mode , generate_mode_signal , parse_cert_mode , render_mode_signal , resolve_mode , CertDecl , CertScope , ConsumptionTier , CrossModeEvent , ModeSignal , ResolvedMode , } ;",
+      "reason": "`use cert_scope::ModeSignal` — `ModeSignal` is not among sibling `cert_scope`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:cert_mode_word,CertScope,ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 33,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use cert_scope :: { cert_mode_word , compose , explain_mode , generate_mode_signal , parse_cert_mode , render_mode_signal , resolve_mode , CertDecl , CertScope , ConsumptionTier , CrossModeEvent , ModeSignal , ResolvedMode , } ;",
+      "reason": "`use cert_scope::ResolvedMode` — `ResolvedMode` is not among sibling `cert_scope`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:cert_mode_word,CertScope,ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 38,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use header :: { parse_header , Deprecated , HeaderError , HeaderFields , StructuredHeader , HEADER_KEYS , } ;",
+      "reason": "`use header::parse_header` — `parse_header` is not among sibling `header`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:Deprecated,HeaderError"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 38,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use header :: { parse_header , Deprecated , HeaderError , HeaderFields , StructuredHeader , HEADER_KEYS , } ;",
+      "reason": "`use header::HeaderFields` — `HeaderFields` is not among sibling `header`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:Deprecated,HeaderError"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 38,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use header :: { parse_header , Deprecated , HeaderError , HeaderFields , StructuredHeader , HEADER_KEYS , } ;",
+      "reason": "`use header::StructuredHeader` — `StructuredHeader` is not among sibling `header`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:Deprecated,HeaderError"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 38,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use header :: { parse_header , Deprecated , HeaderError , HeaderFields , StructuredHeader , HEADER_KEYS , } ;",
+      "reason": "`use header::HEADER_KEYS` — `HEADER_KEYS` is not among sibling `header`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:Deprecated,HeaderError"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 41,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use manifest :: { parse_manifest , Dependency , Manifest , ManifestError , Project , ProjectKind , SporeConfig , Surface , Toolchain , } ;",
+      "reason": "`use manifest::parse_manifest` — `parse_manifest` is not among sibling `manifest`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:ManifestError,ProjectKind,SporeConfig,Surface"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 41,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use manifest :: { parse_manifest , Dependency , Manifest , ManifestError , Project , ProjectKind , SporeConfig , Surface , Toolchain , } ;",
+      "reason": "`use manifest::Dependency` — `Dependency` is not among sibling `manifest`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:ManifestError,ProjectKind,SporeConfig,Surface"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 41,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use manifest :: { parse_manifest , Dependency , Manifest , ManifestError , Project , ProjectKind , SporeConfig , Surface , Toolchain , } ;",
+      "reason": "`use manifest::Manifest` — `Manifest` is not among sibling `manifest`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:ManifestError,ProjectKind,SporeConfig,Surface"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 41,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use manifest :: { parse_manifest , Dependency , Manifest , ManifestError , Project , ProjectKind , SporeConfig , Surface , Toolchain , } ;",
+      "reason": "`use manifest::Project` — `Project` is not among sibling `manifest`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:ManifestError,ProjectKind,SporeConfig,Surface"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 41,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use manifest :: { parse_manifest , Dependency , Manifest , ManifestError , Project , ProjectKind , SporeConfig , Surface , Toolchain , } ;",
+      "reason": "`use manifest::Toolchain` — `Toolchain` is not among sibling `manifest`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:ManifestError,ProjectKind,SporeConfig,Surface"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 45,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use resolve :: { explain , resolve , Origin , Resolved , ResolvedHeader } ;",
+      "reason": "`use resolve::explain` — `explain` is not among sibling `resolve`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:Origin"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 45,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use resolve :: { explain , resolve , Origin , Resolved , ResolvedHeader } ;",
+      "reason": "`use resolve::resolve` — `resolve` is not among sibling `resolve`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:Origin"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 45,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use resolve :: { explain , resolve , Origin , Resolved , ResolvedHeader } ;",
+      "reason": "`use resolve::Resolved` — `Resolved` is not among sibling `resolve`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:Origin"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 45,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use resolve :: { explain , resolve , Origin , Resolved , ResolvedHeader } ;",
+      "reason": "`use resolve::ResolvedHeader` — `ResolvedHeader` is not among sibling `resolve`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:Origin"
+    }
+  ],
+  "total_top_level_items": 9
+}

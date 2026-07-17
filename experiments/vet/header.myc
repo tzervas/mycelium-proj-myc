@@ -1,0 +1,38 @@
+// nodule: proj.header
+// The **structured nodule header** (M-359; spec §3) — the `// @key: value` metadata lines that may
+// follow the required `// nodule:` marker (DN-06 §6, recognised by [`mycelium_l1::parse_nodule_header`]).
+//
+// The v0 key set is **closed** (spec §7.3, ratified 2026-06-16, extended 2026-06-18 by RFC-0017,
+// 2026-06-24 by RFC-0034 §6 — `@certification`):
+// `version`, `license`, `authors`, `since`, `updated`, `summary`, `repository`, `keywords`,
+// `deprecated`, `matured`, `certification`. An **unknown** `@key`, a
+// **duplicate** key, a **malformed** value (non-SPDX `@license`, non-ISO `@since`/`@updated`,
+// ill-formed `@version`) — each is an **explicit** error, never silently ignored or guessed
+// (G2 / VR-5). Metadata is **not** identity (ADR-003): nothing here perturbs a definition's content
+// hash; these are associated, queryable fields.
+// @summary: best-effort transpilation via mycelium-transpile (M-873). Declared,
+// unvalidated — no Mycelium parser/typechecker confirms this output; see the
+// accompanying .gap.json for every construct this pass could not express.
+nodule proj.header;
+
+// A `@deprecated` value: a bare flag or a reason string (spec §3).
+pub type Deprecated = Flag(Bool) | Reason(Bytes);
+
+impl Show[Deprecated] for Deprecated {
+  fn render(x: Deprecated) => Bytes =
+    match x { Flag(p0) => bytes_concat(bytes_concat("Flag(", render(p0)), ")"), Reason(p0) => bytes_concat(bytes_concat("Reason(", render(p0)), ")") };
+};
+
+fn eq_Deprecated(a: Deprecated, b: Deprecated) => Binary{1} =
+  match a { Flag(p0) => match b { Flag(q0) => match p0 { True => match q0 { True => 0b1, False => 0b0 }, False => match q0 { True => 0b0, False => 0b1 } }, _ => 0b0 }, Reason(p0) => match b { Reason(q0) => bytes_eq(p0, q0), _ => 0b0 } };
+
+// An explicit header error (G2): a malformed marker, an unknown/duplicate key, or a bad value.
+pub type HeaderError = HeaderError(Binary{32}, Bytes);
+
+impl Show[HeaderError] for HeaderError {
+  fn render(x: HeaderError) => Bytes =
+    match x { HeaderError(p0, p1) => bytes_concat(bytes_concat(bytes_concat(bytes_concat("HeaderError(", render(width_cast(p0, 0b0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000_0000))), ", "), render(p1)), ")") };
+};
+
+fn eq_HeaderError(a: HeaderError, b: HeaderError) => Binary{1} =
+    match a { HeaderError(p0, p1) => match b { HeaderError(q0, q1) => and(eq(p0, q0), bytes_eq(p1, q1)) } };

@@ -1,0 +1,230 @@
+{
+  "source": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+  "emitted_items": [
+    "Deprecated",
+    "HeaderError"
+  ],
+  "gaps": [
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 13,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "use mycelium_l1 :: { parse_nodule_header , NoduleHeader , NoduleHeaderError } ;",
+      "reason": "`use mycelium_l1::parse_nodule_header` — `mycelium_l1` is not a sibling module OR sibling phylum transpiled in this same batch (an external crate, `std`, or simply out of this batch's target set). Flagged, not guessed (VR-5/G2); `use mycelium_l1::NoduleHeader` — `mycelium_l1` is not a sibling module OR sibling phylum transpiled in this same batch (an external crate, `std`, or simply out of this batch's target set). Flagged, not guessed (VR-5/G2); `use mycelium_l1::NoduleHeaderError` — `mycelium_l1` is not a sibling module OR sibling phylum transpiled in this same batch (an external crate, `std`, or simply out of this batch's target set). Flagged, not guessed (VR-5/G2)",
+      "item_name": null
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 15,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" The closed v0 metadata key set (spec §7.3). Kept here as the single source of truth for the\"] # [doc = \" parser, the linter, and the \\\"unknown key\\\" message.\"] pub const HEADER_KEYS : & [& str] = & [\"version\" , \"license\" , \"authors\" , \"since\" , \"updated\" , \"summary\" , \"repository\" , \"keywords\" , \"deprecated\" , \"matured\" , \"certification\" ,] ;",
+      "reason": "top-level `const HEADER_KEYS` — co-emit (ORACLE-R1 A4) only covers plain unsigned integer types (`u8`/`u16`/`u32`/`u64`/`u128`/`usize`); other types have no const item production and no faithful zero-arg-fn encoding (gap, never fabricate)",
+      "item_name": "HEADER_KEYS"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 31,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" A `@deprecated` value: a bare flag or a reason string (spec §3).\"] # [derive (Debug , Clone , PartialEq , Eq)] pub enum Deprecated { # [doc = \" `@deprecated: true` / `false`.\"] Flag (bool) , # [doc = \" `@deprecated: <reason>` — a free-text supersession reason.\"] Reason (String) , }",
+      "reason": "enum `Deprecated` derive(Clone) is a satisfied no-op under Mycelium's value semantics (ADR-003 — every value already copies structurally; DN-128 §6.1) — not emitted as an impl, not a gap",
+      "item_name": "Deprecated"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 31,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" A `@deprecated` value: a bare flag or a reason string (spec §3).\"] # [derive (Debug , Clone , PartialEq , Eq)] pub enum Deprecated { # [doc = \" `@deprecated: true` / `false`.\"] Flag (bool) , # [doc = \" `@deprecated: <reason>` — a free-text supersession reason.\"] Reason (String) , }",
+      "reason": "enum `Deprecated` derive(Eq): covered by co-occurring PartialEq → `fn eq_Deprecated` (product-row collision policy; DN-128 / ONESHOT C2) — not a second emission",
+      "item_name": "Deprecated"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 40,
+      "col": 1,
+      "category": "Struct",
+      "rust_construct": "Struct",
+      "snippet": "# [doc = \" The parsed `@key` metadata of a header (all optional; absent fields inherit per the resolver).\"] # [derive (Debug , Clone , Default , PartialEq , Eq)] pub struct HeaderFields { # [doc = \" `@version` — semver release label (inherits from `project.version`).\"] pub version : Option < String > , # [doc = \" `@license` — SPDX id (inherits from `project.license`).\"] pub license : Option < String > , # [doc = \" `@authors` — comma-separated (inherits from `project.authors`).\"] pub authors : Option < Vec < String > > , # [doc = \" `@since` — first publication ISO date (inherits from `project.since`).\"] pub since : Option < String > , # [doc = \" `@updated` — last update ISO date (per-file, author-maintained; never inherited).\"] pub updated : Option < String > , # [doc = \" `@summary` — one-line description (per-file).\"] pub summary : Option < String > , # [doc = \" `@repository` — source URL (inherits from `project.repository`).\"] pub repository : Option < String > , # [doc = \" `@keywords` — comma-separated discovery tags (inherits from `project.keywords`).\"] pub keywords : Option < Vec < String > > , # [doc = \" `@deprecated` — flags this nodule superseded (per-file; never inherited).\"] pub deprecated : Option < Deprecated > , # [doc = \" `@matured` — the nodule/phylum is a matured (AOT) scope; RFC-0017; inherited top-down.\"] pub matured : Option < bool > , # [doc = \" `@certification` — the active certification mode (RFC-0034 §6; M-790). The **most-specific**\"] # [doc = \" (nodule) tier of the `global > phylum > nodule` lattice; overrides the manifest's. The value\"] # [doc = \" is the closed set `fast | balanced | certified` ([`mycelium_core::cert_mode::CertMode`]); an\"] # [doc = \" unknown word is an explicit error (G2). Resolved by [`crate::cert_scope::resolve_mode`].\"] pub certification : Option < mycelium_core :: cert_mode :: CertMode > , }",
+      "reason": "struct `HeaderFields` has a field type with no confirmed mapping (qualified type path `mycelium_core :: cert_mode :: CertMode` — collapsing to its last segment would risk colliding with an unrelated same-named local type (e.g. `std::cmp::Ordering` vs a local `Ordering`); left an explicit gap rather than guessed (VR-5))",
+      "item_name": "HeaderFields"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 70,
+      "col": 1,
+      "category": "Struct",
+      "rust_construct": "Struct",
+      "snippet": "# [doc = \" A parsed structured header: the `// nodule:` marker plus its `@key` metadata.\"] # [derive (Debug , Clone , PartialEq , Eq)] pub struct StructuredHeader { # [doc = \" The DN-06 §6 marker (its `name` is `None` for the bare `// nodule`).\"] pub marker : NoduleHeader , # [doc = \" The parsed metadata fields.\"] pub fields : HeaderFields , }",
+      "reason": "struct `StructuredHeader` uses named fields and references a type not resolvable in-file — emitting it positionally would introduce an unresolved reference that poisons the file's `myc check`; left gapped under the M-1006 resolvability gate (VR-5/G2)",
+      "item_name": "StructuredHeader"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 79,
+      "col": 1,
+      "category": "NamedFieldDrop",
+      "rust_construct": "NamedFieldDrop",
+      "snippet": "# [doc = \" An explicit header error (G2): a malformed marker, an unknown/duplicate key, or a bad value.\"] # [derive (Debug , Clone , PartialEq , Eq)] pub struct HeaderError { # [doc = \" 1-based source line of the offending construct.\"] pub line : u32 , # [doc = \" What is wrong, in author-facing terms.\"] pub message : String , }",
+      "reason": "struct `HeaderError` named field(s) `line, message` emitted positionally as `HeaderError(Binary{32}, Bytes)` — Mycelium's `constructor` is positional-only (no record surface); product structure preserved, field names dropped (matches `lib/std/*.myc` hand-ports)",
+      "item_name": "HeaderError"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 79,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" An explicit header error (G2): a malformed marker, an unknown/duplicate key, or a bad value.\"] # [derive (Debug , Clone , PartialEq , Eq)] pub struct HeaderError { # [doc = \" 1-based source line of the offending construct.\"] pub line : u32 , # [doc = \" What is wrong, in author-facing terms.\"] pub message : String , }",
+      "reason": "struct `HeaderError` derive(Clone) is a satisfied no-op under Mycelium's value semantics (ADR-003 — every value already copies structurally; DN-128 §6.1) — not emitted as an impl, not a gap",
+      "item_name": "HeaderError"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 79,
+      "col": 1,
+      "category": "DeriveAttr",
+      "rust_construct": "DeriveAttr",
+      "snippet": "# [doc = \" An explicit header error (G2): a malformed marker, an unknown/duplicate key, or a bad value.\"] # [derive (Debug , Clone , PartialEq , Eq)] pub struct HeaderError { # [doc = \" 1-based source line of the offending construct.\"] pub line : u32 , # [doc = \" What is wrong, in author-facing terms.\"] pub message : String , }",
+      "reason": "struct `HeaderError` derive(...) names Eq not in the DN-128 standard-derive set this leaf builds (Debug/Default/Clone/Copy/PartialEq/PartialOrd/Hash all recognized; bare Eq/Ord are deliberately NOT recognized — see emit/derives/mod.rs::TABLE's doc for why) — dropped, no confirmed Mycelium surface",
+      "item_name": "HeaderError"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 88,
+      "col": 1,
+      "category": "Impl",
+      "rust_construct": "Impl",
+      "snippet": "impl std :: fmt :: Display for HeaderError { fn fmt (& self , f : & mut std :: fmt :: Formatter < '_ >) -> std :: fmt :: Result { write ! (f , \"line {}: {}\" , self . line , self . message) } }",
+      "reason": "trait-impl of non-prelude trait `Display` — no ambient trait definition and synthetic trait emission is refused (DN-34 §8.8 / DN-122 MVP); gapped the whole impl so the residual cannot file-poison myc-check (G2; express gap-close 2026-07-16)",
+      "item_name": "HeaderError"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 94,
+      "col": 1,
+      "category": "Impl",
+      "rust_construct": "Impl",
+      "snippet": "impl std :: error :: Error for HeaderError { }",
+      "reason": "trait-impl of non-prelude trait `Error` — no ambient trait definition and synthetic trait emission is refused (DN-34 §8.8 / DN-122 MVP); gapped the whole impl so the residual cannot file-poison myc-check (G2; express gap-close 2026-07-16)",
+      "item_name": "HeaderError"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 96,
+      "col": 1,
+      "category": "Impl",
+      "rust_construct": "Impl",
+      "snippet": "impl From < NoduleHeaderError > for HeaderError { fn from (e : NoduleHeaderError) -> Self { HeaderError { line : e . line , message : e . message , } } }",
+      "reason": "trait-impl of non-prelude trait `From` — no ambient trait definition and synthetic trait emission is refused (DN-34 §8.8 / DN-122 MVP); gapped the whole impl so the residual cannot file-poison myc-check (G2; express gap-close 2026-07-16)",
+      "item_name": "HeaderError"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 105,
+      "col": 1,
+      "category": "MultiStmtBody",
+      "rust_construct": "MultiStmtBody",
+      "snippet": "# [doc = \" Parse the structured header from `src`.\"] # [doc = \"\"] # [doc = \" - `Ok(Some(h))` — the first non-blank line is a valid `// nodule:` marker; any contiguous\"] # [doc = \"   `// @key: value` lines that follow it are parsed and validated.\"] # [doc = \" - `Ok(None)` — the file declares no nodule (the first non-blank line is not a marker).\"] # [doc = \" - `Err(_)` — a malformed marker, an unknown/duplicate key, or a malformed value (G2).\"] # [doc = \"\"] # [doc = \" # Errors\"] # [doc = \" See [`HeaderError`].\"] pub fn parse_header (src : & str) -> Result < Option < StructuredHeader > , HeaderError > { let Some (marker) = parse_nodule_header (src) ? else { return Ok (None) ; } ; let lines : Vec < & str > = src . lines () . collect () ; let mut i = 0 ; while i < lines . len () && lines [i] . trim () . is_empty () { i += 1 ; } let mut fields = HeaderFields :: default () ; let mut seen : Vec < String > = Vec :: new () ; for (offset , raw) in lines . iter () . enumerate () . skip (i + 1) { let line_no = (offset + 1) as u32 ; let t = raw . trim () ; let Some (at) = t . strip_prefix (\"//\") . map (str :: trim) . and_then (| c | c . strip_prefix ('@')) else { break ; } ; let (key , val) = at . split_once (':') . ok_or_else (| | HeaderError { line : line_no , message : format ! (\"metadata line `// @{at}` must be `// @<key>: <value>`\") , }) ? ; let key = key . trim () ; let val = val . trim () ; if ! HEADER_KEYS . contains (& key) { return Err (HeaderError { line : line_no , message : format ! (\"unknown header key `@{key}` — the v0 key set is closed: {} (spec §7.3; G2)\" , HEADER_KEYS . join (\", \")) , }) ; } if seen . iter () . any (| k | k == key) { return Err (HeaderError { line : line_no , message : format ! (\"duplicate header key `@{key}` — each key may appear at most once (G2)\") , }) ; } set_field (& mut fields , key , val , line_no) ? ; seen . push (key . to_owned ()) ; } Ok (Some (StructuredHeader { marker , fields })) }",
+      "reason": "`let` binding uses an unsupported pattern (only simple `let x = e;` is supported)",
+      "item_name": "parse_header"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 166,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "fn set_field (fields : & mut HeaderFields , key : & str , val : & str , line : u32 ,) -> Result < () , HeaderError > { let nonempty = | v : & str | -> Result < String , HeaderError > { if v . is_empty () { Err (HeaderError { line , message : format ! (\"`@{key}` has no value\") , }) } else { Ok (v . to_owned ()) } } ; match key { \"version\" => { let v = nonempty (val) ? ; if ! is_semver (& v) { return Err (bad (line , \"version\" , & v , \"a semver `MAJOR.MINOR.PATCH` (e.g. `1.2.0`)\" ,)) ; } fields . version = Some (v) ; } \"license\" => { let v = nonempty (val) ? ; if ! is_spdx (& v) { return Err (bad (line , \"license\" , & v , \"a recognised SPDX identifier or expression (e.g. `Apache-2.0`, `MIT OR Apache-2.0`)\")) ; } fields . license = Some (v) ; } \"since\" => { let v = nonempty (val) ? ; if ! is_iso_date (& v) { return Err (bad (line , \"since\" , & v , \"an ISO-8601 date `YYYY-MM-DD`\")) ; } fields . since = Some (v) ; } \"updated\" => { let v = nonempty (val) ? ; if ! is_iso_date (& v) { return Err (bad (line , \"updated\" , & v , \"an ISO-8601 date `YYYY-MM-DD`\")) ; } fields . updated = Some (v) ; } \"summary\" => fields . summary = Some (nonempty (val) ?) , \"repository\" => { let v = nonempty (val) ? ; if ! is_url (& v) { return Err (bad (line , \"repository\" , & v , \"a URL (e.g. `https://…` or `git@…`)\" ,)) ; } fields . repository = Some (v) ; } \"authors\" => fields . authors = Some (parse_list (val , \"authors\" , line) ?) , \"keywords\" => fields . keywords = Some (parse_list (val , \"keywords\" , line) ?) , \"deprecated\" => fields . deprecated = Some (parse_deprecated (val , line) ?) , \"matured\" => { fields . matured = Some (match val { \"true\" => true , \"false\" => false , _ => { return Err (bad (line , \"matured\" , val , \"a boolean `true` or `false`\")) ; } }) ; } \"certification\" => { fields . certification = Some (crate :: cert_scope :: parse_cert_mode (val) . map_err (| m | HeaderError { line , message : m }) ? ,) ; } _ => unreachable ! (\"key membership checked by caller\") , } Ok (()) }",
+      "reason": "method call `.is_empty(...)` has no proven-emitted free-fn referent in this file (neither a D4-mangled inherent `Type__is_empty` nor a bare inherent recorded by this file's left-to-right pass, nor a prim_map / combinator row). Emitting bare `is_empty(recv, …)` would fabricate an unknown prim and file-poison myc-check (G-β Rank A / G2/VR-5; residual when the method body itself gapped — e.g. M-1037 `.to_vec()` inside `read_to_end` — so the declaration was never registered)",
+      "item_name": "set_field"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 254,
+      "col": 1,
+      "category": "MacroInvocation",
+      "rust_construct": "MacroInvocation",
+      "snippet": "fn bad (line : u32 , key : & str , got : & str , want : & str) -> HeaderError { HeaderError { line , message : format ! (\"`@{key}` value {got:?} is not {want} (declared metadata is checked, never fabricated — VR-5)\") , } }",
+      "reason": "`format!` — format string uses an unsupported specifier (only plain `{}` / `{{` / `}}` are lowered in this MVP — named/width/precision/Debug-only forms are honest gaps, G2) (DN-127/M-1090 WU-3)",
+      "item_name": "bad"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 261,
+      "col": 1,
+      "category": "MultiStmtBody",
+      "rust_construct": "MultiStmtBody",
+      "snippet": "fn parse_list (val : & str , key : & str , line : u32) -> Result < Vec < String > , HeaderError > { let items : Vec < String > = val . split (',') . map (str :: trim) . filter (| s | ! s . is_empty ()) . map (str :: to_owned) . collect () ; if items . is_empty () { return Err (HeaderError { line , message : format ! (\"`@{key}` is empty — list at least one comma-separated value, or omit the key\") , }) ; } Ok (items) }",
+      "reason": "`let` binding uses an unsupported pattern (only simple `let x = e;` is supported)",
+      "item_name": "parse_list"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 279,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "fn parse_deprecated (val : & str , line : u32) -> Result < Deprecated , HeaderError > { match val { \"true\" => Ok (Deprecated :: Flag (true)) , \"false\" => Ok (Deprecated :: Flag (false)) , \"\" => Err (HeaderError { line , message : \"`@deprecated` needs `true`/`false` or a reason string\" . to_owned () , }) , reason => Ok (Deprecated :: Reason (reason . trim_matches ('\"') . to_owned ())) , } }",
+      "reason": "qualified/associated-function call `Deprecated :: Flag` did not resolve to a known-emitted associated fn — Mycelium calls are bare identifiers, and the only sound surface form for `Type::method(...)` is the mangled `Type__method` name the declaration side already emits for a receiver-less inherent-impl associated fn (DN-34 §8.13/8.14), referenced only when that exact declaration is PROVEN present (same-file, or a resolved M-1084 cross-nodule sibling). A primitive/std associated fn with no emitted decl (e.g. `i128::try_from`), an unresolved type, or a `self`-receiving method (excluded by construction — it stays reachable only from its own bare call site) all gap here rather than fabricate a call (G2/VR-5, DN-133)",
+      "item_name": "parse_deprecated"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 293,
+      "col": 1,
+      "category": "MultiStmtBody",
+      "rust_construct": "MultiStmtBody",
+      "snippet": "# [doc = \" A `YYYY-MM-DD` ISO-8601 calendar date with a plausible month/day (cheap, dependency-free; the\"] # [doc = \" honest claim is *well-formed*, not *calendar-exact* — a leap-day check is not load-bearing here).\"] # [must_use] pub fn is_iso_date (s : & str) -> bool { let parts : Vec < & str > = s . split ('-') . collect () ; if parts . len () != 3 { return false ; } let (y , m , d) = (parts [0] , parts [1] , parts [2]) ; if y . len () != 4 || m . len () != 2 || d . len () != 2 { return false ; } if ! (y . chars () . all (| c | c . is_ascii_digit ()) && m . chars () . all (| c | c . is_ascii_digit ()) && d . chars () . all (| c | c . is_ascii_digit ())) { return false ; } let month : u32 = m . parse () . unwrap_or (0) ; let day : u32 = d . parse () . unwrap_or (0) ; (1 ..= 12) . contains (& month) && (1 ..= 31) . contains (& day) }",
+      "reason": "`let` binding uses an unsupported pattern (only simple `let x = e;` is supported)",
+      "item_name": "is_iso_date"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 316,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" A `MAJOR.MINOR.PATCH` semver core, with an optional `-prerelease` and/or `+build` suffix.\"] # [must_use] pub fn is_semver (s : & str) -> bool { let core = s . split (['+' , '-']) . next () . unwrap_or (\"\") ; let parts : Vec < & str > = core . split ('.') . collect () ; parts . len () == 3 && parts . iter () . all (| p | ! p . is_empty () && p . chars () . all (| c | c . is_ascii_digit ())) }",
+      "reason": "method call `.unwrap_or(...)` has no proven-emitted free-fn referent in this file (neither a D4-mangled inherent `Type__unwrap_or` nor a bare inherent recorded by this file's left-to-right pass, nor a prim_map / combinator row). Emitting bare `unwrap_or(recv, …)` would fabricate an unknown prim and file-poison myc-check (G-β Rank A / G2/VR-5; residual when the method body itself gapped — e.g. M-1037 `.to_vec()` inside `read_to_end` — so the declaration was never registered)",
+      "item_name": "is_semver"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 327,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" A non-empty, URL-shaped string (scheme-prefixed or `git@`-style). Declared metadata: checked for\"] # [doc = \" shape, not reachability (VR-5).\"] # [must_use] pub fn is_url (s : & str) -> bool { s . starts_with (\"http://\") || s . starts_with (\"https://\") || s . starts_with (\"git@\") || s . starts_with (\"ssh://\") || s . starts_with (\"git://\") }",
+      "reason": "method call `.starts_with(...)` has no proven-emitted free-fn referent in this file (neither a D4-mangled inherent `Type__starts_with` nor a bare inherent recorded by this file's left-to-right pass, nor a prim_map / combinator row). Emitting bare `starts_with(recv, …)` would fabricate an unknown prim and file-poison myc-check (G-β Rank A / G2/VR-5; residual when the method body itself gapped — e.g. M-1037 `.to_vec()` inside `read_to_end` — so the declaration was never registered)",
+      "item_name": "is_url"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 338,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" The v0 known-SPDX subset — common OSI/FSF identifiers. A `@license` must be one of these (or an\"] # [doc = \" expression composed of them with `OR`/`AND`/`WITH`), else it is an explicit error (G2). The set\"] # [doc = \" is deliberately modest; it grows by explicit decision (not silently).\"] pub const KNOWN_SPDX : & [& str] = & [\"MIT\" , \"Apache-2.0\" , \"BSD-2-Clause\" , \"BSD-3-Clause\" , \"ISC\" , \"MPL-2.0\" , \"GPL-2.0-only\" , \"GPL-2.0-or-later\" , \"GPL-3.0-only\" , \"GPL-3.0-or-later\" , \"LGPL-2.1-only\" , \"LGPL-3.0-only\" , \"LGPL-3.0-or-later\" , \"AGPL-3.0-only\" , \"AGPL-3.0-or-later\" , \"Unlicense\" , \"CC0-1.0\" , \"CC-BY-4.0\" , \"CC-BY-SA-4.0\" , \"Zlib\" , \"BSL-1.0\" , \"0BSD\" ,] ;",
+      "reason": "top-level `const KNOWN_SPDX` — co-emit (ORACLE-R1 A4) only covers plain unsigned integer types (`u8`/`u16`/`u32`/`u64`/`u128`/`usize`); other types have no const item production and no faithful zero-arg-fn encoding (gap, never fabricate)",
+      "item_name": "KNOWN_SPDX"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 366,
+      "col": 1,
+      "category": "MultiStmtBody",
+      "rust_construct": "MultiStmtBody",
+      "snippet": "# [doc = \" A recognised SPDX identifier or a simple expression over [`KNOWN_SPDX`] (operators `OR`/`AND`/\"] # [doc = \" `WITH`; a `LicenseRef-…` custom reference is also accepted).\"] # [must_use] pub fn is_spdx (s : & str) -> bool { let tokens : Vec < & str > = s . split_whitespace () . collect () ; if tokens . is_empty () { return false ; } for tok in tokens { let t = tok . trim_matches (['(' , ')']) ; if t . is_empty () || matches ! (t , \"OR\" | \"AND\" | \"WITH\") { continue ; } if KNOWN_SPDX . contains (& t) || t . starts_with (\"LicenseRef-\") { continue ; } return false ; } true }",
+      "reason": "`let` binding uses an unsupported pattern (only simple `let x = e;` is supported)",
+      "item_name": "is_spdx"
+    }
+  ],
+  "total_top_level_items": 19
+}

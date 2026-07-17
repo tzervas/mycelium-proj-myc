@@ -1,0 +1,294 @@
+{
+  "source": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+  "emitted_items": [
+    "co-emit:GuaranteeStrength",
+    "CertScope",
+    "impl CertScope",
+    "cert_mode_word",
+    "ConsumptionTier",
+    "impl ConsumptionTier"
+  ],
+  "gaps": [
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 45,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "use mycelium_core :: cert_mode :: CertMode ;",
+      "reason": "`use mycelium_core.cert_mode::CertMode` — `mycelium_core.cert_mode` is not a sibling module OR sibling phylum transpiled in this same batch (an external crate, `std`, or simply out of this batch's target set). Flagged, not guessed (VR-5/G2)",
+      "item_name": null
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 46,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "use mycelium_core :: guarantee :: GuaranteeStrength ;",
+      "reason": "`use mycelium_core.guarantee::GuaranteeStrength` — `mycelium_core.guarantee` is not a sibling module OR sibling phylum transpiled in this same batch (an external crate, `std`, or simply out of this batch's target set). Flagged, not guessed (VR-5/G2)",
+      "item_name": null
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 48,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" The scope a certification-mode declaration was made at — the RFC-0034 §6 lattice\"] # [doc = \" `global ⊐ phylum ⊐ nodule`, ordered **least-specific → most-specific**. Resolution is\"] # [doc = \" most-specific-wins, so a `Nodule` declaration overrides a `Phylum` one, which overrides `Global`.\"] # [doc = \"\"] # [doc = \" This mirrors RFC-0012's innermost-enclosing-wins scope stack: `Global` is the outermost ambient,\"] # [doc = \" `Nodule` the innermost. (See FLAG-B: in v0 the manifest declaration is the `Phylum` tier and\"] # [doc = \" `Global` is reserved for a future workspace default.)\"] # [derive (Debug , Clone , Copy , PartialEq , Eq , PartialOrd , Ord)] pub enum CertScope { # [doc = \" Project-/workspace-wide default — the least-specific tier (RFC-0034 §6 `global`). Reserved in\"] # [doc = \" v0 (FLAG-B); resolved so the precedence law holds end-to-end.\"] Global , # [doc = \" The phylum tier — a `mycelium-proj.toml` manifest's `@certification` (FLAG-B). More specific\"] # [doc = \" than `Global`, less than `Nodule`.\"] Phylum , # [doc = \" The nodule tier — an in-file `// @certification:` header line. The **most-specific** tier;\"] # [doc = \" overrides phylum and global (RFC-0034 §6).\"] Nodule , }",
+      "reason": "enum `CertScope` derive(Clone) is a satisfied no-op under Mycelium's value semantics (ADR-003 — every value already copies structurally; DN-128 §6.1) — not emitted as an impl, not a gap",
+      "item_name": "CertScope"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 48,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" The scope a certification-mode declaration was made at — the RFC-0034 §6 lattice\"] # [doc = \" `global ⊐ phylum ⊐ nodule`, ordered **least-specific → most-specific**. Resolution is\"] # [doc = \" most-specific-wins, so a `Nodule` declaration overrides a `Phylum` one, which overrides `Global`.\"] # [doc = \"\"] # [doc = \" This mirrors RFC-0012's innermost-enclosing-wins scope stack: `Global` is the outermost ambient,\"] # [doc = \" `Nodule` the innermost. (See FLAG-B: in v0 the manifest declaration is the `Phylum` tier and\"] # [doc = \" `Global` is reserved for a future workspace default.)\"] # [derive (Debug , Clone , Copy , PartialEq , Eq , PartialOrd , Ord)] pub enum CertScope { # [doc = \" Project-/workspace-wide default — the least-specific tier (RFC-0034 §6 `global`). Reserved in\"] # [doc = \" v0 (FLAG-B); resolved so the precedence law holds end-to-end.\"] Global , # [doc = \" The phylum tier — a `mycelium-proj.toml` manifest's `@certification` (FLAG-B). More specific\"] # [doc = \" than `Global`, less than `Nodule`.\"] Phylum , # [doc = \" The nodule tier — an in-file `// @certification:` header line. The **most-specific** tier;\"] # [doc = \" overrides phylum and global (RFC-0034 §6).\"] Nodule , }",
+      "reason": "enum `CertScope` derive(Copy) is a satisfied no-op under Mycelium's value semantics (ADR-003 — every value already copies structurally; DN-128 §6.1) — not emitted as an impl, not a gap",
+      "item_name": "CertScope"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 48,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" The scope a certification-mode declaration was made at — the RFC-0034 §6 lattice\"] # [doc = \" `global ⊐ phylum ⊐ nodule`, ordered **least-specific → most-specific**. Resolution is\"] # [doc = \" most-specific-wins, so a `Nodule` declaration overrides a `Phylum` one, which overrides `Global`.\"] # [doc = \"\"] # [doc = \" This mirrors RFC-0012's innermost-enclosing-wins scope stack: `Global` is the outermost ambient,\"] # [doc = \" `Nodule` the innermost. (See FLAG-B: in v0 the manifest declaration is the `Phylum` tier and\"] # [doc = \" `Global` is reserved for a future workspace default.)\"] # [derive (Debug , Clone , Copy , PartialEq , Eq , PartialOrd , Ord)] pub enum CertScope { # [doc = \" Project-/workspace-wide default — the least-specific tier (RFC-0034 §6 `global`). Reserved in\"] # [doc = \" v0 (FLAG-B); resolved so the precedence law holds end-to-end.\"] Global , # [doc = \" The phylum tier — a `mycelium-proj.toml` manifest's `@certification` (FLAG-B). More specific\"] # [doc = \" than `Global`, less than `Nodule`.\"] Phylum , # [doc = \" The nodule tier — an in-file `// @certification:` header line. The **most-specific** tier;\"] # [doc = \" overrides phylum and global (RFC-0034 §6).\"] Nodule , }",
+      "reason": "enum `CertScope` derive(Eq): covered by co-occurring PartialEq → `fn eq_CertScope` (product-row collision policy; DN-128 / ONESHOT C2) — not a second emission",
+      "item_name": "CertScope"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 48,
+      "col": 1,
+      "category": "DeriveAttr",
+      "rust_construct": "DeriveAttr",
+      "snippet": "# [doc = \" The scope a certification-mode declaration was made at — the RFC-0034 §6 lattice\"] # [doc = \" `global ⊐ phylum ⊐ nodule`, ordered **least-specific → most-specific**. Resolution is\"] # [doc = \" most-specific-wins, so a `Nodule` declaration overrides a `Phylum` one, which overrides `Global`.\"] # [doc = \"\"] # [doc = \" This mirrors RFC-0012's innermost-enclosing-wins scope stack: `Global` is the outermost ambient,\"] # [doc = \" `Nodule` the innermost. (See FLAG-B: in v0 the manifest declaration is the `Phylum` tier and\"] # [doc = \" `Global` is reserved for a future workspace default.)\"] # [derive (Debug , Clone , Copy , PartialEq , Eq , PartialOrd , Ord)] pub enum CertScope { # [doc = \" Project-/workspace-wide default — the least-specific tier (RFC-0034 §6 `global`). Reserved in\"] # [doc = \" v0 (FLAG-B); resolved so the precedence law holds end-to-end.\"] Global , # [doc = \" The phylum tier — a `mycelium-proj.toml` manifest's `@certification` (FLAG-B). More specific\"] # [doc = \" than `Global`, less than `Nodule`.\"] Phylum , # [doc = \" The nodule tier — an in-file `// @certification:` header line. The **most-specific** tier;\"] # [doc = \" overrides phylum and global (RFC-0034 §6).\"] Nodule , }",
+      "reason": "enum `CertScope` derive(...) names PartialOrd, Ord not in the DN-128 enum-derive set this leaf builds (Debug/PartialEq/Clone/Copy recognized; bare Eq is a satisfied co-occurrence note; Hash/PartialOrd/Ord/Default stay product-only for now) — dropped, no confirmed Mycelium surface",
+      "item_name": "CertScope"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 68,
+      "col": 1,
+      "category": "AssocConst",
+      "rust_construct": "AssocConst",
+      "snippet": "impl CertScope { # [doc = \" All three scopes, least-specific → most-specific — for exhaustive iteration in tests/tooling.\"] pub const ALL : [CertScope ; 3] = [CertScope :: Global , CertScope :: Phylum , CertScope :: Nodule] ; # [doc = \" Specificity rank, `0` = [`Global`](CertScope::Global) (least) … `2` =\"] # [doc = \" [`Nodule`](CertScope::Nodule) (most). Higher wins in [`resolve_mode`]. This *is* the derived\"] # [doc = \" [`Ord`] (the variants are declared least→most specific); the method names the contract.\"] # [must_use] pub fn specificity (self) -> u8 { match self { CertScope :: Global => 0 , CertScope :: Phylum => 1 , CertScope :: Nodule => 2 , } } # [doc = \" A stable, lower-case label for `EXPLAIN` output (RFC-0012 renderability; G2 — never ambient).\"] # [must_use] pub fn label (self) -> & 'static str { match self { CertScope :: Global => \"global\" , CertScope :: Phylum => \"phylum\" , CertScope :: Nodule => \"nodule\" , } } }",
+      "reason": "impl associated const `ALL`",
+      "item_name": "impl CertScope"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 68,
+      "col": 1,
+      "category": "DeriveAttr",
+      "rust_construct": "DeriveAttr",
+      "snippet": "impl CertScope { # [doc = \" All three scopes, least-specific → most-specific — for exhaustive iteration in tests/tooling.\"] pub const ALL : [CertScope ; 3] = [CertScope :: Global , CertScope :: Phylum , CertScope :: Nodule] ; # [doc = \" Specificity rank, `0` = [`Global`](CertScope::Global) (least) … `2` =\"] # [doc = \" [`Nodule`](CertScope::Nodule) (most). Higher wins in [`resolve_mode`]. This *is* the derived\"] # [doc = \" [`Ord`] (the variants are declared least→most specific); the method names the contract.\"] # [must_use] pub fn specificity (self) -> u8 { match self { CertScope :: Global => 0 , CertScope :: Phylum => 1 , CertScope :: Nodule => 2 , } } # [doc = \" A stable, lower-case label for `EXPLAIN` output (RFC-0012 renderability; G2 — never ambient).\"] # [must_use] pub fn label (self) -> & 'static str { match self { CertScope :: Global => \"global\" , CertScope :: Phylum => \"phylum\" , CertScope :: Nodule => \"nodule\" , } } }",
+      "reason": "dropped non-doc attribute(s) on method `specificity`: # [must_use]",
+      "item_name": "impl CertScope"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 68,
+      "col": 1,
+      "category": "DeriveAttr",
+      "rust_construct": "DeriveAttr",
+      "snippet": "impl CertScope { # [doc = \" All three scopes, least-specific → most-specific — for exhaustive iteration in tests/tooling.\"] pub const ALL : [CertScope ; 3] = [CertScope :: Global , CertScope :: Phylum , CertScope :: Nodule] ; # [doc = \" Specificity rank, `0` = [`Global`](CertScope::Global) (least) … `2` =\"] # [doc = \" [`Nodule`](CertScope::Nodule) (most). Higher wins in [`resolve_mode`]. This *is* the derived\"] # [doc = \" [`Ord`] (the variants are declared least→most specific); the method names the contract.\"] # [must_use] pub fn specificity (self) -> u8 { match self { CertScope :: Global => 0 , CertScope :: Phylum => 1 , CertScope :: Nodule => 2 , } } # [doc = \" A stable, lower-case label for `EXPLAIN` output (RFC-0012 renderability; G2 — never ambient).\"] # [must_use] pub fn label (self) -> & 'static str { match self { CertScope :: Global => \"global\" , CertScope :: Phylum => \"phylum\" , CertScope :: Nodule => \"nodule\" , } } }",
+      "reason": "dropped non-doc attribute(s) on method `label`: # [must_use]",
+      "item_name": "impl CertScope"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 95,
+      "col": 1,
+      "category": "Struct",
+      "rust_construct": "Struct",
+      "snippet": "# [doc = \" One `@certification` declaration: a [`CertMode`] declared at a given [`CertScope`].\"] # [derive (Debug , Clone , Copy , PartialEq , Eq)] pub struct CertDecl { # [doc = \" The scope the declaration was made at.\"] pub scope : CertScope , # [doc = \" The declared mode.\"] pub mode : CertMode , }",
+      "reason": "struct `CertDecl` uses named fields and references a type not resolvable in-file — emitting it positionally would introduce an unresolved reference that poisons the file's `myc check`; left gapped under the M-1006 resolvability gate (VR-5/G2)",
+      "item_name": "CertDecl"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 104,
+      "col": 1,
+      "category": "Struct",
+      "rust_construct": "Struct",
+      "snippet": "# [doc = \" The resolved certification mode plus its provenance — the analogue of\"] # [doc = \" [`Resolved`](crate::resolve::Resolved) for the certification field. Never ambient: a resolved\"] # [doc = \" mode always names the [`CertScope`] it came from (G2 / RFC-0012 renderability).\"] # [doc = \"\"] # [doc = \" [`Default`] is the [`defaulted`](ResolvedMode::defaulted) value — `Fast`, `source: None` — so a\"] # [doc = \" [`ResolvedHeader`](crate::resolve::ResolvedHeader) with no `@certification` anywhere still has a\"] # [doc = \" well-defined effective mode (the project default, RFC-0034 §5).\"] # [derive (Debug , Clone , Copy , PartialEq , Eq , Default)] pub struct ResolvedMode { # [doc = \" The effective mode after most-specific-wins resolution.\"] pub mode : CertMode , # [doc = \" Where the winning declaration was made — `None` iff the mode is the\"] # [doc = \" [`CertMode::default`] fallback (no declaration at any scope).\"] pub source : Option < CertScope > , }",
+      "reason": "struct `ResolvedMode` uses named fields and references a type not resolvable in-file — emitting it positionally would introduce an unresolved reference that poisons the file's `myc check`; left gapped under the M-1006 resolvability gate (VR-5/G2)",
+      "item_name": "ResolvedMode"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 120,
+      "col": 1,
+      "category": "Impl",
+      "rust_construct": "Impl",
+      "snippet": "impl ResolvedMode { # [doc = \" The default resolution: no declaration at any scope ⇒ the project default\"] # [doc = \" [`CertMode::Fast`] (RFC-0034 §5), `source: None`.\"] # [must_use] pub fn defaulted () -> Self { ResolvedMode { mode : CertMode :: default () , source : None , } } }",
+      "reason": "no member of this impl block could be transpiled (1 sub-issue(s)): impl method `defaulted` body: struct literal `ResolvedMode { .. }` — not an in-file single-ctor struct or enum struct-variant that emits (no constructor to build; a cross-nodule variant is an honest DN-113/DN-134-OQ-2 resolvability gap, never a fabricated out-of-file reference — VR-5/G2)",
+      "item_name": "ResolvedMode"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 132,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" Parse the `@certification` attribute value into a [`CertMode`] — the closed, never-silent set\"] # [doc = \" `fast | balanced | certified` (FLAG-A: lowercase surface spelling). An unrecognised word is an\"] # [doc = \" **explicit** error (G2 / VR-5), never a silent guess.\"] # [doc = \"\"] # [doc = \" # Errors\"] # [doc = \" Returns the offending word (caller wraps it in its own error type with a line number).\"] pub fn parse_cert_mode (value : & str) -> Result < CertMode , String > { match value . trim () { \"fast\" => Ok (CertMode :: Fast) , \"balanced\" => Ok (CertMode :: Balanced) , \"certified\" => Ok (CertMode :: Certified) , other => Err (format ! (\"unknown @certification mode {other:?} — the closed set is `fast`, `balanced`, \\\n             `certified` (RFC-0034 §6; G2)\")) , } }",
+      "reason": "method call `.trim(...)` has no proven-emitted free-fn referent in this file (neither a D4-mangled inherent `Type__trim` nor a bare inherent recorded by this file's left-to-right pass, nor a prim_map / combinator row). Emitting bare `trim(recv, …)` would fabricate an unknown prim and file-poison myc-check (G-β Rank A / G2/VR-5; residual when the method body itself gapped — e.g. M-1037 `.to_vec()` inside `read_to_end` — so the declaration was never registered)",
+      "item_name": "parse_cert_mode"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 150,
+      "col": 1,
+      "category": "DeriveAttr",
+      "rust_construct": "DeriveAttr",
+      "snippet": "# [doc = \" The surface spelling of a mode (the inverse of [`parse_cert_mode`]) — for `EXPLAIN`/round-trip.\"] # [must_use] pub fn cert_mode_word (mode : CertMode) -> & 'static str { match mode { CertMode :: Fast => \"fast\" , CertMode :: Balanced => \"balanced\" , CertMode :: Certified => \"certified\" , } }",
+      "reason": "dropped non-doc attribute(s) on fn `cert_mode_word`: # [must_use]",
+      "item_name": "cert_mode_word"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 160,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" **Resolve the active certification mode most-specific-wins** over a set of `@certification`\"] # [doc = \" declarations (RFC-0034 §6), reusing RFC-0012's innermost-enclosing-wins fold: the declaration at\"] # [doc = \" the highest [`CertScope::specificity`] wins; ties at a scope are not possible by construction (one\"] # [doc = \" declaration per scope — the parser rejects duplicates upstream). With **no** declaration the\"] # [doc = \" result is the [`CertMode::default`] fallback ([`ResolvedMode::defaulted`]).\"] # [doc = \"\"] # [doc = \" The result carries its [`CertScope`] provenance so the choice is never ambient (G2). Resolution is\"] # [doc = \" pure, deterministic, and order-independent (it picks the max-specificity scope, not the last\"] # [doc = \" element).\"] # [must_use] pub fn resolve_mode (decls : & [CertDecl]) -> ResolvedMode { decls . iter () . max_by_key (| d | d . scope . specificity ()) . map_or_else (ResolvedMode :: defaulted , | winner | ResolvedMode { mode : winner . mode , source : Some (winner . scope) , }) }",
+      "reason": "method call `.map_or_else(...)` has no proven-emitted free-fn referent in this file (neither a D4-mangled inherent `Type__map_or_else` nor a bare inherent recorded by this file's left-to-right pass, nor a prim_map / combinator row). Emitting bare `map_or_else(recv, …)` would fabricate an unknown prim and file-poison myc-check (G-β Rank A / G2/VR-5; residual when the method body itself gapped — e.g. M-1037 `.to_vec()` inside `read_to_end` — so the declaration was never registered)",
+      "item_name": "resolve_mode"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 180,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" The `EXPLAIN` of a certification-mode resolution — the effective mode and its source scope, so the\"] # [doc = \" active mode is never ambient (G2 / RFC-0012 renderability). Stable and deterministic.\"] # [doc = \"\"] # [doc = \" **Mode-independent (RFC-0034 §13d / §3):** this function is available and meaningful in **every**\"] # [doc = \" mode including `fast`. The EXPLAIN of the active mode is the transparency floor — it is never\"] # [doc = \" conditioned on the cert depth. Callers in `fast` may dial consumption lean (see\"] # [doc = \" [`render_mode_signal`]) but the signal is always capturable.\"] # [must_use] pub fn explain_mode (r : & ResolvedMode) -> String { let src = r . source . map_or (\"default\" , CertScope :: label) ; format ! (\"certification: {}  [{src}]\" , cert_mode_word (r . mode)) }",
+      "reason": "method call `.map_or(...)` has no proven-emitted free-fn referent in this file (neither a D4-mangled inherent `Type__map_or` nor a bare inherent recorded by this file's left-to-right pass, nor a prim_map / combinator row). Emitting bare `map_or(recv, …)` would fabricate an unknown prim and file-poison myc-check (G-β Rank A / G2/VR-5; residual when the method body itself gapped — e.g. M-1037 `.to_vec()` inside `read_to_end` — so the declaration was never registered)",
+      "item_name": "explain_mode"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 205,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" The **DX consumption tier** — how much of the already-generated inspectability signal is\"] # [doc = \" rendered by the tooling / DX layer (RFC-0034 §7).\"] # [doc = \"\"] # [doc = \" This is **orthogonal to the certification mode** — in particular, `fast` sessions default to\"] # [doc = \" [`Lean`](ConsumptionTier::Lean) consumption, but a developer can call\"] # [doc = \" [`render_mode_signal`] with `Full` at any time: the [`ModeSignal`] was already generated (no\"] # [doc = \" re-run required). The split makes `fast` cheap-by-default *and* non-cornering (the history is\"] # [doc = \" there when you need it).\"] # [derive (Debug , Clone , Copy , PartialEq , Eq , PartialOrd , Ord)] pub enum ConsumptionTier { # [doc = \" **Lean** — the fast default: one compact line naming the active mode and its source. Minimal\"] # [doc = \" noise for everyday development.\"] Lean , # [doc = \" **Medium** — adds the mode depth and a note about what the mode enables/omits. For\"] # [doc = \" debugging / log-level output.\"] Medium , # [doc = \" **Full** — the complete audit trail: mode, source scope, depth rank, the generation≠\"] # [doc = \" consumption split note. Matches the `certified` audit-trail posture.\"] Full , }",
+      "reason": "enum `ConsumptionTier` derive(Clone) is a satisfied no-op under Mycelium's value semantics (ADR-003 — every value already copies structurally; DN-128 §6.1) — not emitted as an impl, not a gap",
+      "item_name": "ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 205,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" The **DX consumption tier** — how much of the already-generated inspectability signal is\"] # [doc = \" rendered by the tooling / DX layer (RFC-0034 §7).\"] # [doc = \"\"] # [doc = \" This is **orthogonal to the certification mode** — in particular, `fast` sessions default to\"] # [doc = \" [`Lean`](ConsumptionTier::Lean) consumption, but a developer can call\"] # [doc = \" [`render_mode_signal`] with `Full` at any time: the [`ModeSignal`] was already generated (no\"] # [doc = \" re-run required). The split makes `fast` cheap-by-default *and* non-cornering (the history is\"] # [doc = \" there when you need it).\"] # [derive (Debug , Clone , Copy , PartialEq , Eq , PartialOrd , Ord)] pub enum ConsumptionTier { # [doc = \" **Lean** — the fast default: one compact line naming the active mode and its source. Minimal\"] # [doc = \" noise for everyday development.\"] Lean , # [doc = \" **Medium** — adds the mode depth and a note about what the mode enables/omits. For\"] # [doc = \" debugging / log-level output.\"] Medium , # [doc = \" **Full** — the complete audit trail: mode, source scope, depth rank, the generation≠\"] # [doc = \" consumption split note. Matches the `certified` audit-trail posture.\"] Full , }",
+      "reason": "enum `ConsumptionTier` derive(Copy) is a satisfied no-op under Mycelium's value semantics (ADR-003 — every value already copies structurally; DN-128 §6.1) — not emitted as an impl, not a gap",
+      "item_name": "ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 205,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" The **DX consumption tier** — how much of the already-generated inspectability signal is\"] # [doc = \" rendered by the tooling / DX layer (RFC-0034 §7).\"] # [doc = \"\"] # [doc = \" This is **orthogonal to the certification mode** — in particular, `fast` sessions default to\"] # [doc = \" [`Lean`](ConsumptionTier::Lean) consumption, but a developer can call\"] # [doc = \" [`render_mode_signal`] with `Full` at any time: the [`ModeSignal`] was already generated (no\"] # [doc = \" re-run required). The split makes `fast` cheap-by-default *and* non-cornering (the history is\"] # [doc = \" there when you need it).\"] # [derive (Debug , Clone , Copy , PartialEq , Eq , PartialOrd , Ord)] pub enum ConsumptionTier { # [doc = \" **Lean** — the fast default: one compact line naming the active mode and its source. Minimal\"] # [doc = \" noise for everyday development.\"] Lean , # [doc = \" **Medium** — adds the mode depth and a note about what the mode enables/omits. For\"] # [doc = \" debugging / log-level output.\"] Medium , # [doc = \" **Full** — the complete audit trail: mode, source scope, depth rank, the generation≠\"] # [doc = \" consumption split note. Matches the `certified` audit-trail posture.\"] Full , }",
+      "reason": "enum `ConsumptionTier` derive(Eq): covered by co-occurring PartialEq → `fn eq_ConsumptionTier` (product-row collision policy; DN-128 / ONESHOT C2) — not a second emission",
+      "item_name": "ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 205,
+      "col": 1,
+      "category": "DeriveAttr",
+      "rust_construct": "DeriveAttr",
+      "snippet": "# [doc = \" The **DX consumption tier** — how much of the already-generated inspectability signal is\"] # [doc = \" rendered by the tooling / DX layer (RFC-0034 §7).\"] # [doc = \"\"] # [doc = \" This is **orthogonal to the certification mode** — in particular, `fast` sessions default to\"] # [doc = \" [`Lean`](ConsumptionTier::Lean) consumption, but a developer can call\"] # [doc = \" [`render_mode_signal`] with `Full` at any time: the [`ModeSignal`] was already generated (no\"] # [doc = \" re-run required). The split makes `fast` cheap-by-default *and* non-cornering (the history is\"] # [doc = \" there when you need it).\"] # [derive (Debug , Clone , Copy , PartialEq , Eq , PartialOrd , Ord)] pub enum ConsumptionTier { # [doc = \" **Lean** — the fast default: one compact line naming the active mode and its source. Minimal\"] # [doc = \" noise for everyday development.\"] Lean , # [doc = \" **Medium** — adds the mode depth and a note about what the mode enables/omits. For\"] # [doc = \" debugging / log-level output.\"] Medium , # [doc = \" **Full** — the complete audit trail: mode, source scope, depth rank, the generation≠\"] # [doc = \" consumption split note. Matches the `certified` audit-trail posture.\"] Full , }",
+      "reason": "enum `ConsumptionTier` derive(...) names PartialOrd, Ord not in the DN-128 enum-derive set this leaf builds (Debug/PartialEq/Clone/Copy recognized; bare Eq is a satisfied co-occurrence note; Hash/PartialOrd/Ord/Default stay product-only for now) — dropped, no confirmed Mycelium surface",
+      "item_name": "ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 226,
+      "col": 1,
+      "category": "AssocConst",
+      "rust_construct": "AssocConst",
+      "snippet": "impl ConsumptionTier { # [doc = \" All three consumption tiers, least-verbose → most-verbose — for exhaustive iteration.\"] pub const ALL : [ConsumptionTier ; 3] = [ConsumptionTier :: Lean , ConsumptionTier :: Medium , ConsumptionTier :: Full ,] ; # [doc = \" Whether this tier is at least as verbose as another — for asserting that dialing consumption\"] # [doc = \" up reveals at least as much information.\"] # [must_use] pub fn is_at_least (self , other : ConsumptionTier) -> bool { self >= other } }",
+      "reason": "impl associated const `ALL`",
+      "item_name": "impl ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 226,
+      "col": 1,
+      "category": "DeriveAttr",
+      "rust_construct": "DeriveAttr",
+      "snippet": "impl ConsumptionTier { # [doc = \" All three consumption tiers, least-verbose → most-verbose — for exhaustive iteration.\"] pub const ALL : [ConsumptionTier ; 3] = [ConsumptionTier :: Lean , ConsumptionTier :: Medium , ConsumptionTier :: Full ,] ; # [doc = \" Whether this tier is at least as verbose as another — for asserting that dialing consumption\"] # [doc = \" up reveals at least as much information.\"] # [must_use] pub fn is_at_least (self , other : ConsumptionTier) -> bool { self >= other } }",
+      "reason": "dropped non-doc attribute(s) on method `is_at_least`: # [must_use]",
+      "item_name": "impl ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 242,
+      "col": 1,
+      "category": "Struct",
+      "rust_construct": "Struct",
+      "snippet": "# [doc = \" The **always-generated inspectability signal** for the active certification mode (RFC-0034 §7).\"] # [doc = \"\"] # [doc = \" A `ModeSignal` is constructed from any [`ResolvedMode`] in **any** cert mode (including `fast`)\"] # [doc = \" by [`generate_mode_signal`]. It is the *generation* half of the generation≠consumption split:\"] # [doc = \" the signal is captured eagerly and cheaply so it is *already there* when consumption is dialed\"] # [doc = \" up later — no re-run, no mode switch required.\"] # [doc = \"\"] # [doc = \" To render the signal at a given DX verbosity, call [`render_mode_signal`].\"] # [derive (Debug , Clone , Copy , PartialEq , Eq)] pub struct ModeSignal { # [doc = \" The resolved mode (effective mode + its winning scope).\"] pub resolved : ResolvedMode , # [doc = \" The certification depth of the active mode (`0` = Fast … `2` = Certified). Cached so the\"] # [doc = \" render path has everything it needs without re-computing.\"] pub depth : u8 , }",
+      "reason": "struct `ModeSignal` uses named fields and references a type not resolvable in-file — emitting it positionally would introduce an unresolved reference that poisons the file's `myc check`; left gapped under the M-1006 resolvability gate (VR-5/G2)",
+      "item_name": "ModeSignal"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 259,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" **Generate the inspectability signal** for a resolved certification mode — always available,\"] # [doc = \" in **any** cert mode including `fast` (RFC-0034 §7 / §13d).\"] # [doc = \"\"] # [doc = \" This is the *generation* step: it captures the mode, its provenance, and its depth as an\"] # [doc = \" inspectable [`ModeSignal`] value. Generation is cheap (no allocation beyond the returned\"] # [doc = \" struct, no machinery) and is therefore always-on — the transparency floor (RFC-0034 §3\"] # [doc = \" invariant 3).\"] # [doc = \"\"] # [doc = \" To control *how much* of the signal is surfaced in the DX/UX, pass the returned\"] # [doc = \" [`ModeSignal`] to [`render_mode_signal`] with the appropriate [`ConsumptionTier`].\"] # [must_use] pub fn generate_mode_signal (r : & ResolvedMode) -> ModeSignal { ModeSignal { resolved : * r , depth : r . mode . depth () , } }",
+      "reason": "struct literal `ModeSignal { .. }` — not an in-file single-ctor struct or enum struct-variant that emits (no constructor to build; a cross-nodule variant is an honest DN-113/DN-134-OQ-2 resolvability gap, never a fabricated out-of-file reference — VR-5/G2)",
+      "item_name": "generate_mode_signal"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 277,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" **Render the inspectability signal** at a given DX consumption tier (RFC-0034 §7).\"] # [doc = \"\"] # [doc = \" The [`ModeSignal`] was already captured by [`generate_mode_signal`] — this function only\"] # [doc = \" controls *how verbose* the output is. Calling this with a higher tier on an existing\"] # [doc = \" `ModeSignal` surfaces more of the already-captured history, **with no re-run or mode switch**.\"] # [doc = \"\"] # [doc = \" | Tier | Output |\"] # [doc = \" |------|--------|\"] # [doc = \" | [`Lean`](ConsumptionTier::Lean) | one compact line — `certification: fast  [default]` |\"] # [doc = \" | [`Medium`](ConsumptionTier::Medium) | adds the depth rank |\"] # [doc = \" | [`Full`](ConsumptionTier::Full) | adds the generation≠consumption split note |\"] # [doc = \"\"] # [doc = \" The `Lean` output is identical to [`explain_mode`] applied to the same [`ResolvedMode`] —\"] # [doc = \" that function is the mode-EXPLAIN floor (always-available, mode-independent, §13d).\"] # [must_use] pub fn render_mode_signal (signal : & ModeSignal , tier : ConsumptionTier) -> String { let src = signal . resolved . source . map_or (\"default\" , CertScope :: label) ; let mode_word = cert_mode_word (signal . resolved . mode) ; match tier { ConsumptionTier :: Lean => { format ! (\"certification: {mode_word}  [{src}]\") } ConsumptionTier :: Medium => { format ! (\"certification: {mode_word}  [{src}]  (depth {})\" , signal . depth) } ConsumptionTier :: Full => { format ! (\"certification: {mode_word}  [{src}]  (depth {})\\n  \\\n                 signal: generated (always-on, RFC-0034 §7); consumption tier: full\\n  \\\n                 note: dial consumption up any time — the history is already captured\" , signal . depth ,) } } }",
+      "reason": "method call `.map_or(...)` has no proven-emitted free-fn referent in this file (neither a D4-mangled inherent `Type__map_or` nor a bare inherent recorded by this file's left-to-right pass, nor a prim_map / combinator row). Emitting bare `map_or(recv, …)` would fabricate an unknown prim and file-poison myc-check (G-β Rank A / G2/VR-5; residual when the method body itself gapped — e.g. M-1037 `.to_vec()` inside `read_to_end` — so the declaration was never registered)",
+      "item_name": "render_mode_signal"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 321,
+      "col": 1,
+      "category": "Struct",
+      "rust_construct": "Struct",
+      "snippet": "# [doc = \" The **explicit, visible event** raised when a value produced under one [`CertMode`] enters a\"] # [doc = \" computation running under a *stronger* (higher-[`depth`](CertMode::depth)) mode — RFC-0034 §3.1\"] # [doc = \" / §6. A `fast` value composed into a `certified` computation **must not silently inherit**\"] # [doc = \" `certified` strength it did not earn (VR-5). This struct is that boundary made data: it records\"] # [doc = \" the producer and consumer modes and the **floored** guarantee the value is *honestly* allowed to\"] # [doc = \" claim once it crosses in.\"] # [doc = \"\"] # [doc = \" It is deliberately a *value*, not a panic or a log line: the boundary is surfaced to the caller as\"] # [doc = \" an inspectable artifact (no black box, G2), the same posture RFC-0012 takes for a paradigm\"] # [doc = \" crossing (an explicit `swap`, never an inserted conversion).\"] # [derive (Debug , Clone , Copy , PartialEq , Eq)] pub struct CrossModeEvent { # [doc = \" The mode the incoming value was produced under.\"] pub producer : CertMode , # [doc = \" The mode the consuming computation runs under.\"] pub consumer : CertMode , # [doc = \" The guarantee strength the value carried before crossing.\"] pub incoming : GuaranteeStrength , # [doc = \" The guarantee strength the value is honestly allowed to claim **after** crossing — floored by\"] # [doc = \" the *producer's* mode, never upgraded to the consumer's (VR-5). This is exactly\"] # [doc = \" [`CertMode::gate_guarantee`] applied with the **producer** mode: a `Fast`-produced value stays\"] # [doc = \" at its structural/`Declared` strength even inside a `Certified` computation.\"] pub effective : GuaranteeStrength , }",
+      "reason": "struct `CrossModeEvent` uses named fields and references a type not resolvable in-file — emitting it positionally would introduce an unresolved reference that poisons the file's `myc check`; left gapped under the M-1006 resolvability gate (VR-5/G2)",
+      "item_name": "CrossModeEvent"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 346,
+      "col": 1,
+      "category": "Impl",
+      "rust_construct": "Impl",
+      "snippet": "impl CrossModeEvent { # [doc = \" Whether this crossing is a genuine **mode boundary** — the producer ran *less* certification\"] # [doc = \" than the consumer. Only an up-crossing (`producer.depth() < consumer.depth()`) is a boundary\"] # [doc = \" where a silent upgrade would be a defect; a same-or-stronger producer needs no flag.\"] # [must_use] pub fn is_boundary (self) -> bool { self . producer . depth () < self . consumer . depth () } # [doc = \" Whether the crossing **upgraded** the value's guarantee strength. This must **always** be\"] # [doc = \" `false` (VR-5): the effective strength is floored by the producer, never raised by the\"] # [doc = \" consumer. Provided so the never-silent-upgrade law is directly assertable.\"] # [doc = \"\"] # [doc = \" Strength is ranked `0` = strongest (`Exact`) … `3` = weakest (`Declared`), so an *upgrade* is\"] # [doc = \" a strictly **lower** [`rank`](GuaranteeStrength::rank) on the effective side.\"] # [must_use] pub fn upgraded_strength (self) -> bool { self . effective . rank () < self . incoming . rank () } }",
+      "reason": "no member of this impl block could be transpiled (2 sub-issue(s)): impl method `is_boundary` body: method call `.depth(...)` has no proven-emitted free-fn referent in this file (neither a D4-mangled inherent `Type__depth` nor a bare inherent recorded by this file's left-to-right pass, nor a prim_map / combinator row). Emitting bare `depth(recv, …)` would fabricate an unknown prim and file-poison myc-check (G-β Rank A / G2/VR-5; residual when the method body itself gapped — e.g. M-1037 `.to_vec()` inside `read_to_end` — so the declaration was never registered); impl method `upgraded_strength` body: method call `.rank(...)` has no proven-emitted free-fn referent in this file (neither a D4-mangled inherent `Type__rank` nor a bare inherent recorded by this file's left-to-right pass, nor a prim_map / combinator row). Emitting bare `rank(recv, …)` would fabricate an unknown prim and file-poison myc-check (G-β Rank A / G2/VR-5; residual when the method body itself gapped — e.g. M-1037 `.to_vec()` inside `read_to_end` — so the declaration was never registered)",
+      "item_name": "CrossModeEvent"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 367,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" Compose a value produced under `producer` into a computation running under `consumer`, surfacing\"] # [doc = \" the cross-mode boundary as an explicit [`CrossModeEvent`] (RFC-0034 §3.1 / §6).\"] # [doc = \"\"] # [doc = \" The effective guarantee is **floored by the producer's mode** (`producer.gate_guarantee(incoming)`)\"] # [doc = \" — a value never gains strength it did not earn just by entering a stronger computation (VR-5). The\"] # [doc = \" returned event makes the crossing inspectable (G2): the caller can see producer/consumer modes,\"] # [doc = \" the incoming strength, and the honest effective strength, and can branch on\"] # [doc = \" [`CrossModeEvent::is_boundary`].\"] # [doc = \"\"] # [doc = \" This is the never-silent twin of RFC-0012's paradigm crossing: just as the ambient never inserts a\"] # [doc = \" conversion (a `swap` must be written), composing across cert modes never inserts an upgrade — the\"] # [doc = \" boundary is always an explicit event.\"] # [must_use] pub fn compose (producer : CertMode , consumer : CertMode , incoming : GuaranteeStrength ,) -> CrossModeEvent { CrossModeEvent { producer , consumer , incoming , effective : producer . gate_guarantee (incoming) , } }",
+      "reason": "struct literal `CrossModeEvent { .. }` — not an in-file single-ctor struct or enum struct-variant that emits (no constructor to build; a cross-nodule variant is an honest DN-113/DN-134-OQ-2 resolvability gap, never a fabricated out-of-file reference — VR-5/G2)",
+      "item_name": "compose"
+    }
+  ],
+  "total_top_level_items": 19
+}

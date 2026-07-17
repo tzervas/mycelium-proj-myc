@@ -1,0 +1,1418 @@
+{
+  "gaps": [
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 45,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "use mycelium_core :: cert_mode :: CertMode ;",
+      "reason": "`use mycelium_core.cert_mode::CertMode` — `mycelium_core.cert_mode` is not a sibling module OR sibling phylum transpiled in this same batch (an external crate, `std`, or simply out of this batch's target set). Flagged, not guessed (VR-5/G2)",
+      "item_name": null
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 46,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "use mycelium_core :: guarantee :: GuaranteeStrength ;",
+      "reason": "`use mycelium_core.guarantee::GuaranteeStrength` — `mycelium_core.guarantee` is not a sibling module OR sibling phylum transpiled in this same batch (an external crate, `std`, or simply out of this batch's target set). Flagged, not guessed (VR-5/G2)",
+      "item_name": null
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 48,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" The scope a certification-mode declaration was made at — the RFC-0034 §6 lattice\"] # [doc = \" `global ⊐ phylum ⊐ nodule`, ordered **least-specific → most-specific**. Resolution is\"] # [doc = \" most-specific-wins, so a `Nodule` declaration overrides a `Phylum` one, which overrides `Global`.\"] # [doc = \"\"] # [doc = \" This mirrors RFC-0012's innermost-enclosing-wins scope stack: `Global` is the outermost ambient,\"] # [doc = \" `Nodule` the innermost. (See FLAG-B: in v0 the manifest declaration is the `Phylum` tier and\"] # [doc = \" `Global` is reserved for a future workspace default.)\"] # [derive (Debug , Clone , Copy , PartialEq , Eq , PartialOrd , Ord)] pub enum CertScope { # [doc = \" Project-/workspace-wide default — the least-specific tier (RFC-0034 §6 `global`). Reserved in\"] # [doc = \" v0 (FLAG-B); resolved so the precedence law holds end-to-end.\"] Global , # [doc = \" The phylum tier — a `mycelium-proj.toml` manifest's `@certification` (FLAG-B). More specific\"] # [doc = \" than `Global`, less than `Nodule`.\"] Phylum , # [doc = \" The nodule tier — an in-file `// @certification:` header line. The **most-specific** tier;\"] # [doc = \" overrides phylum and global (RFC-0034 §6).\"] Nodule , }",
+      "reason": "enum `CertScope` derive(Clone) is a satisfied no-op under Mycelium's value semantics (ADR-003 — every value already copies structurally; DN-128 §6.1) — not emitted as an impl, not a gap",
+      "item_name": "CertScope"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 48,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" The scope a certification-mode declaration was made at — the RFC-0034 §6 lattice\"] # [doc = \" `global ⊐ phylum ⊐ nodule`, ordered **least-specific → most-specific**. Resolution is\"] # [doc = \" most-specific-wins, so a `Nodule` declaration overrides a `Phylum` one, which overrides `Global`.\"] # [doc = \"\"] # [doc = \" This mirrors RFC-0012's innermost-enclosing-wins scope stack: `Global` is the outermost ambient,\"] # [doc = \" `Nodule` the innermost. (See FLAG-B: in v0 the manifest declaration is the `Phylum` tier and\"] # [doc = \" `Global` is reserved for a future workspace default.)\"] # [derive (Debug , Clone , Copy , PartialEq , Eq , PartialOrd , Ord)] pub enum CertScope { # [doc = \" Project-/workspace-wide default — the least-specific tier (RFC-0034 §6 `global`). Reserved in\"] # [doc = \" v0 (FLAG-B); resolved so the precedence law holds end-to-end.\"] Global , # [doc = \" The phylum tier — a `mycelium-proj.toml` manifest's `@certification` (FLAG-B). More specific\"] # [doc = \" than `Global`, less than `Nodule`.\"] Phylum , # [doc = \" The nodule tier — an in-file `// @certification:` header line. The **most-specific** tier;\"] # [doc = \" overrides phylum and global (RFC-0034 §6).\"] Nodule , }",
+      "reason": "enum `CertScope` derive(Copy) is a satisfied no-op under Mycelium's value semantics (ADR-003 — every value already copies structurally; DN-128 §6.1) — not emitted as an impl, not a gap",
+      "item_name": "CertScope"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 48,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" The scope a certification-mode declaration was made at — the RFC-0034 §6 lattice\"] # [doc = \" `global ⊐ phylum ⊐ nodule`, ordered **least-specific → most-specific**. Resolution is\"] # [doc = \" most-specific-wins, so a `Nodule` declaration overrides a `Phylum` one, which overrides `Global`.\"] # [doc = \"\"] # [doc = \" This mirrors RFC-0012's innermost-enclosing-wins scope stack: `Global` is the outermost ambient,\"] # [doc = \" `Nodule` the innermost. (See FLAG-B: in v0 the manifest declaration is the `Phylum` tier and\"] # [doc = \" `Global` is reserved for a future workspace default.)\"] # [derive (Debug , Clone , Copy , PartialEq , Eq , PartialOrd , Ord)] pub enum CertScope { # [doc = \" Project-/workspace-wide default — the least-specific tier (RFC-0034 §6 `global`). Reserved in\"] # [doc = \" v0 (FLAG-B); resolved so the precedence law holds end-to-end.\"] Global , # [doc = \" The phylum tier — a `mycelium-proj.toml` manifest's `@certification` (FLAG-B). More specific\"] # [doc = \" than `Global`, less than `Nodule`.\"] Phylum , # [doc = \" The nodule tier — an in-file `// @certification:` header line. The **most-specific** tier;\"] # [doc = \" overrides phylum and global (RFC-0034 §6).\"] Nodule , }",
+      "reason": "enum `CertScope` derive(Eq): covered by co-occurring PartialEq → `fn eq_CertScope` (product-row collision policy; DN-128 / ONESHOT C2) — not a second emission",
+      "item_name": "CertScope"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 48,
+      "col": 1,
+      "category": "DeriveAttr",
+      "rust_construct": "DeriveAttr",
+      "snippet": "# [doc = \" The scope a certification-mode declaration was made at — the RFC-0034 §6 lattice\"] # [doc = \" `global ⊐ phylum ⊐ nodule`, ordered **least-specific → most-specific**. Resolution is\"] # [doc = \" most-specific-wins, so a `Nodule` declaration overrides a `Phylum` one, which overrides `Global`.\"] # [doc = \"\"] # [doc = \" This mirrors RFC-0012's innermost-enclosing-wins scope stack: `Global` is the outermost ambient,\"] # [doc = \" `Nodule` the innermost. (See FLAG-B: in v0 the manifest declaration is the `Phylum` tier and\"] # [doc = \" `Global` is reserved for a future workspace default.)\"] # [derive (Debug , Clone , Copy , PartialEq , Eq , PartialOrd , Ord)] pub enum CertScope { # [doc = \" Project-/workspace-wide default — the least-specific tier (RFC-0034 §6 `global`). Reserved in\"] # [doc = \" v0 (FLAG-B); resolved so the precedence law holds end-to-end.\"] Global , # [doc = \" The phylum tier — a `mycelium-proj.toml` manifest's `@certification` (FLAG-B). More specific\"] # [doc = \" than `Global`, less than `Nodule`.\"] Phylum , # [doc = \" The nodule tier — an in-file `// @certification:` header line. The **most-specific** tier;\"] # [doc = \" overrides phylum and global (RFC-0034 §6).\"] Nodule , }",
+      "reason": "enum `CertScope` derive(...) names PartialOrd, Ord not in the DN-128 enum-derive set this leaf builds (Debug/PartialEq/Clone/Copy recognized; bare Eq is a satisfied co-occurrence note; Hash/PartialOrd/Ord/Default stay product-only for now) — dropped, no confirmed Mycelium surface",
+      "item_name": "CertScope"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 68,
+      "col": 1,
+      "category": "AssocConst",
+      "rust_construct": "AssocConst",
+      "snippet": "impl CertScope { # [doc = \" All three scopes, least-specific → most-specific — for exhaustive iteration in tests/tooling.\"] pub const ALL : [CertScope ; 3] = [CertScope :: Global , CertScope :: Phylum , CertScope :: Nodule] ; # [doc = \" Specificity rank, `0` = [`Global`](CertScope::Global) (least) … `2` =\"] # [doc = \" [`Nodule`](CertScope::Nodule) (most). Higher wins in [`resolve_mode`]. This *is* the derived\"] # [doc = \" [`Ord`] (the variants are declared least→most specific); the method names the contract.\"] # [must_use] pub fn specificity (self) -> u8 { match self { CertScope :: Global => 0 , CertScope :: Phylum => 1 , CertScope :: Nodule => 2 , } } # [doc = \" A stable, lower-case label for `EXPLAIN` output (RFC-0012 renderability; G2 — never ambient).\"] # [must_use] pub fn label (self) -> & 'static str { match self { CertScope :: Global => \"global\" , CertScope :: Phylum => \"phylum\" , CertScope :: Nodule => \"nodule\" , } } }",
+      "reason": "impl associated const `ALL`",
+      "item_name": "impl CertScope"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 68,
+      "col": 1,
+      "category": "DeriveAttr",
+      "rust_construct": "DeriveAttr",
+      "snippet": "impl CertScope { # [doc = \" All three scopes, least-specific → most-specific — for exhaustive iteration in tests/tooling.\"] pub const ALL : [CertScope ; 3] = [CertScope :: Global , CertScope :: Phylum , CertScope :: Nodule] ; # [doc = \" Specificity rank, `0` = [`Global`](CertScope::Global) (least) … `2` =\"] # [doc = \" [`Nodule`](CertScope::Nodule) (most). Higher wins in [`resolve_mode`]. This *is* the derived\"] # [doc = \" [`Ord`] (the variants are declared least→most specific); the method names the contract.\"] # [must_use] pub fn specificity (self) -> u8 { match self { CertScope :: Global => 0 , CertScope :: Phylum => 1 , CertScope :: Nodule => 2 , } } # [doc = \" A stable, lower-case label for `EXPLAIN` output (RFC-0012 renderability; G2 — never ambient).\"] # [must_use] pub fn label (self) -> & 'static str { match self { CertScope :: Global => \"global\" , CertScope :: Phylum => \"phylum\" , CertScope :: Nodule => \"nodule\" , } } }",
+      "reason": "dropped non-doc attribute(s) on method `specificity`: # [must_use]",
+      "item_name": "impl CertScope"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 68,
+      "col": 1,
+      "category": "DeriveAttr",
+      "rust_construct": "DeriveAttr",
+      "snippet": "impl CertScope { # [doc = \" All three scopes, least-specific → most-specific — for exhaustive iteration in tests/tooling.\"] pub const ALL : [CertScope ; 3] = [CertScope :: Global , CertScope :: Phylum , CertScope :: Nodule] ; # [doc = \" Specificity rank, `0` = [`Global`](CertScope::Global) (least) … `2` =\"] # [doc = \" [`Nodule`](CertScope::Nodule) (most). Higher wins in [`resolve_mode`]. This *is* the derived\"] # [doc = \" [`Ord`] (the variants are declared least→most specific); the method names the contract.\"] # [must_use] pub fn specificity (self) -> u8 { match self { CertScope :: Global => 0 , CertScope :: Phylum => 1 , CertScope :: Nodule => 2 , } } # [doc = \" A stable, lower-case label for `EXPLAIN` output (RFC-0012 renderability; G2 — never ambient).\"] # [must_use] pub fn label (self) -> & 'static str { match self { CertScope :: Global => \"global\" , CertScope :: Phylum => \"phylum\" , CertScope :: Nodule => \"nodule\" , } } }",
+      "reason": "dropped non-doc attribute(s) on method `label`: # [must_use]",
+      "item_name": "impl CertScope"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 95,
+      "col": 1,
+      "category": "Struct",
+      "rust_construct": "Struct",
+      "snippet": "# [doc = \" One `@certification` declaration: a [`CertMode`] declared at a given [`CertScope`].\"] # [derive (Debug , Clone , Copy , PartialEq , Eq)] pub struct CertDecl { # [doc = \" The scope the declaration was made at.\"] pub scope : CertScope , # [doc = \" The declared mode.\"] pub mode : CertMode , }",
+      "reason": "struct `CertDecl` uses named fields and references a type not resolvable in-file — emitting it positionally would introduce an unresolved reference that poisons the file's `myc check`; left gapped under the M-1006 resolvability gate (VR-5/G2)",
+      "item_name": "CertDecl"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 104,
+      "col": 1,
+      "category": "Struct",
+      "rust_construct": "Struct",
+      "snippet": "# [doc = \" The resolved certification mode plus its provenance — the analogue of\"] # [doc = \" [`Resolved`](crate::resolve::Resolved) for the certification field. Never ambient: a resolved\"] # [doc = \" mode always names the [`CertScope`] it came from (G2 / RFC-0012 renderability).\"] # [doc = \"\"] # [doc = \" [`Default`] is the [`defaulted`](ResolvedMode::defaulted) value — `Fast`, `source: None` — so a\"] # [doc = \" [`ResolvedHeader`](crate::resolve::ResolvedHeader) with no `@certification` anywhere still has a\"] # [doc = \" well-defined effective mode (the project default, RFC-0034 §5).\"] # [derive (Debug , Clone , Copy , PartialEq , Eq , Default)] pub struct ResolvedMode { # [doc = \" The effective mode after most-specific-wins resolution.\"] pub mode : CertMode , # [doc = \" Where the winning declaration was made — `None` iff the mode is the\"] # [doc = \" [`CertMode::default`] fallback (no declaration at any scope).\"] pub source : Option < CertScope > , }",
+      "reason": "struct `ResolvedMode` uses named fields and references a type not resolvable in-file — emitting it positionally would introduce an unresolved reference that poisons the file's `myc check`; left gapped under the M-1006 resolvability gate (VR-5/G2)",
+      "item_name": "ResolvedMode"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 120,
+      "col": 1,
+      "category": "Impl",
+      "rust_construct": "Impl",
+      "snippet": "impl ResolvedMode { # [doc = \" The default resolution: no declaration at any scope ⇒ the project default\"] # [doc = \" [`CertMode::Fast`] (RFC-0034 §5), `source: None`.\"] # [must_use] pub fn defaulted () -> Self { ResolvedMode { mode : CertMode :: default () , source : None , } } }",
+      "reason": "no member of this impl block could be transpiled (1 sub-issue(s)): impl method `defaulted` body: struct literal `ResolvedMode { .. }` — not an in-file single-ctor struct or enum struct-variant that emits (no constructor to build; a cross-nodule variant is an honest DN-113/DN-134-OQ-2 resolvability gap, never a fabricated out-of-file reference — VR-5/G2)",
+      "item_name": "ResolvedMode"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 132,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" Parse the `@certification` attribute value into a [`CertMode`] — the closed, never-silent set\"] # [doc = \" `fast | balanced | certified` (FLAG-A: lowercase surface spelling). An unrecognised word is an\"] # [doc = \" **explicit** error (G2 / VR-5), never a silent guess.\"] # [doc = \"\"] # [doc = \" # Errors\"] # [doc = \" Returns the offending word (caller wraps it in its own error type with a line number).\"] pub fn parse_cert_mode (value : & str) -> Result < CertMode , String > { match value . trim () { \"fast\" => Ok (CertMode :: Fast) , \"balanced\" => Ok (CertMode :: Balanced) , \"certified\" => Ok (CertMode :: Certified) , other => Err (format ! (\"unknown @certification mode {other:?} — the closed set is `fast`, `balanced`, \\\n             `certified` (RFC-0034 §6; G2)\")) , } }",
+      "reason": "method call `.trim(...)` has no proven-emitted free-fn referent in this file (neither a D4-mangled inherent `Type__trim` nor a bare inherent recorded by this file's left-to-right pass, nor a prim_map / combinator row). Emitting bare `trim(recv, …)` would fabricate an unknown prim and file-poison myc-check (G-β Rank A / G2/VR-5; residual when the method body itself gapped — e.g. M-1037 `.to_vec()` inside `read_to_end` — so the declaration was never registered)",
+      "item_name": "parse_cert_mode"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 150,
+      "col": 1,
+      "category": "DeriveAttr",
+      "rust_construct": "DeriveAttr",
+      "snippet": "# [doc = \" The surface spelling of a mode (the inverse of [`parse_cert_mode`]) — for `EXPLAIN`/round-trip.\"] # [must_use] pub fn cert_mode_word (mode : CertMode) -> & 'static str { match mode { CertMode :: Fast => \"fast\" , CertMode :: Balanced => \"balanced\" , CertMode :: Certified => \"certified\" , } }",
+      "reason": "dropped non-doc attribute(s) on fn `cert_mode_word`: # [must_use]",
+      "item_name": "cert_mode_word"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 160,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" **Resolve the active certification mode most-specific-wins** over a set of `@certification`\"] # [doc = \" declarations (RFC-0034 §6), reusing RFC-0012's innermost-enclosing-wins fold: the declaration at\"] # [doc = \" the highest [`CertScope::specificity`] wins; ties at a scope are not possible by construction (one\"] # [doc = \" declaration per scope — the parser rejects duplicates upstream). With **no** declaration the\"] # [doc = \" result is the [`CertMode::default`] fallback ([`ResolvedMode::defaulted`]).\"] # [doc = \"\"] # [doc = \" The result carries its [`CertScope`] provenance so the choice is never ambient (G2). Resolution is\"] # [doc = \" pure, deterministic, and order-independent (it picks the max-specificity scope, not the last\"] # [doc = \" element).\"] # [must_use] pub fn resolve_mode (decls : & [CertDecl]) -> ResolvedMode { decls . iter () . max_by_key (| d | d . scope . specificity ()) . map_or_else (ResolvedMode :: defaulted , | winner | ResolvedMode { mode : winner . mode , source : Some (winner . scope) , }) }",
+      "reason": "method call `.map_or_else(...)` has no proven-emitted free-fn referent in this file (neither a D4-mangled inherent `Type__map_or_else` nor a bare inherent recorded by this file's left-to-right pass, nor a prim_map / combinator row). Emitting bare `map_or_else(recv, …)` would fabricate an unknown prim and file-poison myc-check (G-β Rank A / G2/VR-5; residual when the method body itself gapped — e.g. M-1037 `.to_vec()` inside `read_to_end` — so the declaration was never registered)",
+      "item_name": "resolve_mode"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 180,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" The `EXPLAIN` of a certification-mode resolution — the effective mode and its source scope, so the\"] # [doc = \" active mode is never ambient (G2 / RFC-0012 renderability). Stable and deterministic.\"] # [doc = \"\"] # [doc = \" **Mode-independent (RFC-0034 §13d / §3):** this function is available and meaningful in **every**\"] # [doc = \" mode including `fast`. The EXPLAIN of the active mode is the transparency floor — it is never\"] # [doc = \" conditioned on the cert depth. Callers in `fast` may dial consumption lean (see\"] # [doc = \" [`render_mode_signal`]) but the signal is always capturable.\"] # [must_use] pub fn explain_mode (r : & ResolvedMode) -> String { let src = r . source . map_or (\"default\" , CertScope :: label) ; format ! (\"certification: {}  [{src}]\" , cert_mode_word (r . mode)) }",
+      "reason": "method call `.map_or(...)` has no proven-emitted free-fn referent in this file (neither a D4-mangled inherent `Type__map_or` nor a bare inherent recorded by this file's left-to-right pass, nor a prim_map / combinator row). Emitting bare `map_or(recv, …)` would fabricate an unknown prim and file-poison myc-check (G-β Rank A / G2/VR-5; residual when the method body itself gapped — e.g. M-1037 `.to_vec()` inside `read_to_end` — so the declaration was never registered)",
+      "item_name": "explain_mode"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 205,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" The **DX consumption tier** — how much of the already-generated inspectability signal is\"] # [doc = \" rendered by the tooling / DX layer (RFC-0034 §7).\"] # [doc = \"\"] # [doc = \" This is **orthogonal to the certification mode** — in particular, `fast` sessions default to\"] # [doc = \" [`Lean`](ConsumptionTier::Lean) consumption, but a developer can call\"] # [doc = \" [`render_mode_signal`] with `Full` at any time: the [`ModeSignal`] was already generated (no\"] # [doc = \" re-run required). The split makes `fast` cheap-by-default *and* non-cornering (the history is\"] # [doc = \" there when you need it).\"] # [derive (Debug , Clone , Copy , PartialEq , Eq , PartialOrd , Ord)] pub enum ConsumptionTier { # [doc = \" **Lean** — the fast default: one compact line naming the active mode and its source. Minimal\"] # [doc = \" noise for everyday development.\"] Lean , # [doc = \" **Medium** — adds the mode depth and a note about what the mode enables/omits. For\"] # [doc = \" debugging / log-level output.\"] Medium , # [doc = \" **Full** — the complete audit trail: mode, source scope, depth rank, the generation≠\"] # [doc = \" consumption split note. Matches the `certified` audit-trail posture.\"] Full , }",
+      "reason": "enum `ConsumptionTier` derive(Clone) is a satisfied no-op under Mycelium's value semantics (ADR-003 — every value already copies structurally; DN-128 §6.1) — not emitted as an impl, not a gap",
+      "item_name": "ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 205,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" The **DX consumption tier** — how much of the already-generated inspectability signal is\"] # [doc = \" rendered by the tooling / DX layer (RFC-0034 §7).\"] # [doc = \"\"] # [doc = \" This is **orthogonal to the certification mode** — in particular, `fast` sessions default to\"] # [doc = \" [`Lean`](ConsumptionTier::Lean) consumption, but a developer can call\"] # [doc = \" [`render_mode_signal`] with `Full` at any time: the [`ModeSignal`] was already generated (no\"] # [doc = \" re-run required). The split makes `fast` cheap-by-default *and* non-cornering (the history is\"] # [doc = \" there when you need it).\"] # [derive (Debug , Clone , Copy , PartialEq , Eq , PartialOrd , Ord)] pub enum ConsumptionTier { # [doc = \" **Lean** — the fast default: one compact line naming the active mode and its source. Minimal\"] # [doc = \" noise for everyday development.\"] Lean , # [doc = \" **Medium** — adds the mode depth and a note about what the mode enables/omits. For\"] # [doc = \" debugging / log-level output.\"] Medium , # [doc = \" **Full** — the complete audit trail: mode, source scope, depth rank, the generation≠\"] # [doc = \" consumption split note. Matches the `certified` audit-trail posture.\"] Full , }",
+      "reason": "enum `ConsumptionTier` derive(Copy) is a satisfied no-op under Mycelium's value semantics (ADR-003 — every value already copies structurally; DN-128 §6.1) — not emitted as an impl, not a gap",
+      "item_name": "ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 205,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" The **DX consumption tier** — how much of the already-generated inspectability signal is\"] # [doc = \" rendered by the tooling / DX layer (RFC-0034 §7).\"] # [doc = \"\"] # [doc = \" This is **orthogonal to the certification mode** — in particular, `fast` sessions default to\"] # [doc = \" [`Lean`](ConsumptionTier::Lean) consumption, but a developer can call\"] # [doc = \" [`render_mode_signal`] with `Full` at any time: the [`ModeSignal`] was already generated (no\"] # [doc = \" re-run required). The split makes `fast` cheap-by-default *and* non-cornering (the history is\"] # [doc = \" there when you need it).\"] # [derive (Debug , Clone , Copy , PartialEq , Eq , PartialOrd , Ord)] pub enum ConsumptionTier { # [doc = \" **Lean** — the fast default: one compact line naming the active mode and its source. Minimal\"] # [doc = \" noise for everyday development.\"] Lean , # [doc = \" **Medium** — adds the mode depth and a note about what the mode enables/omits. For\"] # [doc = \" debugging / log-level output.\"] Medium , # [doc = \" **Full** — the complete audit trail: mode, source scope, depth rank, the generation≠\"] # [doc = \" consumption split note. Matches the `certified` audit-trail posture.\"] Full , }",
+      "reason": "enum `ConsumptionTier` derive(Eq): covered by co-occurring PartialEq → `fn eq_ConsumptionTier` (product-row collision policy; DN-128 / ONESHOT C2) — not a second emission",
+      "item_name": "ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 205,
+      "col": 1,
+      "category": "DeriveAttr",
+      "rust_construct": "DeriveAttr",
+      "snippet": "# [doc = \" The **DX consumption tier** — how much of the already-generated inspectability signal is\"] # [doc = \" rendered by the tooling / DX layer (RFC-0034 §7).\"] # [doc = \"\"] # [doc = \" This is **orthogonal to the certification mode** — in particular, `fast` sessions default to\"] # [doc = \" [`Lean`](ConsumptionTier::Lean) consumption, but a developer can call\"] # [doc = \" [`render_mode_signal`] with `Full` at any time: the [`ModeSignal`] was already generated (no\"] # [doc = \" re-run required). The split makes `fast` cheap-by-default *and* non-cornering (the history is\"] # [doc = \" there when you need it).\"] # [derive (Debug , Clone , Copy , PartialEq , Eq , PartialOrd , Ord)] pub enum ConsumptionTier { # [doc = \" **Lean** — the fast default: one compact line naming the active mode and its source. Minimal\"] # [doc = \" noise for everyday development.\"] Lean , # [doc = \" **Medium** — adds the mode depth and a note about what the mode enables/omits. For\"] # [doc = \" debugging / log-level output.\"] Medium , # [doc = \" **Full** — the complete audit trail: mode, source scope, depth rank, the generation≠\"] # [doc = \" consumption split note. Matches the `certified` audit-trail posture.\"] Full , }",
+      "reason": "enum `ConsumptionTier` derive(...) names PartialOrd, Ord not in the DN-128 enum-derive set this leaf builds (Debug/PartialEq/Clone/Copy recognized; bare Eq is a satisfied co-occurrence note; Hash/PartialOrd/Ord/Default stay product-only for now) — dropped, no confirmed Mycelium surface",
+      "item_name": "ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 226,
+      "col": 1,
+      "category": "AssocConst",
+      "rust_construct": "AssocConst",
+      "snippet": "impl ConsumptionTier { # [doc = \" All three consumption tiers, least-verbose → most-verbose — for exhaustive iteration.\"] pub const ALL : [ConsumptionTier ; 3] = [ConsumptionTier :: Lean , ConsumptionTier :: Medium , ConsumptionTier :: Full ,] ; # [doc = \" Whether this tier is at least as verbose as another — for asserting that dialing consumption\"] # [doc = \" up reveals at least as much information.\"] # [must_use] pub fn is_at_least (self , other : ConsumptionTier) -> bool { self >= other } }",
+      "reason": "impl associated const `ALL`",
+      "item_name": "impl ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 226,
+      "col": 1,
+      "category": "DeriveAttr",
+      "rust_construct": "DeriveAttr",
+      "snippet": "impl ConsumptionTier { # [doc = \" All three consumption tiers, least-verbose → most-verbose — for exhaustive iteration.\"] pub const ALL : [ConsumptionTier ; 3] = [ConsumptionTier :: Lean , ConsumptionTier :: Medium , ConsumptionTier :: Full ,] ; # [doc = \" Whether this tier is at least as verbose as another — for asserting that dialing consumption\"] # [doc = \" up reveals at least as much information.\"] # [must_use] pub fn is_at_least (self , other : ConsumptionTier) -> bool { self >= other } }",
+      "reason": "dropped non-doc attribute(s) on method `is_at_least`: # [must_use]",
+      "item_name": "impl ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 242,
+      "col": 1,
+      "category": "Struct",
+      "rust_construct": "Struct",
+      "snippet": "# [doc = \" The **always-generated inspectability signal** for the active certification mode (RFC-0034 §7).\"] # [doc = \"\"] # [doc = \" A `ModeSignal` is constructed from any [`ResolvedMode`] in **any** cert mode (including `fast`)\"] # [doc = \" by [`generate_mode_signal`]. It is the *generation* half of the generation≠consumption split:\"] # [doc = \" the signal is captured eagerly and cheaply so it is *already there* when consumption is dialed\"] # [doc = \" up later — no re-run, no mode switch required.\"] # [doc = \"\"] # [doc = \" To render the signal at a given DX verbosity, call [`render_mode_signal`].\"] # [derive (Debug , Clone , Copy , PartialEq , Eq)] pub struct ModeSignal { # [doc = \" The resolved mode (effective mode + its winning scope).\"] pub resolved : ResolvedMode , # [doc = \" The certification depth of the active mode (`0` = Fast … `2` = Certified). Cached so the\"] # [doc = \" render path has everything it needs without re-computing.\"] pub depth : u8 , }",
+      "reason": "struct `ModeSignal` uses named fields and references a type not resolvable in-file — emitting it positionally would introduce an unresolved reference that poisons the file's `myc check`; left gapped under the M-1006 resolvability gate (VR-5/G2)",
+      "item_name": "ModeSignal"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 259,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" **Generate the inspectability signal** for a resolved certification mode — always available,\"] # [doc = \" in **any** cert mode including `fast` (RFC-0034 §7 / §13d).\"] # [doc = \"\"] # [doc = \" This is the *generation* step: it captures the mode, its provenance, and its depth as an\"] # [doc = \" inspectable [`ModeSignal`] value. Generation is cheap (no allocation beyond the returned\"] # [doc = \" struct, no machinery) and is therefore always-on — the transparency floor (RFC-0034 §3\"] # [doc = \" invariant 3).\"] # [doc = \"\"] # [doc = \" To control *how much* of the signal is surfaced in the DX/UX, pass the returned\"] # [doc = \" [`ModeSignal`] to [`render_mode_signal`] with the appropriate [`ConsumptionTier`].\"] # [must_use] pub fn generate_mode_signal (r : & ResolvedMode) -> ModeSignal { ModeSignal { resolved : * r , depth : r . mode . depth () , } }",
+      "reason": "struct literal `ModeSignal { .. }` — not an in-file single-ctor struct or enum struct-variant that emits (no constructor to build; a cross-nodule variant is an honest DN-113/DN-134-OQ-2 resolvability gap, never a fabricated out-of-file reference — VR-5/G2)",
+      "item_name": "generate_mode_signal"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 277,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" **Render the inspectability signal** at a given DX consumption tier (RFC-0034 §7).\"] # [doc = \"\"] # [doc = \" The [`ModeSignal`] was already captured by [`generate_mode_signal`] — this function only\"] # [doc = \" controls *how verbose* the output is. Calling this with a higher tier on an existing\"] # [doc = \" `ModeSignal` surfaces more of the already-captured history, **with no re-run or mode switch**.\"] # [doc = \"\"] # [doc = \" | Tier | Output |\"] # [doc = \" |------|--------|\"] # [doc = \" | [`Lean`](ConsumptionTier::Lean) | one compact line — `certification: fast  [default]` |\"] # [doc = \" | [`Medium`](ConsumptionTier::Medium) | adds the depth rank |\"] # [doc = \" | [`Full`](ConsumptionTier::Full) | adds the generation≠consumption split note |\"] # [doc = \"\"] # [doc = \" The `Lean` output is identical to [`explain_mode`] applied to the same [`ResolvedMode`] —\"] # [doc = \" that function is the mode-EXPLAIN floor (always-available, mode-independent, §13d).\"] # [must_use] pub fn render_mode_signal (signal : & ModeSignal , tier : ConsumptionTier) -> String { let src = signal . resolved . source . map_or (\"default\" , CertScope :: label) ; let mode_word = cert_mode_word (signal . resolved . mode) ; match tier { ConsumptionTier :: Lean => { format ! (\"certification: {mode_word}  [{src}]\") } ConsumptionTier :: Medium => { format ! (\"certification: {mode_word}  [{src}]  (depth {})\" , signal . depth) } ConsumptionTier :: Full => { format ! (\"certification: {mode_word}  [{src}]  (depth {})\\n  \\\n                 signal: generated (always-on, RFC-0034 §7); consumption tier: full\\n  \\\n                 note: dial consumption up any time — the history is already captured\" , signal . depth ,) } } }",
+      "reason": "method call `.map_or(...)` has no proven-emitted free-fn referent in this file (neither a D4-mangled inherent `Type__map_or` nor a bare inherent recorded by this file's left-to-right pass, nor a prim_map / combinator row). Emitting bare `map_or(recv, …)` would fabricate an unknown prim and file-poison myc-check (G-β Rank A / G2/VR-5; residual when the method body itself gapped — e.g. M-1037 `.to_vec()` inside `read_to_end` — so the declaration was never registered)",
+      "item_name": "render_mode_signal"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 321,
+      "col": 1,
+      "category": "Struct",
+      "rust_construct": "Struct",
+      "snippet": "# [doc = \" The **explicit, visible event** raised when a value produced under one [`CertMode`] enters a\"] # [doc = \" computation running under a *stronger* (higher-[`depth`](CertMode::depth)) mode — RFC-0034 §3.1\"] # [doc = \" / §6. A `fast` value composed into a `certified` computation **must not silently inherit**\"] # [doc = \" `certified` strength it did not earn (VR-5). This struct is that boundary made data: it records\"] # [doc = \" the producer and consumer modes and the **floored** guarantee the value is *honestly* allowed to\"] # [doc = \" claim once it crosses in.\"] # [doc = \"\"] # [doc = \" It is deliberately a *value*, not a panic or a log line: the boundary is surfaced to the caller as\"] # [doc = \" an inspectable artifact (no black box, G2), the same posture RFC-0012 takes for a paradigm\"] # [doc = \" crossing (an explicit `swap`, never an inserted conversion).\"] # [derive (Debug , Clone , Copy , PartialEq , Eq)] pub struct CrossModeEvent { # [doc = \" The mode the incoming value was produced under.\"] pub producer : CertMode , # [doc = \" The mode the consuming computation runs under.\"] pub consumer : CertMode , # [doc = \" The guarantee strength the value carried before crossing.\"] pub incoming : GuaranteeStrength , # [doc = \" The guarantee strength the value is honestly allowed to claim **after** crossing — floored by\"] # [doc = \" the *producer's* mode, never upgraded to the consumer's (VR-5). This is exactly\"] # [doc = \" [`CertMode::gate_guarantee`] applied with the **producer** mode: a `Fast`-produced value stays\"] # [doc = \" at its structural/`Declared` strength even inside a `Certified` computation.\"] pub effective : GuaranteeStrength , }",
+      "reason": "struct `CrossModeEvent` uses named fields and references a type not resolvable in-file — emitting it positionally would introduce an unresolved reference that poisons the file's `myc check`; left gapped under the M-1006 resolvability gate (VR-5/G2)",
+      "item_name": "CrossModeEvent"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 346,
+      "col": 1,
+      "category": "Impl",
+      "rust_construct": "Impl",
+      "snippet": "impl CrossModeEvent { # [doc = \" Whether this crossing is a genuine **mode boundary** — the producer ran *less* certification\"] # [doc = \" than the consumer. Only an up-crossing (`producer.depth() < consumer.depth()`) is a boundary\"] # [doc = \" where a silent upgrade would be a defect; a same-or-stronger producer needs no flag.\"] # [must_use] pub fn is_boundary (self) -> bool { self . producer . depth () < self . consumer . depth () } # [doc = \" Whether the crossing **upgraded** the value's guarantee strength. This must **always** be\"] # [doc = \" `false` (VR-5): the effective strength is floored by the producer, never raised by the\"] # [doc = \" consumer. Provided so the never-silent-upgrade law is directly assertable.\"] # [doc = \"\"] # [doc = \" Strength is ranked `0` = strongest (`Exact`) … `3` = weakest (`Declared`), so an *upgrade* is\"] # [doc = \" a strictly **lower** [`rank`](GuaranteeStrength::rank) on the effective side.\"] # [must_use] pub fn upgraded_strength (self) -> bool { self . effective . rank () < self . incoming . rank () } }",
+      "reason": "no member of this impl block could be transpiled (2 sub-issue(s)): impl method `is_boundary` body: method call `.depth(...)` has no proven-emitted free-fn referent in this file (neither a D4-mangled inherent `Type__depth` nor a bare inherent recorded by this file's left-to-right pass, nor a prim_map / combinator row). Emitting bare `depth(recv, …)` would fabricate an unknown prim and file-poison myc-check (G-β Rank A / G2/VR-5; residual when the method body itself gapped — e.g. M-1037 `.to_vec()` inside `read_to_end` — so the declaration was never registered); impl method `upgraded_strength` body: method call `.rank(...)` has no proven-emitted free-fn referent in this file (neither a D4-mangled inherent `Type__rank` nor a bare inherent recorded by this file's left-to-right pass, nor a prim_map / combinator row). Emitting bare `rank(recv, …)` would fabricate an unknown prim and file-poison myc-check (G-β Rank A / G2/VR-5; residual when the method body itself gapped — e.g. M-1037 `.to_vec()` inside `read_to_end` — so the declaration was never registered)",
+      "item_name": "CrossModeEvent"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/cert_scope.rs",
+      "line": 367,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" Compose a value produced under `producer` into a computation running under `consumer`, surfacing\"] # [doc = \" the cross-mode boundary as an explicit [`CrossModeEvent`] (RFC-0034 §3.1 / §6).\"] # [doc = \"\"] # [doc = \" The effective guarantee is **floored by the producer's mode** (`producer.gate_guarantee(incoming)`)\"] # [doc = \" — a value never gains strength it did not earn just by entering a stronger computation (VR-5). The\"] # [doc = \" returned event makes the crossing inspectable (G2): the caller can see producer/consumer modes,\"] # [doc = \" the incoming strength, and the honest effective strength, and can branch on\"] # [doc = \" [`CrossModeEvent::is_boundary`].\"] # [doc = \"\"] # [doc = \" This is the never-silent twin of RFC-0012's paradigm crossing: just as the ambient never inserts a\"] # [doc = \" conversion (a `swap` must be written), composing across cert modes never inserts an upgrade — the\"] # [doc = \" boundary is always an explicit event.\"] # [must_use] pub fn compose (producer : CertMode , consumer : CertMode , incoming : GuaranteeStrength ,) -> CrossModeEvent { CrossModeEvent { producer , consumer , incoming , effective : producer . gate_guarantee (incoming) , } }",
+      "reason": "struct literal `CrossModeEvent { .. }` — not an in-file single-ctor struct or enum struct-variant that emits (no constructor to build; a cross-nodule variant is an honest DN-113/DN-134-OQ-2 resolvability gap, never a fabricated out-of-file reference — VR-5/G2)",
+      "item_name": "compose"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 13,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "use mycelium_l1 :: { parse_nodule_header , NoduleHeader , NoduleHeaderError } ;",
+      "reason": "`use mycelium_l1::parse_nodule_header` — `mycelium_l1` is not a sibling module OR sibling phylum transpiled in this same batch (an external crate, `std`, or simply out of this batch's target set). Flagged, not guessed (VR-5/G2); `use mycelium_l1::NoduleHeader` — `mycelium_l1` is not a sibling module OR sibling phylum transpiled in this same batch (an external crate, `std`, or simply out of this batch's target set). Flagged, not guessed (VR-5/G2); `use mycelium_l1::NoduleHeaderError` — `mycelium_l1` is not a sibling module OR sibling phylum transpiled in this same batch (an external crate, `std`, or simply out of this batch's target set). Flagged, not guessed (VR-5/G2)",
+      "item_name": null
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 15,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" The closed v0 metadata key set (spec §7.3). Kept here as the single source of truth for the\"] # [doc = \" parser, the linter, and the \\\"unknown key\\\" message.\"] pub const HEADER_KEYS : & [& str] = & [\"version\" , \"license\" , \"authors\" , \"since\" , \"updated\" , \"summary\" , \"repository\" , \"keywords\" , \"deprecated\" , \"matured\" , \"certification\" ,] ;",
+      "reason": "top-level `const HEADER_KEYS` — co-emit (ORACLE-R1 A4) only covers plain unsigned integer types (`u8`/`u16`/`u32`/`u64`/`u128`/`usize`); other types have no const item production and no faithful zero-arg-fn encoding (gap, never fabricate)",
+      "item_name": "HEADER_KEYS"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 31,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" A `@deprecated` value: a bare flag or a reason string (spec §3).\"] # [derive (Debug , Clone , PartialEq , Eq)] pub enum Deprecated { # [doc = \" `@deprecated: true` / `false`.\"] Flag (bool) , # [doc = \" `@deprecated: <reason>` — a free-text supersession reason.\"] Reason (String) , }",
+      "reason": "enum `Deprecated` derive(Clone) is a satisfied no-op under Mycelium's value semantics (ADR-003 — every value already copies structurally; DN-128 §6.1) — not emitted as an impl, not a gap",
+      "item_name": "Deprecated"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 31,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" A `@deprecated` value: a bare flag or a reason string (spec §3).\"] # [derive (Debug , Clone , PartialEq , Eq)] pub enum Deprecated { # [doc = \" `@deprecated: true` / `false`.\"] Flag (bool) , # [doc = \" `@deprecated: <reason>` — a free-text supersession reason.\"] Reason (String) , }",
+      "reason": "enum `Deprecated` derive(Eq): covered by co-occurring PartialEq → `fn eq_Deprecated` (product-row collision policy; DN-128 / ONESHOT C2) — not a second emission",
+      "item_name": "Deprecated"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 40,
+      "col": 1,
+      "category": "Struct",
+      "rust_construct": "Struct",
+      "snippet": "# [doc = \" The parsed `@key` metadata of a header (all optional; absent fields inherit per the resolver).\"] # [derive (Debug , Clone , Default , PartialEq , Eq)] pub struct HeaderFields { # [doc = \" `@version` — semver release label (inherits from `project.version`).\"] pub version : Option < String > , # [doc = \" `@license` — SPDX id (inherits from `project.license`).\"] pub license : Option < String > , # [doc = \" `@authors` — comma-separated (inherits from `project.authors`).\"] pub authors : Option < Vec < String > > , # [doc = \" `@since` — first publication ISO date (inherits from `project.since`).\"] pub since : Option < String > , # [doc = \" `@updated` — last update ISO date (per-file, author-maintained; never inherited).\"] pub updated : Option < String > , # [doc = \" `@summary` — one-line description (per-file).\"] pub summary : Option < String > , # [doc = \" `@repository` — source URL (inherits from `project.repository`).\"] pub repository : Option < String > , # [doc = \" `@keywords` — comma-separated discovery tags (inherits from `project.keywords`).\"] pub keywords : Option < Vec < String > > , # [doc = \" `@deprecated` — flags this nodule superseded (per-file; never inherited).\"] pub deprecated : Option < Deprecated > , # [doc = \" `@matured` — the nodule/phylum is a matured (AOT) scope; RFC-0017; inherited top-down.\"] pub matured : Option < bool > , # [doc = \" `@certification` — the active certification mode (RFC-0034 §6; M-790). The **most-specific**\"] # [doc = \" (nodule) tier of the `global > phylum > nodule` lattice; overrides the manifest's. The value\"] # [doc = \" is the closed set `fast | balanced | certified` ([`mycelium_core::cert_mode::CertMode`]); an\"] # [doc = \" unknown word is an explicit error (G2). Resolved by [`crate::cert_scope::resolve_mode`].\"] pub certification : Option < mycelium_core :: cert_mode :: CertMode > , }",
+      "reason": "struct `HeaderFields` has a field type with no confirmed mapping (qualified type path `mycelium_core :: cert_mode :: CertMode` — collapsing to its last segment would risk colliding with an unrelated same-named local type (e.g. `std::cmp::Ordering` vs a local `Ordering`); left an explicit gap rather than guessed (VR-5))",
+      "item_name": "HeaderFields"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 70,
+      "col": 1,
+      "category": "Struct",
+      "rust_construct": "Struct",
+      "snippet": "# [doc = \" A parsed structured header: the `// nodule:` marker plus its `@key` metadata.\"] # [derive (Debug , Clone , PartialEq , Eq)] pub struct StructuredHeader { # [doc = \" The DN-06 §6 marker (its `name` is `None` for the bare `// nodule`).\"] pub marker : NoduleHeader , # [doc = \" The parsed metadata fields.\"] pub fields : HeaderFields , }",
+      "reason": "struct `StructuredHeader` uses named fields and references a type not resolvable in-file — emitting it positionally would introduce an unresolved reference that poisons the file's `myc check`; left gapped under the M-1006 resolvability gate (VR-5/G2)",
+      "item_name": "StructuredHeader"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 79,
+      "col": 1,
+      "category": "NamedFieldDrop",
+      "rust_construct": "NamedFieldDrop",
+      "snippet": "# [doc = \" An explicit header error (G2): a malformed marker, an unknown/duplicate key, or a bad value.\"] # [derive (Debug , Clone , PartialEq , Eq)] pub struct HeaderError { # [doc = \" 1-based source line of the offending construct.\"] pub line : u32 , # [doc = \" What is wrong, in author-facing terms.\"] pub message : String , }",
+      "reason": "struct `HeaderError` named field(s) `line, message` emitted positionally as `HeaderError(Binary{32}, Bytes)` — Mycelium's `constructor` is positional-only (no record surface); product structure preserved, field names dropped (matches `lib/std/*.myc` hand-ports)",
+      "item_name": "HeaderError"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 79,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" An explicit header error (G2): a malformed marker, an unknown/duplicate key, or a bad value.\"] # [derive (Debug , Clone , PartialEq , Eq)] pub struct HeaderError { # [doc = \" 1-based source line of the offending construct.\"] pub line : u32 , # [doc = \" What is wrong, in author-facing terms.\"] pub message : String , }",
+      "reason": "struct `HeaderError` derive(Clone) is a satisfied no-op under Mycelium's value semantics (ADR-003 — every value already copies structurally; DN-128 §6.1) — not emitted as an impl, not a gap",
+      "item_name": "HeaderError"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 79,
+      "col": 1,
+      "category": "DeriveAttr",
+      "rust_construct": "DeriveAttr",
+      "snippet": "# [doc = \" An explicit header error (G2): a malformed marker, an unknown/duplicate key, or a bad value.\"] # [derive (Debug , Clone , PartialEq , Eq)] pub struct HeaderError { # [doc = \" 1-based source line of the offending construct.\"] pub line : u32 , # [doc = \" What is wrong, in author-facing terms.\"] pub message : String , }",
+      "reason": "struct `HeaderError` derive(...) names Eq not in the DN-128 standard-derive set this leaf builds (Debug/Default/Clone/Copy/PartialEq/PartialOrd/Hash all recognized; bare Eq/Ord are deliberately NOT recognized — see emit/derives/mod.rs::TABLE's doc for why) — dropped, no confirmed Mycelium surface",
+      "item_name": "HeaderError"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 88,
+      "col": 1,
+      "category": "Impl",
+      "rust_construct": "Impl",
+      "snippet": "impl std :: fmt :: Display for HeaderError { fn fmt (& self , f : & mut std :: fmt :: Formatter < '_ >) -> std :: fmt :: Result { write ! (f , \"line {}: {}\" , self . line , self . message) } }",
+      "reason": "trait-impl of non-prelude trait `Display` — no ambient trait definition and synthetic trait emission is refused (DN-34 §8.8 / DN-122 MVP); gapped the whole impl so the residual cannot file-poison myc-check (G2; express gap-close 2026-07-16)",
+      "item_name": "HeaderError"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 94,
+      "col": 1,
+      "category": "Impl",
+      "rust_construct": "Impl",
+      "snippet": "impl std :: error :: Error for HeaderError { }",
+      "reason": "trait-impl of non-prelude trait `Error` — no ambient trait definition and synthetic trait emission is refused (DN-34 §8.8 / DN-122 MVP); gapped the whole impl so the residual cannot file-poison myc-check (G2; express gap-close 2026-07-16)",
+      "item_name": "HeaderError"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 96,
+      "col": 1,
+      "category": "Impl",
+      "rust_construct": "Impl",
+      "snippet": "impl From < NoduleHeaderError > for HeaderError { fn from (e : NoduleHeaderError) -> Self { HeaderError { line : e . line , message : e . message , } } }",
+      "reason": "trait-impl of non-prelude trait `From` — no ambient trait definition and synthetic trait emission is refused (DN-34 §8.8 / DN-122 MVP); gapped the whole impl so the residual cannot file-poison myc-check (G2; express gap-close 2026-07-16)",
+      "item_name": "HeaderError"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 105,
+      "col": 1,
+      "category": "MultiStmtBody",
+      "rust_construct": "MultiStmtBody",
+      "snippet": "# [doc = \" Parse the structured header from `src`.\"] # [doc = \"\"] # [doc = \" - `Ok(Some(h))` — the first non-blank line is a valid `// nodule:` marker; any contiguous\"] # [doc = \"   `// @key: value` lines that follow it are parsed and validated.\"] # [doc = \" - `Ok(None)` — the file declares no nodule (the first non-blank line is not a marker).\"] # [doc = \" - `Err(_)` — a malformed marker, an unknown/duplicate key, or a malformed value (G2).\"] # [doc = \"\"] # [doc = \" # Errors\"] # [doc = \" See [`HeaderError`].\"] pub fn parse_header (src : & str) -> Result < Option < StructuredHeader > , HeaderError > { let Some (marker) = parse_nodule_header (src) ? else { return Ok (None) ; } ; let lines : Vec < & str > = src . lines () . collect () ; let mut i = 0 ; while i < lines . len () && lines [i] . trim () . is_empty () { i += 1 ; } let mut fields = HeaderFields :: default () ; let mut seen : Vec < String > = Vec :: new () ; for (offset , raw) in lines . iter () . enumerate () . skip (i + 1) { let line_no = (offset + 1) as u32 ; let t = raw . trim () ; let Some (at) = t . strip_prefix (\"//\") . map (str :: trim) . and_then (| c | c . strip_prefix ('@')) else { break ; } ; let (key , val) = at . split_once (':') . ok_or_else (| | HeaderError { line : line_no , message : format ! (\"metadata line `// @{at}` must be `// @<key>: <value>`\") , }) ? ; let key = key . trim () ; let val = val . trim () ; if ! HEADER_KEYS . contains (& key) { return Err (HeaderError { line : line_no , message : format ! (\"unknown header key `@{key}` — the v0 key set is closed: {} (spec §7.3; G2)\" , HEADER_KEYS . join (\", \")) , }) ; } if seen . iter () . any (| k | k == key) { return Err (HeaderError { line : line_no , message : format ! (\"duplicate header key `@{key}` — each key may appear at most once (G2)\") , }) ; } set_field (& mut fields , key , val , line_no) ? ; seen . push (key . to_owned ()) ; } Ok (Some (StructuredHeader { marker , fields })) }",
+      "reason": "`let` binding uses an unsupported pattern (only simple `let x = e;` is supported)",
+      "item_name": "parse_header"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 166,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "fn set_field (fields : & mut HeaderFields , key : & str , val : & str , line : u32 ,) -> Result < () , HeaderError > { let nonempty = | v : & str | -> Result < String , HeaderError > { if v . is_empty () { Err (HeaderError { line , message : format ! (\"`@{key}` has no value\") , }) } else { Ok (v . to_owned ()) } } ; match key { \"version\" => { let v = nonempty (val) ? ; if ! is_semver (& v) { return Err (bad (line , \"version\" , & v , \"a semver `MAJOR.MINOR.PATCH` (e.g. `1.2.0`)\" ,)) ; } fields . version = Some (v) ; } \"license\" => { let v = nonempty (val) ? ; if ! is_spdx (& v) { return Err (bad (line , \"license\" , & v , \"a recognised SPDX identifier or expression (e.g. `Apache-2.0`, `MIT OR Apache-2.0`)\")) ; } fields . license = Some (v) ; } \"since\" => { let v = nonempty (val) ? ; if ! is_iso_date (& v) { return Err (bad (line , \"since\" , & v , \"an ISO-8601 date `YYYY-MM-DD`\")) ; } fields . since = Some (v) ; } \"updated\" => { let v = nonempty (val) ? ; if ! is_iso_date (& v) { return Err (bad (line , \"updated\" , & v , \"an ISO-8601 date `YYYY-MM-DD`\")) ; } fields . updated = Some (v) ; } \"summary\" => fields . summary = Some (nonempty (val) ?) , \"repository\" => { let v = nonempty (val) ? ; if ! is_url (& v) { return Err (bad (line , \"repository\" , & v , \"a URL (e.g. `https://…` or `git@…`)\" ,)) ; } fields . repository = Some (v) ; } \"authors\" => fields . authors = Some (parse_list (val , \"authors\" , line) ?) , \"keywords\" => fields . keywords = Some (parse_list (val , \"keywords\" , line) ?) , \"deprecated\" => fields . deprecated = Some (parse_deprecated (val , line) ?) , \"matured\" => { fields . matured = Some (match val { \"true\" => true , \"false\" => false , _ => { return Err (bad (line , \"matured\" , val , \"a boolean `true` or `false`\")) ; } }) ; } \"certification\" => { fields . certification = Some (crate :: cert_scope :: parse_cert_mode (val) . map_err (| m | HeaderError { line , message : m }) ? ,) ; } _ => unreachable ! (\"key membership checked by caller\") , } Ok (()) }",
+      "reason": "method call `.is_empty(...)` has no proven-emitted free-fn referent in this file (neither a D4-mangled inherent `Type__is_empty` nor a bare inherent recorded by this file's left-to-right pass, nor a prim_map / combinator row). Emitting bare `is_empty(recv, …)` would fabricate an unknown prim and file-poison myc-check (G-β Rank A / G2/VR-5; residual when the method body itself gapped — e.g. M-1037 `.to_vec()` inside `read_to_end` — so the declaration was never registered)",
+      "item_name": "set_field"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 254,
+      "col": 1,
+      "category": "MacroInvocation",
+      "rust_construct": "MacroInvocation",
+      "snippet": "fn bad (line : u32 , key : & str , got : & str , want : & str) -> HeaderError { HeaderError { line , message : format ! (\"`@{key}` value {got:?} is not {want} (declared metadata is checked, never fabricated — VR-5)\") , } }",
+      "reason": "`format!` — format string uses an unsupported specifier (only plain `{}` / `{{` / `}}` are lowered in this MVP — named/width/precision/Debug-only forms are honest gaps, G2) (DN-127/M-1090 WU-3)",
+      "item_name": "bad"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 261,
+      "col": 1,
+      "category": "MultiStmtBody",
+      "rust_construct": "MultiStmtBody",
+      "snippet": "fn parse_list (val : & str , key : & str , line : u32) -> Result < Vec < String > , HeaderError > { let items : Vec < String > = val . split (',') . map (str :: trim) . filter (| s | ! s . is_empty ()) . map (str :: to_owned) . collect () ; if items . is_empty () { return Err (HeaderError { line , message : format ! (\"`@{key}` is empty — list at least one comma-separated value, or omit the key\") , }) ; } Ok (items) }",
+      "reason": "`let` binding uses an unsupported pattern (only simple `let x = e;` is supported)",
+      "item_name": "parse_list"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 279,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "fn parse_deprecated (val : & str , line : u32) -> Result < Deprecated , HeaderError > { match val { \"true\" => Ok (Deprecated :: Flag (true)) , \"false\" => Ok (Deprecated :: Flag (false)) , \"\" => Err (HeaderError { line , message : \"`@deprecated` needs `true`/`false` or a reason string\" . to_owned () , }) , reason => Ok (Deprecated :: Reason (reason . trim_matches ('\"') . to_owned ())) , } }",
+      "reason": "qualified/associated-function call `Deprecated :: Flag` did not resolve to a known-emitted associated fn — Mycelium calls are bare identifiers, and the only sound surface form for `Type::method(...)` is the mangled `Type__method` name the declaration side already emits for a receiver-less inherent-impl associated fn (DN-34 §8.13/8.14), referenced only when that exact declaration is PROVEN present (same-file, or a resolved M-1084 cross-nodule sibling). A primitive/std associated fn with no emitted decl (e.g. `i128::try_from`), an unresolved type, or a `self`-receiving method (excluded by construction — it stays reachable only from its own bare call site) all gap here rather than fabricate a call (G2/VR-5, DN-133)",
+      "item_name": "parse_deprecated"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 293,
+      "col": 1,
+      "category": "MultiStmtBody",
+      "rust_construct": "MultiStmtBody",
+      "snippet": "# [doc = \" A `YYYY-MM-DD` ISO-8601 calendar date with a plausible month/day (cheap, dependency-free; the\"] # [doc = \" honest claim is *well-formed*, not *calendar-exact* — a leap-day check is not load-bearing here).\"] # [must_use] pub fn is_iso_date (s : & str) -> bool { let parts : Vec < & str > = s . split ('-') . collect () ; if parts . len () != 3 { return false ; } let (y , m , d) = (parts [0] , parts [1] , parts [2]) ; if y . len () != 4 || m . len () != 2 || d . len () != 2 { return false ; } if ! (y . chars () . all (| c | c . is_ascii_digit ()) && m . chars () . all (| c | c . is_ascii_digit ()) && d . chars () . all (| c | c . is_ascii_digit ())) { return false ; } let month : u32 = m . parse () . unwrap_or (0) ; let day : u32 = d . parse () . unwrap_or (0) ; (1 ..= 12) . contains (& month) && (1 ..= 31) . contains (& day) }",
+      "reason": "`let` binding uses an unsupported pattern (only simple `let x = e;` is supported)",
+      "item_name": "is_iso_date"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 316,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" A `MAJOR.MINOR.PATCH` semver core, with an optional `-prerelease` and/or `+build` suffix.\"] # [must_use] pub fn is_semver (s : & str) -> bool { let core = s . split (['+' , '-']) . next () . unwrap_or (\"\") ; let parts : Vec < & str > = core . split ('.') . collect () ; parts . len () == 3 && parts . iter () . all (| p | ! p . is_empty () && p . chars () . all (| c | c . is_ascii_digit ())) }",
+      "reason": "method call `.unwrap_or(...)` has no proven-emitted free-fn referent in this file (neither a D4-mangled inherent `Type__unwrap_or` nor a bare inherent recorded by this file's left-to-right pass, nor a prim_map / combinator row). Emitting bare `unwrap_or(recv, …)` would fabricate an unknown prim and file-poison myc-check (G-β Rank A / G2/VR-5; residual when the method body itself gapped — e.g. M-1037 `.to_vec()` inside `read_to_end` — so the declaration was never registered)",
+      "item_name": "is_semver"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 327,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" A non-empty, URL-shaped string (scheme-prefixed or `git@`-style). Declared metadata: checked for\"] # [doc = \" shape, not reachability (VR-5).\"] # [must_use] pub fn is_url (s : & str) -> bool { s . starts_with (\"http://\") || s . starts_with (\"https://\") || s . starts_with (\"git@\") || s . starts_with (\"ssh://\") || s . starts_with (\"git://\") }",
+      "reason": "method call `.starts_with(...)` has no proven-emitted free-fn referent in this file (neither a D4-mangled inherent `Type__starts_with` nor a bare inherent recorded by this file's left-to-right pass, nor a prim_map / combinator row). Emitting bare `starts_with(recv, …)` would fabricate an unknown prim and file-poison myc-check (G-β Rank A / G2/VR-5; residual when the method body itself gapped — e.g. M-1037 `.to_vec()` inside `read_to_end` — so the declaration was never registered)",
+      "item_name": "is_url"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 338,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" The v0 known-SPDX subset — common OSI/FSF identifiers. A `@license` must be one of these (or an\"] # [doc = \" expression composed of them with `OR`/`AND`/`WITH`), else it is an explicit error (G2). The set\"] # [doc = \" is deliberately modest; it grows by explicit decision (not silently).\"] pub const KNOWN_SPDX : & [& str] = & [\"MIT\" , \"Apache-2.0\" , \"BSD-2-Clause\" , \"BSD-3-Clause\" , \"ISC\" , \"MPL-2.0\" , \"GPL-2.0-only\" , \"GPL-2.0-or-later\" , \"GPL-3.0-only\" , \"GPL-3.0-or-later\" , \"LGPL-2.1-only\" , \"LGPL-3.0-only\" , \"LGPL-3.0-or-later\" , \"AGPL-3.0-only\" , \"AGPL-3.0-or-later\" , \"Unlicense\" , \"CC0-1.0\" , \"CC-BY-4.0\" , \"CC-BY-SA-4.0\" , \"Zlib\" , \"BSL-1.0\" , \"0BSD\" ,] ;",
+      "reason": "top-level `const KNOWN_SPDX` — co-emit (ORACLE-R1 A4) only covers plain unsigned integer types (`u8`/`u16`/`u32`/`u64`/`u128`/`usize`); other types have no const item production and no faithful zero-arg-fn encoding (gap, never fabricate)",
+      "item_name": "KNOWN_SPDX"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/header.rs",
+      "line": 366,
+      "col": 1,
+      "category": "MultiStmtBody",
+      "rust_construct": "MultiStmtBody",
+      "snippet": "# [doc = \" A recognised SPDX identifier or a simple expression over [`KNOWN_SPDX`] (operators `OR`/`AND`/\"] # [doc = \" `WITH`; a `LicenseRef-…` custom reference is also accepted).\"] # [must_use] pub fn is_spdx (s : & str) -> bool { let tokens : Vec < & str > = s . split_whitespace () . collect () ; if tokens . is_empty () { return false ; } for tok in tokens { let t = tok . trim_matches (['(' , ')']) ; if t . is_empty () || matches ! (t , \"OR\" | \"AND\" | \"WITH\") { continue ; } if KNOWN_SPDX . contains (& t) || t . starts_with (\"LicenseRef-\") { continue ; } return false ; } true }",
+      "reason": "`let` binding uses an unsupported pattern (only simple `let x = e;` is supported)",
+      "item_name": "is_spdx"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 25,
+      "col": 1,
+      "category": "ModuleDecl",
+      "rust_construct": "ModuleDecl",
+      "snippet": "pub mod cert_scope ;",
+      "reason": "external `mod foo;` declaration — file-linkage, not translatable library surface (Mycelium's nodule-per-file model makes the module tree implicit in the file layout; the sibling file transpiles as its own nodule). Excluded from the expressible-fraction denominator, recorded not dropped",
+      "item_name": "cert_scope"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 26,
+      "col": 1,
+      "category": "ModuleDecl",
+      "rust_construct": "ModuleDecl",
+      "snippet": "pub mod header ;",
+      "reason": "external `mod foo;` declaration — file-linkage, not translatable library surface (Mycelium's nodule-per-file model makes the module tree implicit in the file layout; the sibling file transpiles as its own nodule). Excluded from the expressible-fraction denominator, recorded not dropped",
+      "item_name": "header"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 27,
+      "col": 1,
+      "category": "ModuleDecl",
+      "rust_construct": "ModuleDecl",
+      "snippet": "pub mod manifest ;",
+      "reason": "external `mod foo;` declaration — file-linkage, not translatable library surface (Mycelium's nodule-per-file model makes the module tree implicit in the file layout; the sibling file transpiles as its own nodule). Excluded from the expressible-fraction denominator, recorded not dropped",
+      "item_name": "manifest"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 28,
+      "col": 1,
+      "category": "ModuleDecl",
+      "rust_construct": "ModuleDecl",
+      "snippet": "pub mod resolve ;",
+      "reason": "external `mod foo;` declaration — file-linkage, not translatable library surface (Mycelium's nodule-per-file model makes the module tree implicit in the file layout; the sibling file transpiles as its own nodule). Excluded from the expressible-fraction denominator, recorded not dropped",
+      "item_name": "resolve"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 30,
+      "col": 1,
+      "category": "TestItem",
+      "rust_construct": "TestItem",
+      "snippet": "# [cfg (test)] mod tests ;",
+      "reason": "#[cfg(test)] item — out of scope for this PoC's transpilation surface (excluded from the expressible-fraction denominator, but recorded, never silently skipped)",
+      "item_name": "tests"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 33,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use cert_scope :: { cert_mode_word , compose , explain_mode , generate_mode_signal , parse_cert_mode , render_mode_signal , resolve_mode , CertDecl , CertScope , ConsumptionTier , CrossModeEvent , ModeSignal , ResolvedMode , } ;",
+      "reason": "`use cert_scope::compose` — `compose` is not among sibling `cert_scope`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:cert_mode_word,CertScope,ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 33,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use cert_scope :: { cert_mode_word , compose , explain_mode , generate_mode_signal , parse_cert_mode , render_mode_signal , resolve_mode , CertDecl , CertScope , ConsumptionTier , CrossModeEvent , ModeSignal , ResolvedMode , } ;",
+      "reason": "`use cert_scope::explain_mode` — `explain_mode` is not among sibling `cert_scope`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:cert_mode_word,CertScope,ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 33,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use cert_scope :: { cert_mode_word , compose , explain_mode , generate_mode_signal , parse_cert_mode , render_mode_signal , resolve_mode , CertDecl , CertScope , ConsumptionTier , CrossModeEvent , ModeSignal , ResolvedMode , } ;",
+      "reason": "`use cert_scope::generate_mode_signal` — `generate_mode_signal` is not among sibling `cert_scope`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:cert_mode_word,CertScope,ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 33,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use cert_scope :: { cert_mode_word , compose , explain_mode , generate_mode_signal , parse_cert_mode , render_mode_signal , resolve_mode , CertDecl , CertScope , ConsumptionTier , CrossModeEvent , ModeSignal , ResolvedMode , } ;",
+      "reason": "`use cert_scope::parse_cert_mode` — `parse_cert_mode` is not among sibling `cert_scope`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:cert_mode_word,CertScope,ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 33,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use cert_scope :: { cert_mode_word , compose , explain_mode , generate_mode_signal , parse_cert_mode , render_mode_signal , resolve_mode , CertDecl , CertScope , ConsumptionTier , CrossModeEvent , ModeSignal , ResolvedMode , } ;",
+      "reason": "`use cert_scope::render_mode_signal` — `render_mode_signal` is not among sibling `cert_scope`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:cert_mode_word,CertScope,ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 33,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use cert_scope :: { cert_mode_word , compose , explain_mode , generate_mode_signal , parse_cert_mode , render_mode_signal , resolve_mode , CertDecl , CertScope , ConsumptionTier , CrossModeEvent , ModeSignal , ResolvedMode , } ;",
+      "reason": "`use cert_scope::resolve_mode` — `resolve_mode` is not among sibling `cert_scope`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:cert_mode_word,CertScope,ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 33,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use cert_scope :: { cert_mode_word , compose , explain_mode , generate_mode_signal , parse_cert_mode , render_mode_signal , resolve_mode , CertDecl , CertScope , ConsumptionTier , CrossModeEvent , ModeSignal , ResolvedMode , } ;",
+      "reason": "`use cert_scope::CertDecl` — `CertDecl` is not among sibling `cert_scope`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:cert_mode_word,CertScope,ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 33,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use cert_scope :: { cert_mode_word , compose , explain_mode , generate_mode_signal , parse_cert_mode , render_mode_signal , resolve_mode , CertDecl , CertScope , ConsumptionTier , CrossModeEvent , ModeSignal , ResolvedMode , } ;",
+      "reason": "`use cert_scope::CrossModeEvent` — `CrossModeEvent` is not among sibling `cert_scope`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:cert_mode_word,CertScope,ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 33,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use cert_scope :: { cert_mode_word , compose , explain_mode , generate_mode_signal , parse_cert_mode , render_mode_signal , resolve_mode , CertDecl , CertScope , ConsumptionTier , CrossModeEvent , ModeSignal , ResolvedMode , } ;",
+      "reason": "`use cert_scope::ModeSignal` — `ModeSignal` is not among sibling `cert_scope`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:cert_mode_word,CertScope,ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 33,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use cert_scope :: { cert_mode_word , compose , explain_mode , generate_mode_signal , parse_cert_mode , render_mode_signal , resolve_mode , CertDecl , CertScope , ConsumptionTier , CrossModeEvent , ModeSignal , ResolvedMode , } ;",
+      "reason": "`use cert_scope::ResolvedMode` — `ResolvedMode` is not among sibling `cert_scope`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:cert_mode_word,CertScope,ConsumptionTier"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 38,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use header :: { parse_header , Deprecated , HeaderError , HeaderFields , StructuredHeader , HEADER_KEYS , } ;",
+      "reason": "`use header::parse_header` — `parse_header` is not among sibling `header`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:Deprecated,HeaderError"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 38,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use header :: { parse_header , Deprecated , HeaderError , HeaderFields , StructuredHeader , HEADER_KEYS , } ;",
+      "reason": "`use header::HeaderFields` — `HeaderFields` is not among sibling `header`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:Deprecated,HeaderError"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 38,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use header :: { parse_header , Deprecated , HeaderError , HeaderFields , StructuredHeader , HEADER_KEYS , } ;",
+      "reason": "`use header::StructuredHeader` — `StructuredHeader` is not among sibling `header`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:Deprecated,HeaderError"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 38,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use header :: { parse_header , Deprecated , HeaderError , HeaderFields , StructuredHeader , HEADER_KEYS , } ;",
+      "reason": "`use header::HEADER_KEYS` — `HEADER_KEYS` is not among sibling `header`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:Deprecated,HeaderError"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 41,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use manifest :: { parse_manifest , Dependency , Manifest , ManifestError , Project , ProjectKind , SporeConfig , Surface , Toolchain , } ;",
+      "reason": "`use manifest::parse_manifest` — `parse_manifest` is not among sibling `manifest`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:ManifestError,ProjectKind,SporeConfig,Surface"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 41,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use manifest :: { parse_manifest , Dependency , Manifest , ManifestError , Project , ProjectKind , SporeConfig , Surface , Toolchain , } ;",
+      "reason": "`use manifest::Dependency` — `Dependency` is not among sibling `manifest`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:ManifestError,ProjectKind,SporeConfig,Surface"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 41,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use manifest :: { parse_manifest , Dependency , Manifest , ManifestError , Project , ProjectKind , SporeConfig , Surface , Toolchain , } ;",
+      "reason": "`use manifest::Manifest` — `Manifest` is not among sibling `manifest`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:ManifestError,ProjectKind,SporeConfig,Surface"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 41,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use manifest :: { parse_manifest , Dependency , Manifest , ManifestError , Project , ProjectKind , SporeConfig , Surface , Toolchain , } ;",
+      "reason": "`use manifest::Project` — `Project` is not among sibling `manifest`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:ManifestError,ProjectKind,SporeConfig,Surface"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 41,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use manifest :: { parse_manifest , Dependency , Manifest , ManifestError , Project , ProjectKind , SporeConfig , Surface , Toolchain , } ;",
+      "reason": "`use manifest::Toolchain` — `Toolchain` is not among sibling `manifest`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:ManifestError,ProjectKind,SporeConfig,Surface"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 45,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use resolve :: { explain , resolve , Origin , Resolved , ResolvedHeader } ;",
+      "reason": "`use resolve::explain` — `explain` is not among sibling `resolve`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:Origin"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 45,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use resolve :: { explain , resolve , Origin , Resolved , ResolvedHeader } ;",
+      "reason": "`use resolve::resolve` — `resolve` is not among sibling `resolve`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:Origin"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 45,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use resolve :: { explain , resolve , Origin , Resolved , ResolvedHeader } ;",
+      "reason": "`use resolve::Resolved` — `Resolved` is not among sibling `resolve`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:Origin"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/lib.rs",
+      "line": 45,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "pub use resolve :: { explain , resolve , Origin , Resolved , ResolvedHeader } ;",
+      "reason": "`use resolve::ResolvedHeader` — `ResolvedHeader` is not among sibling `resolve`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:Origin"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 18,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "use crate :: header :: { is_iso_date , is_semver , is_spdx , is_url } ;",
+      "reason": "`use header::is_iso_date` — `is_iso_date` is not among sibling `header`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2); `use header::is_semver` — `is_semver` is not among sibling `header`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2); `use header::is_spdx` — `is_spdx` is not among sibling `header`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2); `use header::is_url` — `is_url` is not among sibling `header`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": null
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 20,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" The shape of a Mycelium project (spec §2 — `[project].kind`).\"] # [derive (Debug , Clone , Copy , PartialEq , Eq)] pub enum ProjectKind { # [doc = \" A library — a content-addressed `phylum`.\"] Phylum , # [doc = \" An executable program.\"] Program , # [doc = \" A single-file / small script.\"] Script , }",
+      "reason": "enum `ProjectKind` derive(Clone) is a satisfied no-op under Mycelium's value semantics (ADR-003 — every value already copies structurally; DN-128 §6.1) — not emitted as an impl, not a gap",
+      "item_name": "ProjectKind"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 20,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" The shape of a Mycelium project (spec §2 — `[project].kind`).\"] # [derive (Debug , Clone , Copy , PartialEq , Eq)] pub enum ProjectKind { # [doc = \" A library — a content-addressed `phylum`.\"] Phylum , # [doc = \" An executable program.\"] Program , # [doc = \" A single-file / small script.\"] Script , }",
+      "reason": "enum `ProjectKind` derive(Copy) is a satisfied no-op under Mycelium's value semantics (ADR-003 — every value already copies structurally; DN-128 §6.1) — not emitted as an impl, not a gap",
+      "item_name": "ProjectKind"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 20,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" The shape of a Mycelium project (spec §2 — `[project].kind`).\"] # [derive (Debug , Clone , Copy , PartialEq , Eq)] pub enum ProjectKind { # [doc = \" A library — a content-addressed `phylum`.\"] Phylum , # [doc = \" An executable program.\"] Program , # [doc = \" A single-file / small script.\"] Script , }",
+      "reason": "enum `ProjectKind` derive(Eq): covered by co-occurring PartialEq → `fn eq_ProjectKind` (product-row collision policy; DN-128 / ONESHOT C2) — not a second emission",
+      "item_name": "ProjectKind"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 31,
+      "col": 1,
+      "category": "Struct",
+      "rust_construct": "Struct",
+      "snippet": "# [doc = \" The typed `[project]` table (the v0 closed key set).\"] # [derive (Debug , Clone , PartialEq , Eq)] pub struct Project { # [doc = \" `name` — the project name (required).\"] pub name : String , # [doc = \" `kind` — `phylum` | `program` | `script` (required).\"] pub kind : ProjectKind , # [doc = \" `version` — semver release label.\"] pub version : Option < String > , # [doc = \" `license` — SPDX identifier.\"] pub license : Option < String > , # [doc = \" `authors`.\"] pub authors : Option < Vec < String > > , # [doc = \" `since` — first publication ISO date.\"] pub since : Option < String > , # [doc = \" `summary`.\"] pub summary : Option < String > , # [doc = \" `repository` — source URL.\"] pub repository : Option < String > , # [doc = \" `keywords` — discovery tags.\"] pub keywords : Option < Vec < String > > , # [doc = \" `lang` — the surface-language edition this project targets.\"] pub lang : Option < String > , # [doc = \" `certification` — the project-wide certification mode (RFC-0034 §6; M-790). This is the\"] # [doc = \" **phylum** tier of the `global > phylum > nodule` lattice (FLAG-B, `cert_scope.rs`); a nodule's\"] # [doc = \" `@certification` header overrides it. The value is the closed set `fast | balanced |\"] # [doc = \" certified`; an unknown word is an explicit error (G2). Metadata, not identity (ADR-003).\"] pub certification : Option < mycelium_core :: cert_mode :: CertMode > , }",
+      "reason": "struct `Project` has a field type with no confirmed mapping (qualified type path `mycelium_core :: cert_mode :: CertMode` — collapsing to its last segment would risk colliding with an unrelated same-named local type (e.g. `std::cmp::Ordering` vs a local `Ordering`); left an explicit gap rather than guessed (VR-5))",
+      "item_name": "Project"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 61,
+      "col": 1,
+      "category": "Struct",
+      "rust_construct": "Struct",
+      "snippet": "# [doc = \" The typed `[toolchain]` table (M-364): the optional pins the toolchain reads. v0 closed key set:\"] # [doc = \" `format` (the formatter spelling/version — a **hard pin**, M-364 §10.3) and `lints` (the lint\"] # [doc = \" profile). Unknown keys are explicit errors (G2). Metadata, not identity (ADR-003).\"] # [derive (Debug , Clone , Default , PartialEq , Eq)] pub struct Toolchain { # [doc = \" `format` — the formatter spelling/version pin (e.g. `\\\"mycfmt-0\\\"`). A hard pin: `mycfmt` refuses a\"] # [doc = \" mismatch rather than format with rules the project did not ask for (M-364 §10.3 / G2).\"] pub format : Option < String > , # [doc = \" `lints` — the lint profile (e.g. `\\\"strict\\\"`).\"] pub lints : Option < String > , }",
+      "reason": "struct `Toolchain` uses named fields and references a type not resolvable in-file — emitting it positionally would introduce an unresolved reference that poisons the file's `myc check`; left gapped under the M-1006 resolvability gate (VR-5/G2)",
+      "item_name": "Toolchain"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 73,
+      "col": 1,
+      "category": "NamedFieldDrop",
+      "rust_construct": "NamedFieldDrop",
+      "snippet": "# [doc = \" The typed `[surface]` table (M-368): a phylum's **public exports** — the germination boundary. v0\"] # [doc = \" closed key set: `exports` (a list of dotted nodule names). Metadata layer (ADR-003).\"] # [derive (Debug , Clone , Default , PartialEq , Eq)] pub struct Surface { # [doc = \" `exports` — the public nodule names a phylum germinates from.\"] pub exports : Vec < String > , }",
+      "reason": "struct `Surface` named field(s) `exports` emitted positionally as `Surface(Vec[Bytes])` — Mycelium's `constructor` is positional-only (no record surface); product structure preserved, field names dropped (matches `lib/std/*.myc` hand-ports)",
+      "item_name": "Surface"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 73,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" The typed `[surface]` table (M-368): a phylum's **public exports** — the germination boundary. v0\"] # [doc = \" closed key set: `exports` (a list of dotted nodule names). Metadata layer (ADR-003).\"] # [derive (Debug , Clone , Default , PartialEq , Eq)] pub struct Surface { # [doc = \" `exports` — the public nodule names a phylum germinates from.\"] pub exports : Vec < String > , }",
+      "reason": "struct `Surface` derive(Clone) is a satisfied no-op under Mycelium's value semantics (ADR-003 — every value already copies structurally; DN-128 §6.1) — not emitted as an impl, not a gap",
+      "item_name": "Surface"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 73,
+      "col": 1,
+      "category": "DeriveAttr",
+      "rust_construct": "DeriveAttr",
+      "snippet": "# [doc = \" The typed `[surface]` table (M-368): a phylum's **public exports** — the germination boundary. v0\"] # [doc = \" closed key set: `exports` (a list of dotted nodule names). Metadata layer (ADR-003).\"] # [derive (Debug , Clone , Default , PartialEq , Eq)] pub struct Surface { # [doc = \" `exports` — the public nodule names a phylum germinates from.\"] pub exports : Vec < String > , }",
+      "reason": "struct `Surface` derive(...) names Eq not in the DN-128 standard-derive set this leaf builds (Debug/Default/Clone/Copy/PartialEq/PartialOrd/Hash all recognized; bare Eq/Ord are deliberately NOT recognized — see emit/derives/mod.rs::TABLE's doc for why) — dropped, no confirmed Mycelium surface",
+      "item_name": "Surface"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 81,
+      "col": 1,
+      "category": "Struct",
+      "rust_construct": "Struct",
+      "snippet": "# [doc = \" One `[dependencies]` entry (M-368): another phylum, **content-addressed** (ADR-003) — pinned by\"] # [doc = \" `hash` (authoritative) with a human `version` requirement. A `hash`-less dep is an explicit error at\"] # [doc = \" publish (the spore build refuses an unpinned, non-reproducible input; G2).\"] # [derive (Debug , Clone , PartialEq , Eq)] pub struct Dependency { # [doc = \" The dependency's local name (the `[dependencies]` key).\"] pub name : String , # [doc = \" `phylum` — the depended-on phylum's name.\"] pub phylum : String , # [doc = \" `version` — a human version requirement (e.g. `\\\"^2\\\"`), checked against the pinned hash's version.\"] pub version : Option < String > , # [doc = \" `hash` — the content-addressed pin (`blake3:…`); authoritative (ADR-003). **Parsed, not\"] # [doc = \" free-text** (DN-40 A3): a `ContentHash` is well-formed by construction (`Exact`), so a\"] # [doc = \" malformed pin is rejected at manifest-build time (an explicit `ManifestError`, never silent —\"] # [doc = \" G2) and can never flow downstream into a spore's identity edge.\"] pub hash : Option < mycelium_core :: ContentHash > , }",
+      "reason": "struct `Dependency` has a field type with no confirmed mapping (qualified type path `mycelium_core :: ContentHash` — collapsing to its last segment would risk colliding with an unrelated same-named local type (e.g. `std::cmp::Ordering` vs a local `Ordering`); left an explicit gap rather than guessed (VR-5))",
+      "item_name": "Dependency"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 99,
+      "col": 1,
+      "category": "NamedFieldDrop",
+      "rust_construct": "NamedFieldDrop",
+      "snippet": "# [doc = \" The typed `[spore]` table (M-368): how the project publishes as a deployable (ADR-013). v0 closed key\"] # [doc = \" set: `include` (what germinates; defaults to the public `[surface]`).\"] # [derive (Debug , Clone , Default , PartialEq , Eq)] pub struct SporeConfig { # [doc = \" `include` — what germinates (e.g. `[\\\"surface\\\"]`, or explicit nodule names).\"] pub include : Vec < String > , }",
+      "reason": "struct `SporeConfig` named field(s) `include` emitted positionally as `SporeConfig(Vec[Bytes])` — Mycelium's `constructor` is positional-only (no record surface); product structure preserved, field names dropped (matches `lib/std/*.myc` hand-ports)",
+      "item_name": "SporeConfig"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 99,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" The typed `[spore]` table (M-368): how the project publishes as a deployable (ADR-013). v0 closed key\"] # [doc = \" set: `include` (what germinates; defaults to the public `[surface]`).\"] # [derive (Debug , Clone , Default , PartialEq , Eq)] pub struct SporeConfig { # [doc = \" `include` — what germinates (e.g. `[\\\"surface\\\"]`, or explicit nodule names).\"] pub include : Vec < String > , }",
+      "reason": "struct `SporeConfig` derive(Clone) is a satisfied no-op under Mycelium's value semantics (ADR-003 — every value already copies structurally; DN-128 §6.1) — not emitted as an impl, not a gap",
+      "item_name": "SporeConfig"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 99,
+      "col": 1,
+      "category": "DeriveAttr",
+      "rust_construct": "DeriveAttr",
+      "snippet": "# [doc = \" The typed `[spore]` table (M-368): how the project publishes as a deployable (ADR-013). v0 closed key\"] # [doc = \" set: `include` (what germinates; defaults to the public `[surface]`).\"] # [derive (Debug , Clone , Default , PartialEq , Eq)] pub struct SporeConfig { # [doc = \" `include` — what germinates (e.g. `[\\\"surface\\\"]`, or explicit nodule names).\"] pub include : Vec < String > , }",
+      "reason": "struct `SporeConfig` derive(...) names Eq not in the DN-128 standard-derive set this leaf builds (Debug/Default/Clone/Copy/PartialEq/PartialOrd/Hash all recognized; bare Eq/Ord are deliberately NOT recognized — see emit/derives/mod.rs::TABLE's doc for why) — dropped, no confirmed Mycelium surface",
+      "item_name": "SporeConfig"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 107,
+      "col": 1,
+      "category": "Struct",
+      "rust_construct": "Struct",
+      "snippet": "# [doc = \" A parsed `mycelium-proj.toml` (v0: the typed `[project]` table + the optional `[toolchain]`,\"] # [doc = \" `[surface]`, `[dependencies]`, and `[spore]` tables).\"] # [derive (Debug , Clone , PartialEq , Eq)] pub struct Manifest { # [doc = \" The required `[project]` table.\"] pub project : Project , # [doc = \" The optional `[toolchain]` pins (M-364; M-361). `None` when the table is absent.\"] pub toolchain : Option < Toolchain > , # [doc = \" The optional `[surface]` exports (M-368). `None` when the table is absent.\"] pub surface : Option < Surface > , # [doc = \" The `[dependencies]` (M-368); empty when the table is absent.\"] pub dependencies : Vec < Dependency > , # [doc = \" The optional `[spore]` packaging config (M-368). `None` when the table is absent.\"] pub spore : Option < SporeConfig > , }",
+      "reason": "struct `Manifest` uses named fields and references a type not resolvable in-file — emitting it positionally would introduce an unresolved reference that poisons the file's `myc check`; left gapped under the M-1006 resolvability gate (VR-5/G2)",
+      "item_name": "Manifest"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 123,
+      "col": 1,
+      "category": "NamedFieldDrop",
+      "rust_construct": "NamedFieldDrop",
+      "snippet": "# [doc = \" An explicit manifest error (G2): a syntax error, an out-of-subset construct, or a bad value.\"] # [derive (Debug , Clone , PartialEq , Eq)] pub struct ManifestError { # [doc = \" 1-based source line.\"] pub line : u32 , # [doc = \" What is wrong.\"] pub message : String , }",
+      "reason": "struct `ManifestError` named field(s) `line, message` emitted positionally as `ManifestError(Binary{32}, Bytes)` — Mycelium's `constructor` is positional-only (no record surface); product structure preserved, field names dropped (matches `lib/std/*.myc` hand-ports)",
+      "item_name": "ManifestError"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 123,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" An explicit manifest error (G2): a syntax error, an out-of-subset construct, or a bad value.\"] # [derive (Debug , Clone , PartialEq , Eq)] pub struct ManifestError { # [doc = \" 1-based source line.\"] pub line : u32 , # [doc = \" What is wrong.\"] pub message : String , }",
+      "reason": "struct `ManifestError` derive(Clone) is a satisfied no-op under Mycelium's value semantics (ADR-003 — every value already copies structurally; DN-128 §6.1) — not emitted as an impl, not a gap",
+      "item_name": "ManifestError"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 123,
+      "col": 1,
+      "category": "DeriveAttr",
+      "rust_construct": "DeriveAttr",
+      "snippet": "# [doc = \" An explicit manifest error (G2): a syntax error, an out-of-subset construct, or a bad value.\"] # [derive (Debug , Clone , PartialEq , Eq)] pub struct ManifestError { # [doc = \" 1-based source line.\"] pub line : u32 , # [doc = \" What is wrong.\"] pub message : String , }",
+      "reason": "struct `ManifestError` derive(...) names Eq not in the DN-128 standard-derive set this leaf builds (Debug/Default/Clone/Copy/PartialEq/PartialOrd/Hash all recognized; bare Eq/Ord are deliberately NOT recognized — see emit/derives/mod.rs::TABLE's doc for why) — dropped, no confirmed Mycelium surface",
+      "item_name": "ManifestError"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 132,
+      "col": 1,
+      "category": "Impl",
+      "rust_construct": "Impl",
+      "snippet": "impl std :: fmt :: Display for ManifestError { fn fmt (& self , f : & mut std :: fmt :: Formatter < '_ >) -> std :: fmt :: Result { write ! (f , \"line {}: {}\" , self . line , self . message) } }",
+      "reason": "trait-impl of non-prelude trait `Display` — no ambient trait definition and synthetic trait emission is refused (DN-34 §8.8 / DN-122 MVP); gapped the whole impl so the residual cannot file-poison myc-check (G2; express gap-close 2026-07-16)",
+      "item_name": "ManifestError"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 138,
+      "col": 1,
+      "category": "Impl",
+      "rust_construct": "Impl",
+      "snippet": "impl std :: error :: Error for ManifestError { }",
+      "reason": "trait-impl of non-prelude trait `Error` — no ambient trait definition and synthetic trait emission is refused (DN-34 §8.8 / DN-122 MVP); gapped the whole impl so the residual cannot file-poison myc-check (G2; express gap-close 2026-07-16)",
+      "item_name": "ManifestError"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 140,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" The closed v0 `[project]` key set.\"] const PROJECT_KEYS : & [& str] = & [\"name\" , \"kind\" , \"version\" , \"license\" , \"authors\" , \"since\" , \"summary\" , \"repository\" , \"keywords\" , \"lang\" , \"certification\" ,] ;",
+      "reason": "top-level `const PROJECT_KEYS` — co-emit (ORACLE-R1 A4) only covers plain unsigned integer types (`u8`/`u16`/`u32`/`u64`/`u128`/`usize`); other types have no const item production and no faithful zero-arg-fn encoding (gap, never fabricate)",
+      "item_name": "PROJECT_KEYS"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 155,
+      "col": 1,
+      "category": "DeriveAttr",
+      "rust_construct": "DeriveAttr",
+      "snippet": "# [doc = \" A parsed TOML value (the supported subset).\"] # [derive (Debug , Clone , PartialEq , Eq)] enum Val { Str (String) , Arr (Vec < Val >) , Table (Vec < (String , Val) >) , Bool (bool) , }",
+      "reason": "enum `Val` derive(Debug): variant 2 (`Table`) field 0 has type `Vec[(Bytes, Val)]`, a `Vec` field whose element type `(Bytes, Val)` has no `Show` route of its own (DN-138 WU-4 depth-1 scope) — the whole derive is left an honest gap rather than a partial/fabricated render (G2)",
+      "item_name": "Val"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 155,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" A parsed TOML value (the supported subset).\"] # [derive (Debug , Clone , PartialEq , Eq)] enum Val { Str (String) , Arr (Vec < Val >) , Table (Vec < (String , Val) >) , Bool (bool) , }",
+      "reason": "enum `Val` derive(Clone) is a satisfied no-op under Mycelium's value semantics (ADR-003 — every value already copies structurally; DN-128 §6.1) — not emitted as an impl, not a gap",
+      "item_name": "Val"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 155,
+      "col": 1,
+      "category": "DeriveAttr",
+      "rust_construct": "DeriveAttr",
+      "snippet": "# [doc = \" A parsed TOML value (the supported subset).\"] # [derive (Debug , Clone , PartialEq , Eq)] enum Val { Str (String) , Arr (Vec < Val >) , Table (Vec < (String , Val) >) , Bool (bool) , }",
+      "reason": "enum `Val` derive(PartialEq): variant 2 (`Table`) field 0 has type `Vec[(Bytes, Val)]`, a `Vec` field whose element type `(Bytes, Val)` has no equality route of its own (DN-138 WU-4 depth-1 scope) — the whole derive is left an honest gap rather than a partial/fabricated equality (G2)",
+      "item_name": "Val"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 155,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" A parsed TOML value (the supported subset).\"] # [derive (Debug , Clone , PartialEq , Eq)] enum Val { Str (String) , Arr (Vec < Val >) , Table (Vec < (String , Val) >) , Bool (bool) , }",
+      "reason": "enum `Val` derive(Eq): covered by co-occurring PartialEq → `fn eq_Val` (product-row collision policy; DN-128 / ONESHOT C2) — not a second emission",
+      "item_name": "Val"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 164,
+      "col": 1,
+      "category": "MultiStmtBody",
+      "rust_construct": "MultiStmtBody",
+      "snippet": "# [doc = \" Parse a `mycelium-proj.toml` source into a [`Manifest`].\"] # [doc = \"\"] # [doc = \" # Errors\"] # [doc = \" Returns [`ManifestError`] on a syntax error, an out-of-subset construct, a missing/unknown\"] # [doc = \" `[project]` key, or a malformed value.\"] pub fn parse_manifest (src : & str) -> Result < Manifest , ManifestError > { let mut current : Option < String > = None ; let mut project_kv : Vec < (String , Val , u32) > = Vec :: new () ; let mut toolchain_kv : Vec < (String , Val , u32) > = Vec :: new () ; let mut surface_kv : Vec < (String , Val , u32) > = Vec :: new () ; let mut deps_kv : Vec < (String , Val , u32) > = Vec :: new () ; let mut spore_kv : Vec < (String , Val , u32) > = Vec :: new () ; let (mut saw_toolchain , mut saw_surface , mut saw_spore) = (false , false , false) ; let mut seen_tables : Vec < String > = Vec :: new () ; for (idx , raw) in src . lines () . enumerate () { let line_no = (idx + 1) as u32 ; let line = strip_comment (raw) . trim () ; if line . is_empty () { continue ; } if let Some (table) = line . strip_prefix ('[') . and_then (| s | s . strip_suffix (']')) { let name = table . trim () . to_owned () ; if matches ! (name . as_str () , \"project\" | \"toolchain\" | \"surface\" | \"dependencies\" | \"spore\") { if seen_tables . iter () . any (| t | t == & name) { return Err (ManifestError { line : line_no , message : format ! (\"duplicate `[{name}]` table — each table may appear at most once (G2)\") , }) ; } seen_tables . push (name . clone ()) ; } current = Some (name . clone ()) ; match name . as_str () { \"toolchain\" => saw_toolchain = true , \"surface\" => saw_surface = true , \"spore\" => saw_spore = true , _ => { } } continue ; } let (key , rhs) = line . split_once ('=') . ok_or_else (| | ManifestError { line : line_no , message : format ! (\"expected `key = value` or `[table]`, got {line:?}\") , }) ? ; let key = key . trim () . to_owned () ; let val = parse_value (rhs . trim () , line_no) ? ; let dup_in = | kv : & [(String , Val , u32)] | kv . iter () . any (| (k , _ , _) | k == & key) ; match current . as_deref () { Some (\"project\") => { if dup_in (& project_kv) { return Err (duplicate_key (\"project\" , & key , line_no)) ; } project_kv . push ((key , val , line_no)) ; } Some (\"toolchain\") => { if dup_in (& toolchain_kv) { return Err (duplicate_key (\"toolchain\" , & key , line_no)) ; } toolchain_kv . push ((key , val , line_no)) ; } Some (\"surface\") => { if dup_in (& surface_kv) { return Err (duplicate_key (\"surface\" , & key , line_no)) ; } surface_kv . push ((key , val , line_no)) ; } Some (\"dependencies\") => { if dup_in (& deps_kv) { return Err (duplicate_key (\"dependencies\" , & key , line_no)) ; } deps_kv . push ((key , val , line_no)) ; } Some (\"spore\") => { if dup_in (& spore_kv) { return Err (duplicate_key (\"spore\" , & key , line_no)) ; } spore_kv . push ((key , val , line_no)) ; } _ => { } } } let project = build_project (project_kv) ? ; let toolchain = saw_toolchain . then (| | build_toolchain (toolchain_kv)) . transpose () ? ; let surface = saw_surface . then (| | build_surface (surface_kv)) . transpose () ? ; let spore = saw_spore . then (| | build_spore (spore_kv)) . transpose () ? ; let dependencies = build_dependencies (deps_kv) ? ; Ok (Manifest { project , toolchain , surface , dependencies , spore , }) }",
+      "reason": "`let` binding uses an unsupported pattern (only simple `let x = e;` is supported)",
+      "item_name": "parse_manifest"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 277,
+      "col": 1,
+      "category": "MultiStmtBody",
+      "rust_construct": "MultiStmtBody",
+      "snippet": "# [doc = \" Strip a trailing `#` comment that is **outside** a quoted string (single-line values only).\"] fn strip_comment (line : & str) -> & str { let mut in_str = false ; for (i , c) in line . char_indices () { match c { '\"' => in_str = ! in_str , '#' if ! in_str => return & line [.. i] , _ => { } } } line }",
+      "reason": "function body has a semicolon-terminated (value-discarding) statement expression before the tail — a `let`-chain body maps only simple `let x = e;` bindings plus a single trailing expression",
+      "item_name": "strip_comment"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 290,
+      "col": 1,
+      "category": "MacroInvocation",
+      "rust_construct": "MacroInvocation",
+      "snippet": "# [doc = \" Build the explicit error for a duplicate key within a single table instance (G2, never-silent).\"] # [doc = \" `table` names the offending table and `key` the repeated key, so the diagnostic points at the\"] # [doc = \" exact offending input rather than letting the repeat last-win silently.\"] fn duplicate_key (table : & str , key : & str , line : u32) -> ManifestError { ManifestError { line , message : format ! (\"duplicate `[{table}]` key `{key}` — each key may appear at most once (G2)\") , } }",
+      "reason": "`format!` — format string uses an unsupported specifier (only plain `{}` / `{{` / `}}` are lowered in this MVP — named/width/precision/Debug-only forms are honest gaps, G2) (DN-127/M-1090 WU-3)",
+      "item_name": "duplicate_key"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 302,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" The closed v0 `[toolchain]` key set.\"] const TOOLCHAIN_KEYS : & [& str] = & [\"format\" , \"lints\"] ;",
+      "reason": "top-level `const TOOLCHAIN_KEYS` — co-emit (ORACLE-R1 A4) only covers plain unsigned integer types (`u8`/`u16`/`u32`/`u64`/`u128`/`usize`); other types have no const item production and no faithful zero-arg-fn encoding (gap, never fabricate)",
+      "item_name": "TOOLCHAIN_KEYS"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 305,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "fn build_toolchain (kv : Vec < (String , Val , u32) >) -> Result < Toolchain , ManifestError > { let mut tc = Toolchain :: default () ; for (key , val , line) in kv { if ! TOOLCHAIN_KEYS . contains (& key . as_str ()) { return Err (ManifestError { line , message : format ! (\"unknown `[toolchain]` key `{key}` — the v0 set is closed: {} (G2)\" , TOOLCHAIN_KEYS . join (\", \")) , }) ; } match key . as_str () { \"format\" => tc . format = Some (as_str (& val , \"format\" , line) ?) , \"lints\" => tc . lints = Some (as_str (& val , \"lints\" , line) ?) , _ => unreachable ! (\"key membership checked above\") , } } Ok (tc) }",
+      "reason": "qualified/associated-function call `Toolchain :: default` did not resolve to a known-emitted associated fn — Mycelium calls are bare identifiers, and the only sound surface form for `Type::method(...)` is the mangled `Type__method` name the declaration side already emits for a receiver-less inherent-impl associated fn (DN-34 §8.13/8.14), referenced only when that exact declaration is PROVEN present (same-file, or a resolved M-1084 cross-nodule sibling). A primitive/std associated fn with no emitted decl (e.g. `i128::try_from`), an unresolved type, or a `self`-receiving method (excluded by construction — it stays reachable only from its own bare call site) all gap here rather than fabricate a call (G2/VR-5, DN-133)",
+      "item_name": "build_toolchain"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 326,
+      "col": 1,
+      "category": "MultiStmtBody",
+      "rust_construct": "MultiStmtBody",
+      "snippet": "fn build_surface (kv : Vec < (String , Val , u32) >) -> Result < Surface , ManifestError > { let mut exports = None ; for (key , val , line) in kv { match key . as_str () { \"exports\" => exports = Some (as_str_list (& val , \"exports\" , line) ?) , other => { return Err (ManifestError { line , message : format ! (\"unknown `[surface]` key `{other}` — the v0 set is closed: exports (G2)\") , }) } } } Ok (Surface { exports : exports . unwrap_or_default () , }) }",
+      "reason": "function body has a semicolon-terminated (value-discarding) statement expression before the tail — a `let`-chain body maps only simple `let x = e;` bindings plus a single trailing expression",
+      "item_name": "build_surface"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 346,
+      "col": 1,
+      "category": "MultiStmtBody",
+      "rust_construct": "MultiStmtBody",
+      "snippet": "fn build_spore (kv : Vec < (String , Val , u32) >) -> Result < SporeConfig , ManifestError > { let mut include = None ; for (key , val , line) in kv { match key . as_str () { \"include\" => include = Some (as_str_list (& val , \"include\" , line) ?) , other => { return Err (ManifestError { line , message : format ! (\"unknown `[spore]` key `{other}` — the v0 set is closed: include (G2)\") , }) } } } Ok (SporeConfig { include : include . unwrap_or_default () , }) }",
+      "reason": "function body has a semicolon-terminated (value-discarding) statement expression before the tail — a `let`-chain body maps only simple `let x = e;` bindings plus a single trailing expression",
+      "item_name": "build_spore"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 366,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" The closed v0 `[dependencies]` inline-table key set.\"] const DEP_KEYS : & [& str] = & [\"phylum\" , \"version\" , \"hash\"] ;",
+      "reason": "top-level `const DEP_KEYS` — co-emit (ORACLE-R1 A4) only covers plain unsigned integer types (`u8`/`u16`/`u32`/`u64`/`u128`/`usize`); other types have no const item production and no faithful zero-arg-fn encoding (gap, never fabricate)",
+      "item_name": "DEP_KEYS"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 369,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "fn build_dependencies (kv : Vec < (String , Val , u32) >) -> Result < Vec < Dependency > , ManifestError > { let mut deps = Vec :: with_capacity (kv . len ()) ; for (name , val , line) in kv { let Val :: Table (pairs) = val else { return Err (ManifestError { line , message : format ! (\"dependency `{name}` must be an inline table \\\n                     `{{ phylum = \\\"…\\\", version = \\\"…\\\", hash = \\\"blake3:…\\\" }}` (G2)\") , }) ; } ; let (mut phylum , mut version , mut hash) = (None , None , None) ; for (k , v) in & pairs { if ! DEP_KEYS . contains (& k . as_str ()) { return Err (ManifestError { line , message : format ! (\"unknown dependency key `{k}` in `{name}` — the v0 set is closed: {} (G2)\" , DEP_KEYS . join (\", \")) , }) ; } match k . as_str () { \"phylum\" => phylum = Some (as_str (v , \"phylum\" , line) ?) , \"version\" => version = Some (as_str (v , \"version\" , line) ?) , \"hash\" => hash = Some (as_content_hash (v , & name , line) ?) , _ => unreachable ! (\"key membership checked above\") , } } deps . push (Dependency { phylum : phylum . unwrap_or_else (| | name . clone ()) , name , version , hash , }) ; } Ok (deps) }",
+      "reason": "qualified/associated-function call `Vec :: with_capacity` did not resolve to a known-emitted associated fn — Mycelium calls are bare identifiers, and the only sound surface form for `Type::method(...)` is the mangled `Type__method` name the declaration side already emits for a receiver-less inherent-impl associated fn (DN-34 §8.13/8.14), referenced only when that exact declaration is PROVEN present (same-file, or a resolved M-1084 cross-nodule sibling). A primitive/std associated fn with no emitted decl (e.g. `i128::try_from`), an unresolved type, or a `self`-receiving method (excluded by construction — it stays reachable only from its own bare call site) all gap here rather than fabricate a call (G2/VR-5, DN-133)",
+      "item_name": "build_dependencies"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 413,
+      "col": 1,
+      "category": "MultiStmtBody",
+      "rust_construct": "MultiStmtBody",
+      "snippet": "fn build_project (kv : Vec < (String , Val , u32) >) -> Result < Project , ManifestError > { if kv . is_empty () { return Err (ManifestError { line : 1 , message : \"no `[project]` table — a manifest needs at least `[project]` with `name` and `kind`\" . to_owned () , }) ; } let mut name = None ; let mut kind = None ; let mut version = None ; let mut license = None ; let mut authors = None ; let mut since = None ; let mut summary = None ; let mut repository = None ; let mut keywords = None ; let mut lang = None ; let mut certification = None ; for (key , val , line) in kv { if ! PROJECT_KEYS . contains (& key . as_str ()) { return Err (ManifestError { line , message : format ! (\"unknown `[project]` key `{key}` — the v0 set is closed: {} (G2)\" , PROJECT_KEYS . join (\", \")) , }) ; } match key . as_str () { \"name\" => name = Some (as_str (& val , \"name\" , line) ?) , \"kind\" => kind = Some (as_kind (& as_str (& val , \"kind\" , line) ? , line) ?) , \"version\" => version = Some (checked_str (& val , \"version\" , line , is_semver , \"a semver\") ?) , \"license\" => { license = Some (checked_str (& val , \"license\" , line , is_spdx , \"a recognised SPDX id/expression\" ,) ?) } \"since\" => { since = Some (checked_str (& val , \"since\" , line , is_iso_date , \"an ISO-8601 date\" ,) ?) } \"repository\" => { repository = Some (checked_str (& val , \"repository\" , line , is_url , \"a URL\") ?) } \"summary\" => summary = Some (as_str (& val , \"summary\" , line) ?) , \"lang\" => lang = Some (as_str (& val , \"lang\" , line) ?) , \"certification\" => { let s = as_str (& val , \"certification\" , line) ? ; certification = Some (crate :: cert_scope :: parse_cert_mode (& s) . map_err (| m | ManifestError { line , message : m }) ? ,) ; } \"authors\" => authors = Some (as_str_list (& val , \"authors\" , line) ?) , \"keywords\" => keywords = Some (as_str_list (& val , \"keywords\" , line) ?) , _ => unreachable ! (\"key membership checked above\") , } } let project = Project { name : name . ok_or_else (| | ManifestError { line : 1 , message : \"`[project]` is missing the required `name`\" . to_owned () , }) ? , kind : kind . ok_or_else (| | ManifestError { line : 1 , message : \"`[project]` is missing the required `kind` (phylum | program | script)\" . to_owned () , }) ? , version , license , authors , since , summary , repository , keywords , lang , certification , } ; Ok (project) }",
+      "reason": "function body has a semicolon-terminated (value-discarding) statement expression before the tail — a `let`-chain body maps only simple `let x = e;` bindings plus a single trailing expression",
+      "item_name": "build_project"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 507,
+      "col": 1,
+      "category": "MacroInvocation",
+      "rust_construct": "MacroInvocation",
+      "snippet": "fn as_kind (s : & str , line : u32) -> Result < ProjectKind , ManifestError > { match s { \"phylum\" => Ok (ProjectKind :: Phylum) , \"program\" => Ok (ProjectKind :: Program) , \"script\" => Ok (ProjectKind :: Script) , other => Err (ManifestError { line , message : format ! (\"`kind` must be `phylum`, `program`, or `script`, got {other:?} (G2)\") , }) , } }",
+      "reason": "`format!` — format string uses an unsupported specifier (only plain `{}` / `{{` / `}}` are lowered in this MVP — named/width/precision/Debug-only forms are honest gaps, G2) (DN-127/M-1090 WU-3)",
+      "item_name": "as_kind"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 519,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "fn as_str (val : & Val , key : & str , line : u32) -> Result < String , ManifestError > { match val { Val :: Str (s) => Ok (s . clone ()) , _ => Err (ManifestError { line , message : format ! (\"`{key}` must be a string\") , }) , } }",
+      "reason": "Rust ownership/identity-conversion no-op method `.clone()` has no Mycelium free-function/prim referent (value semantics — ADR-003); desugaring it to a bare `clone(recv)` would fabricate an unknown prim (`unknown function/constructor/prim `clone`` — verified against the oracle), so it is gapped, never fake-emitted (G2/VR-5)",
+      "item_name": "as_str"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 529,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" Parse a dependency `hash` into a typed [`mycelium_core::ContentHash`] (DN-40 A3 — parse,\"] # [doc = \" don't validate). The value must be a string and a well-formed content address (`<algo>:<digest>`,\"] # [doc = \" `ContentHash::parse`); for the kernel's fixed algorithm (`blake3`, M-103) the digest must\"] # [doc = \" additionally be a real digest — exactly **64 lowercase hex** (what `blake3::hash().to_hex()`\"] # [doc = \" emits), so a shape-valid-but-bogus stub like `\\\"blake3:abc\\\"` is rejected, not just `\\\"blake3:\\\"`.\"] # [doc = \" A malformed pin is an **explicit** `ManifestError` naming the offending dependency and the bad\"] # [doc = \" value (never silent — G2); a well-formed address is `Exact` by construction.\"] fn as_content_hash (val : & Val , dep_name : & str , line : u32 ,) -> Result < mycelium_core :: ContentHash , ManifestError > { let s = as_str (val , \"hash\" , line) ? ; let malformed = | detail : & str | ManifestError { line , message : format ! (\"dependency `{dep_name}` has a malformed content-address `hash` {s:?} — {detail}; the \\\n             pin is identity-bearing (ADR-003) and is checked, never accepted as free text \\\n             (DN-40 A3 / G2)\") , } ; let h = mycelium_core :: ContentHash :: parse (& s) . ok_or_else (| | malformed (\"expected `<algo>:<digest>` (e.g. `blake3:<64-hex>`)\")) ? ; if ! h . has_well_formed_digest () { return Err (malformed (\"a `blake3` digest must be exactly 64 lowercase hex characters (M-103)\" ,)) ; } Ok (h) }",
+      "reason": "qualified type path `mycelium_core :: ContentHash` — collapsing to its last segment would risk colliding with an unrelated same-named local type (e.g. `std::cmp::Ordering` vs a local `Ordering`); left an explicit gap rather than guessed (VR-5)",
+      "item_name": "as_content_hash"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 566,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "fn checked_str (val : & Val , key : & str , line : u32 , ok : fn (& str) -> bool , want : & str ,) -> Result < String , ManifestError > { let s = as_str (val , key , line) ? ; if ok (& s) { Ok (s) } else { Err (ManifestError { line , message : format ! (\"`{key}` value {s:?} is not {want} (checked, never fabricated — VR-5)\") , }) } }",
+      "reason": "unsupported Rust type form `fn (& str) -> bool`",
+      "item_name": "checked_str"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 586,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "fn as_str_list (val : & Val , key : & str , line : u32) -> Result < Vec < String > , ManifestError > { match val { Val :: Arr (items) => items . iter () . map (| v | as_str (v , key , line)) . collect () , _ => Err (ManifestError { line , message : format ! (\"`{key}` must be an array of strings\") , }) , } }",
+      "reason": "method call `.collect(...)` has no proven-emitted free-fn referent in this file (neither a D4-mangled inherent `Type__collect` nor a bare inherent recorded by this file's left-to-right pass, nor a prim_map / combinator row). Emitting bare `collect(recv, …)` would fabricate an unknown prim and file-poison myc-check (G-β Rank A / G2/VR-5; residual when the method body itself gapped — e.g. M-1037 `.to_vec()` inside `read_to_end` — so the declaration was never registered)",
+      "item_name": "as_str_list"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 610,
+      "col": 1,
+      "category": "MultiStmtBody",
+      "rust_construct": "MultiStmtBody",
+      "snippet": "fn parse_value (s : & str , line : u32) -> Result < Val , ManifestError > { let chars : Vec < char > = s . chars () . collect () ; let mut i = 0 ; let v = scan_value (& chars , & mut i , line , 0) ? ; skip_ws (& chars , & mut i) ; if i != chars . len () { return Err (ManifestError { line , message : format ! (\"trailing characters after value: {:?}\" , chars [i ..] . iter () . collect ::< String > ()) , }) ; } Ok (v) }",
+      "reason": "`let` binding uses an unsupported pattern (only simple `let x = e;` is supported)",
+      "item_name": "parse_value"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 627,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "fn skip_ws (chars : & [char] , i : & mut usize) { while * i < chars . len () && chars [* i] . is_whitespace () { * i += 1 ; } }",
+      "reason": "mutating method's tail expression is neither a threaded-binding field/whole-value re-assignment nor (with the method's original return type already `()`/self-chain, and either multiple threaded bindings or one already assigned) an extra value — value-threading only supports a flat sequence of `self.<field> = ..`/`*<param> = ..` re-assignments plus, when the source return type is non-unit, one trailing value expression (DN-125 §5, conservative scope per §6.1)",
+      "item_name": "skip_ws"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 633,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "fn scan_value (chars : & [char] , i : & mut usize , line : u32 , depth : u32) -> Result < Val , ManifestError > { skip_ws (chars , i) ; match chars . get (* i) { Some ('\"') => scan_string (chars , i , line) . map (Val :: Str) , Some ('[') => scan_array (chars , i , line , depth) , Some ('{') => scan_inline_table (chars , i , line , depth) , Some ('t') | Some ('f') => scan_bool (chars , i , line) , Some (c) => Err (ManifestError { line , message : format ! (\"unsupported value starting with {c:?} — the v0 manifest reader supports strings, \\\n                 arrays, inline tables, and booleans only (G2; not a full TOML parser)\") , }) , None => Err (ManifestError { line , message : \"expected a value after `=`\" . to_owned () , }) , } }",
+      "reason": "mutating method body statement is neither a `let`, a supported `self.<field>`/`*<param>` re-assignment, nor (in tail position) the method's own return value — value-threading deliberately refuses any shape outside a flat re-assignment sequence rather than risk an unsound rebind (DN-125 §6.1, never-silent G2/VR-5)",
+      "item_name": "scan_value"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 654,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "fn scan_string (chars : & [char] , i : & mut usize , line : u32) -> Result < String , ManifestError > { * i += 1 ; let mut out = String :: new () ; while let Some (& c) = chars . get (* i) { match c { '\"' => { * i += 1 ; return Ok (out) ; } '\\\\' => { * i += 1 ; match chars . get (* i) { Some ('\"') => out . push ('\"') , Some ('\\\\') => out . push ('\\\\') , Some ('n') => out . push ('\\n') , Some ('t') => out . push ('\\t') , Some (other) => { return Err (ManifestError { line , message : format ! (\"unsupported escape `\\\\{other}` in string\") , }) } None => break , } * i += 1 ; } _ => { out . push (c) ; * i += 1 ; } } } Err (ManifestError { line , message : \"unterminated string (missing closing `\\\"`)\" . to_owned () , }) }",
+      "reason": "qualified/associated-function call `String :: new` did not resolve to a known-emitted associated fn — Mycelium calls are bare identifiers, and the only sound surface form for `Type::method(...)` is the mangled `Type__method` name the declaration side already emits for a receiver-less inherent-impl associated fn (DN-34 §8.13/8.14), referenced only when that exact declaration is PROVEN present (same-file, or a resolved M-1084 cross-nodule sibling). A primitive/std associated fn with no emitted decl (e.g. `i128::try_from`), an unresolved type, or a `self`-receiving method (excluded by construction — it stays reachable only from its own bare call site) all gap here rather than fabricate a call (G2/VR-5, DN-133)",
+      "item_name": "scan_string"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 692,
+      "col": 1,
+      "category": "MacroInvocation",
+      "rust_construct": "MacroInvocation",
+      "snippet": "# [doc = \" The explicit error returned when a value nests past [`MAX_VALUE_DEPTH`] (DoS bound, G2).\"] fn too_deep (line : u32) -> ManifestError { ManifestError { line , message : format ! (\"value nests deeper than the v0 limit of {MAX_VALUE_DEPTH} (arrays/inline-tables; \\\n             a deeply-nested value is refused, never recursed-into — G2)\") , } }",
+      "reason": "`format!` — format string uses an unsupported specifier (only plain `{}` / `{{` / `}}` are lowered in this MVP — named/width/precision/Debug-only forms are honest gaps, G2) (DN-127/M-1090 WU-3)",
+      "item_name": "too_deep"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 703,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "fn scan_array (chars : & [char] , i : & mut usize , line : u32 , depth : u32) -> Result < Val , ManifestError > { if depth >= MAX_VALUE_DEPTH { return Err (too_deep (line)) ; } * i += 1 ; let mut items = Vec :: new () ; loop { skip_ws (chars , i) ; match chars . get (* i) { Some (']') => { * i += 1 ; return Ok (Val :: Arr (items)) ; } Some (',') => { * i += 1 ; } None => return Err (ManifestError { line , message : \"unterminated array (missing `]`; multi-line arrays are not in the v0 subset)\" . to_owned () , }) , _ => { if items . len () >= MAX_ARRAY_ELEMS { return Err (ManifestError { line , message : format ! (\"array holds more than the v0 limit of {MAX_ARRAY_ELEMS} elements \\\n                             (refused, never silently truncated — G2)\") , }) ; } items . push (scan_value (chars , i , line , depth + 1) ?) ; } } } }",
+      "reason": "mutating method body statement is neither a `let`, a supported `self.<field>`/`*<param>` re-assignment, nor (in tail position) the method's own return value — value-threading deliberately refuses any shape outside a flat re-assignment sequence rather than risk an unsound rebind (DN-125 §6.1, never-silent G2/VR-5)",
+      "item_name": "scan_array"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 741,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "fn scan_inline_table (chars : & [char] , i : & mut usize , line : u32 , depth : u32 ,) -> Result < Val , ManifestError > { if depth >= MAX_VALUE_DEPTH { return Err (too_deep (line)) ; } * i += 1 ; let mut pairs = Vec :: new () ; loop { skip_ws (chars , i) ; match chars . get (* i) { Some ('}') => { * i += 1 ; return Ok (Val :: Table (pairs)) ; } Some (',') => { * i += 1 ; } None => { return Err (ManifestError { line , message : \"unterminated inline table (missing `}`)\" . to_owned () , }) } _ => { if pairs . len () >= MAX_TABLE_PAIRS { return Err (ManifestError { line , message : format ! (\"inline table holds more than the v0 limit of {MAX_TABLE_PAIRS} pairs \\\n                             (refused, never silently truncated — G2)\") , }) ; } let key = scan_bare_key (chars , i , line) ? ; skip_ws (chars , i) ; if chars . get (* i) != Some (& '=') { return Err (ManifestError { line , message : format ! (\"expected `=` after inline-table key `{key}`\") , }) ; } * i += 1 ; let v = scan_value (chars , i , line , depth + 1) ? ; pairs . push ((key , v)) ; } } } }",
+      "reason": "mutating method body statement is neither a `let`, a supported `self.<field>`/`*<param>` re-assignment, nor (in tail position) the method's own return value — value-threading deliberately refuses any shape outside a flat re-assignment sequence rather than risk an unsound rebind (DN-125 §6.1, never-silent G2/VR-5)",
+      "item_name": "scan_inline_table"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 794,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "fn scan_bare_key (chars : & [char] , i : & mut usize , line : u32) -> Result < String , ManifestError > { skip_ws (chars , i) ; let mut out = String :: new () ; while let Some (& c) = chars . get (* i) { if c . is_ascii_alphanumeric () || c == '_' || c == '-' { out . push (c) ; * i += 1 ; } else { break ; } } if out . is_empty () { return Err (ManifestError { line , message : \"expected a bare key in inline table\" . to_owned () , }) ; } Ok (out) }",
+      "reason": "mutating method body statement is neither a `let`, a supported `self.<field>`/`*<param>` re-assignment, nor (in tail position) the method's own return value — value-threading deliberately refuses any shape outside a flat re-assignment sequence rather than risk an unsound rebind (DN-125 §6.1, never-silent G2/VR-5)",
+      "item_name": "scan_bare_key"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/manifest.rs",
+      "line": 814,
+      "col": 1,
+      "category": "MultiStmtBody",
+      "rust_construct": "MultiStmtBody",
+      "snippet": "fn scan_bool (chars : & [char] , i : & mut usize , line : u32) -> Result < Val , ManifestError > { let rest : String = chars [* i ..] . iter () . collect () ; if rest . starts_with (\"true\") { * i += 4 ; Ok (Val :: Bool (true)) } else if rest . starts_with (\"false\") { * i += 5 ; Ok (Val :: Bool (false)) } else { Err (ManifestError { line , message : format ! (\"unrecognised bare token {rest:?} (expected `true`/`false`)\") , }) } }",
+      "reason": "`let` binding uses an unsupported pattern (only simple `let x = e;` is supported)",
+      "item_name": "scan_bool"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/resolve.rs",
+      "line": 17,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "use crate :: cert_scope :: { cert_mode_word , resolve_mode , CertDecl , CertScope , ResolvedMode } ;",
+      "reason": "`use cert_scope::resolve_mode` — `resolve_mode` is not among sibling `cert_scope`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:cert_mode_word,CertScope"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/resolve.rs",
+      "line": 17,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "use crate :: cert_scope :: { cert_mode_word , resolve_mode , CertDecl , CertScope , ResolvedMode } ;",
+      "reason": "`use cert_scope::CertDecl` — `CertDecl` is not among sibling `cert_scope`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:cert_mode_word,CertScope"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/resolve.rs",
+      "line": 17,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "use crate :: cert_scope :: { cert_mode_word , resolve_mode , CertDecl , CertScope , ResolvedMode } ;",
+      "reason": "`use cert_scope::ResolvedMode` — `ResolvedMode` is not among sibling `cert_scope`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:cert_mode_word,CertScope"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/resolve.rs",
+      "line": 18,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "use crate :: header :: { Deprecated , HeaderFields , StructuredHeader } ;",
+      "reason": "`use header::HeaderFields` — `HeaderFields` is not among sibling `header`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:Deprecated"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/resolve.rs",
+      "line": 18,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "use crate :: header :: { Deprecated , HeaderFields , StructuredHeader } ;",
+      "reason": "`use header::StructuredHeader` — `StructuredHeader` is not among sibling `header`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": "co-include:Deprecated"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/resolve.rs",
+      "line": 19,
+      "col": 1,
+      "category": "Import",
+      "rust_construct": "Import",
+      "snippet": "use crate :: manifest :: Manifest ;",
+      "reason": "`use manifest::Manifest` — `Manifest` is not among sibling `manifest`'s successfully-emitted surface in this batch (the sibling file itself gapped it rather than emitting it). Flagged, not guessed (VR-5/G2)",
+      "item_name": null
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/resolve.rs",
+      "line": 21,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" Where a resolved field's value came from.\"] # [derive (Debug , Clone , Copy , PartialEq , Eq)] pub enum Origin { # [doc = \" Set by an in-file `// @key:` line.\"] Local , # [doc = \" Inherited from the `mycelium-proj.toml` `[project]` table.\"] ProjectManifest , }",
+      "reason": "enum `Origin` derive(Clone) is a satisfied no-op under Mycelium's value semantics (ADR-003 — every value already copies structurally; DN-128 §6.1) — not emitted as an impl, not a gap",
+      "item_name": "Origin"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/resolve.rs",
+      "line": 21,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" Where a resolved field's value came from.\"] # [derive (Debug , Clone , Copy , PartialEq , Eq)] pub enum Origin { # [doc = \" Set by an in-file `// @key:` line.\"] Local , # [doc = \" Inherited from the `mycelium-proj.toml` `[project]` table.\"] ProjectManifest , }",
+      "reason": "enum `Origin` derive(Copy) is a satisfied no-op under Mycelium's value semantics (ADR-003 — every value already copies structurally; DN-128 §6.1) — not emitted as an impl, not a gap",
+      "item_name": "Origin"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/resolve.rs",
+      "line": 21,
+      "col": 1,
+      "category": "DeriveSatisfied",
+      "rust_construct": "DeriveSatisfied",
+      "snippet": "# [doc = \" Where a resolved field's value came from.\"] # [derive (Debug , Clone , Copy , PartialEq , Eq)] pub enum Origin { # [doc = \" Set by an in-file `// @key:` line.\"] Local , # [doc = \" Inherited from the `mycelium-proj.toml` `[project]` table.\"] ProjectManifest , }",
+      "reason": "enum `Origin` derive(Eq): covered by co-occurring PartialEq → `fn eq_Origin` (product-row collision policy; DN-128 / ONESHOT C2) — not a second emission",
+      "item_name": "Origin"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/resolve.rs",
+      "line": 39,
+      "col": 1,
+      "category": "Struct",
+      "rust_construct": "Struct",
+      "snippet": "# [doc = \" A resolved field: its effective value and where it came from.\"] # [derive (Debug , Clone , PartialEq , Eq)] pub struct Resolved < T > { # [doc = \" The effective value.\"] pub value : T , # [doc = \" Its provenance.\"] pub origin : Origin , }",
+      "reason": "struct `Resolved` uses named fields and references a type not resolvable in-file — emitting it positionally would introduce an unresolved reference that poisons the file's `myc check`; left gapped under the M-1006 resolvability gate (VR-5/G2)",
+      "item_name": "Resolved"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/resolve.rs",
+      "line": 48,
+      "col": 1,
+      "category": "Struct",
+      "rust_construct": "Struct",
+      "snippet": "# [doc = \" The fully-resolved header — each inherited field annotated with its [`Origin`].\"] # [derive (Debug , Clone , Default , PartialEq , Eq)] pub struct ResolvedHeader { # [doc = \" The nodule's dotted name (from the marker; `None` for a bare marker).\"] pub name : Option < Vec < String > > , # [doc = \" Effective `version`.\"] pub version : Option < Resolved < String > > , # [doc = \" Effective `license`.\"] pub license : Option < Resolved < String > > , # [doc = \" Effective `authors`.\"] pub authors : Option < Resolved < Vec < String > > > , # [doc = \" Effective `since`.\"] pub since : Option < Resolved < String > > , # [doc = \" Effective `repository`.\"] pub repository : Option < Resolved < String > > , # [doc = \" Effective `keywords`.\"] pub keywords : Option < Resolved < Vec < String > > > , # [doc = \" `updated` — per-file (always local; never inherited).\"] pub updated : Option < String > , # [doc = \" `summary` — per-file.\"] pub summary : Option < String > , # [doc = \" `deprecated` — per-file.\"] pub deprecated : Option < Deprecated > , # [doc = \" `matured` — the nodule/phylum is a matured (AOT) scope; RFC-0017; inherited top-down.\"] pub matured : Option < Resolved < bool > > , # [doc = \" `certification` — the active [`CertMode`](mycelium_core::cert_mode::CertMode), resolved\"] # [doc = \" **most-specific-wins** over the `global > phylum > nodule` lattice (RFC-0034 §6; M-790). The\"] # [doc = \" nodule `@certification` (header) overrides the phylum one (manifest); with neither, the project\"] # [doc = \" default [`CertMode::Fast`](mycelium_core::cert_mode::CertMode::Fast). Always present (it falls\"] # [doc = \" back to the default), and always carries its winning [`CertScope`] — never ambient (G2).\"] pub certification : ResolvedMode , }",
+      "reason": "struct `ResolvedHeader` uses named fields and references a type not resolvable in-file — emitting it positionally would introduce an unresolved reference that poisons the file's `myc check`; left gapped under the M-1006 resolvability gate (VR-5/G2)",
+      "item_name": "ResolvedHeader"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/resolve.rs",
+      "line": 81,
+      "col": 1,
+      "category": "MultiStmtBody",
+      "rust_construct": "MultiStmtBody",
+      "snippet": "# [doc = \" Resolve a parsed header against an optional project manifest.\"] # [must_use] pub fn resolve (header : & StructuredHeader , manifest : Option < & Manifest >) -> ResolvedHeader { let f : & HeaderFields = & header . fields ; let p = manifest . map (| m | & m . project) ; let inherit_str = | local : & Option < String > , from_manifest : Option < & String > | { if let Some (v) = local { Some (Resolved { value : v . clone () , origin : Origin :: Local , }) } else { from_manifest . map (| v | Resolved { value : v . clone () , origin : Origin :: ProjectManifest , }) } } ; let inherit_list = | local : & Option < Vec < String > > , from_manifest : Option < & Vec < String > > | { if let Some (v) = local { Some (Resolved { value : v . clone () , origin : Origin :: Local , }) } else { from_manifest . map (| v | Resolved { value : v . clone () , origin : Origin :: ProjectManifest , }) } } ; let inherit_bool = | local : & Option < bool > , from_manifest : Option < bool > | { if let Some (v) = local { Some (Resolved { value : * v , origin : Origin :: Local , }) } else { from_manifest . map (| v | Resolved { value : v , origin : Origin :: ProjectManifest , }) } } ; ResolvedHeader { name : header . marker . name . clone () , version : inherit_str (& f . version , p . and_then (| p | p . version . as_ref ())) , license : inherit_str (& f . license , p . and_then (| p | p . license . as_ref ())) , authors : inherit_list (& f . authors , p . and_then (| p | p . authors . as_ref ())) , since : inherit_str (& f . since , p . and_then (| p | p . since . as_ref ())) , repository : inherit_str (& f . repository , p . and_then (| p | p . repository . as_ref ())) , keywords : inherit_list (& f . keywords , p . and_then (| p | p . keywords . as_ref ())) , matured : inherit_bool (& f . matured , None) , updated : f . updated . clone () , summary : f . summary . clone () , deprecated : f . deprecated . clone () , certification : resolve_certification (f , p . and_then (| p | p . certification)) , } }",
+      "reason": "`let` binding uses an unsupported pattern (only simple `let x = e;` is supported)",
+      "item_name": "resolve"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/resolve.rs",
+      "line": 154,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" Gather the in-scope `@certification` declarations and resolve them most-specific-wins\"] # [doc = \" (RFC-0034 §6) via [`resolve_mode`]. The header carries the **nodule** tier, the manifest the\"] # [doc = \" **phylum** tier (FLAG-B in [`crate::cert_scope`]); `global` has no v0 source. With no declaration\"] # [doc = \" at any scope the result is the project default ([`ResolvedMode::defaulted`]).\"] fn resolve_certification (header : & HeaderFields , manifest_mode : Option < mycelium_core :: cert_mode :: CertMode > ,) -> ResolvedMode { let mut decls : Vec < CertDecl > = Vec :: new () ; if let Some (mode) = manifest_mode { decls . push (CertDecl { scope : CertScope :: Phylum , mode , }) ; } if let Some (mode) = header . certification { decls . push (CertDecl { scope : CertScope :: Nodule , mode , }) ; } resolve_mode (& decls) }",
+      "reason": "qualified type path `mycelium_core :: cert_mode :: CertMode` — collapsing to its last segment would risk colliding with an unrelated same-named local type (e.g. `std::cmp::Ordering` vs a local `Ordering`); left an explicit gap rather than guessed (VR-5)",
+      "item_name": "resolve_certification"
+    },
+    {
+      "file": "/root/git/isolated/mycelium/crates/mycelium-proj/src/resolve.rs",
+      "line": 178,
+      "col": 1,
+      "category": "Other",
+      "rust_construct": "Other",
+      "snippet": "# [doc = \" The `EXPLAIN` of a resolved header — every field with its value and source, so nothing about the\"] # [doc = \" metadata is ambient (G2). Stable, line-oriented, deterministic.\"] # [must_use] pub fn explain (r : & ResolvedHeader) -> String { let mut out = String :: new () ; let name = r . name . as_ref () . map_or_else (| | \"(bare nodule)\" . to_owned () , | segs | segs . join (\".\")) ; out . push_str (& format ! (\"nodule: {name}\\n\")) ; let mut row = | field : & str , value : Option < String > , origin : Option < Origin > | match value { Some (v) => out . push_str (& format ! (\"  {field}: {v}  [{}]\\n\" , origin . map_or (\"local\" , Origin :: label))) , None => out . push_str (& format ! (\"  {field}: —  [unset]\\n\")) , } ; row (\"version\" , r . version . as_ref () . map (| x | x . value . clone ()) , r . version . as_ref () . map (| x | x . origin) ,) ; row (\"license\" , r . license . as_ref () . map (| x | x . value . clone ()) , r . license . as_ref () . map (| x | x . origin) ,) ; row (\"authors\" , r . authors . as_ref () . map (| x | x . value . join (\", \")) , r . authors . as_ref () . map (| x | x . origin) ,) ; row (\"since\" , r . since . as_ref () . map (| x | x . value . clone ()) , r . since . as_ref () . map (| x | x . origin) ,) ; row (\"repository\" , r . repository . as_ref () . map (| x | x . value . clone ()) , r . repository . as_ref () . map (| x | x . origin) ,) ; row (\"keywords\" , r . keywords . as_ref () . map (| x | x . value . join (\", \")) , r . keywords . as_ref () . map (| x | x . origin) ,) ; row (\"updated\" , r . updated . clone () , r . updated . as_ref () . map (| _ | Origin :: Local) ,) ; row (\"summary\" , r . summary . clone () , r . summary . as_ref () . map (| _ | Origin :: Local) ,) ; let dep = r . deprecated . as_ref () . map (| d | match d { Deprecated :: Flag (b) => b . to_string () , Deprecated :: Reason (s) => s . clone () , }) ; row (\"deprecated\" , dep , r . deprecated . as_ref () . map (| _ | Origin :: Local) ,) ; let cert_src = r . certification . source . map_or (\"default\" , CertScope :: label) ; out . push_str (& format ! (\"  certification: {}  [{cert_src}]\\n\" , cert_mode_word (r . certification . mode))) ; out }",
+      "reason": "qualified/associated-function call `String :: new` did not resolve to a known-emitted associated fn — Mycelium calls are bare identifiers, and the only sound surface form for `Type::method(...)` is the mangled `Type__method` name the declaration side already emits for a receiver-less inherent-impl associated fn (DN-34 §8.13/8.14), referenced only when that exact declaration is PROVEN present (same-file, or a resolved M-1084 cross-nodule sibling). A primitive/std associated fn with no emitted decl (e.g. `i128::try_from`), an unresolved type, or a `self`-receiving method (excluded by construction — it stays reachable only from its own bare call site) all gap here rather than fabricate a call (G2/VR-5, DN-133)",
+      "item_name": "explain"
+    }
+  ],
+  "category_counts": {
+    "AssocConst": 2,
+    "DeriveAttr": 12,
+    "DeriveSatisfied": 20,
+    "Impl": 7,
+    "Import": 33,
+    "MacroInvocation": 4,
+    "ModuleDecl": 4,
+    "MultiStmtBody": 12,
+    "NamedFieldDrop": 4,
+    "Other": 29,
+    "Struct": 12,
+    "TestItem": 1
+  }
+}
